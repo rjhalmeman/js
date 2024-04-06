@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Bhaskara</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .error {
+        color: red;
+    }
+</style>
+</head>
+<body>
+<h2>Calculadora de Bhaskara</h2>
+
+<form id="bhaskaraForm">
+    <label for="a">Coeficiente a:</label>
+    <input type="number" id="a" step="any" required><br><br>
+    <label for="b">Coeficiente b:</label>
+    <input type="number" id="b" step="any" required><br><br>
+    <label for="c">Coeficiente c:</label>
+    <input type="number" id="c" step="any" required><br><br>
+    <button type="submit">Calcular Raízes</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+document.getElementById('bhaskaraForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Obtendo os valores dos coeficientes a, b e c
+    let a = parseFloat(document.getElementById('a').value);
+    let b = parseFloat(document.getElementById('b').value);
+    let c = parseFloat(document.getElementById('c').value);
+
+    // Calculando o discriminante
+    let discriminante = b * b - 4 * a * c;
+
+    // Calculando as raízes
+    let raiz1, raiz2;
+
+    if (discriminante > 0) {
+        raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+        raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+    } else if (discriminante === 0) {
+        raiz1 = raiz2 = -b / (2 * a);
+    } else {
+        // Se o discriminante for negativo, exiba uma mensagem de erro
+        document.getElementById('resultado').innerHTML = '<p class="error">As raízes são negativas.</p>';
+        return;
+    }
+
+    // Exibindo as raízes
+    document.getElementById('resultado').innerHTML = '<p>Raiz 1: ' + raiz1 + '</p><p>Raiz 2: ' + raiz2 + '</p>';
+});
+</script>
+
+</body>
+</html>

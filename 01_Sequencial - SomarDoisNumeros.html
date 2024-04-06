@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Algoritmo 000</title>
+    <style>
+        .containerEntradaDeDados {
+            background-color: #f0f0f0;
+            /* Cor de fundo para entrada de dados */
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .containerSaidaDeDados {
+            background-color: #d3d3d3;
+            /* Cor de fundo para saída */
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .containerProcessamento {
+            background-color: #e1ffcd;
+            /* Cor de fundo para processamento */
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Primeiro programa de computador</h1>
+    <div class="containerEntradaDeDados">
+
+        <p>Soma </p>
+        <p>V1</p>
+        <input type="text" id="v1">
+        <p>V2</p>
+        <input type="text" id="v2">
+
+    </div>
+
+    <div class="containerProcessamento">
+        <input type="button" value="Somar" onclick="calcularSoma()">
+    </div>
+
+    <div class="containerSaidaDeDados">
+        <p>Resposta</p>
+        <input type="text" id="resp" disabled>
+    </div>
+
+    <script>
+        function calcularSoma() {
+            // Obter os valores de v1 e v2
+            var v1 = parseFloat(document.getElementById("v1").value);
+            var v2 = parseFloat(document.getElementById("v2").value);
+
+            // Verificar se os valores são números
+            if (!isNaN(v1) && !isNaN(v2)) {
+                // Calcular a soma
+                var soma = v1 + v2;
+
+                // Atualizar o campo de resposta com o resultado da soma
+                document.getElementById("resp").value = soma;
+            } else {
+                // Se algum dos valores não for um número, exibir uma mensagem de erro
+                document.getElementById("resp").value = "Valores inválidos";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Três numeros em ordem</title>
+</head>
+
+<body>
+    <label for="inputA">Valor A</label>
+    <input type="number" name="inputA" id="inputA">
+    <label for="inputB">Valor B</label>
+    <input type="number" name="inputB" id="inputB">
+    <label for="inputC">Valor C</label>
+
+    <input type="number" name="inputC" id="inputC">
+    <br>
+    <input type="button" value="Ordenar" onclick="ordenar()">
+    <br>
+    <label for="saidaA">Valor A</label>
+    <span id="saidaA"></span>
+    <label for="saidaB">Valor B</label>
+    <span id="saidaB"></span>
+    <label for="saidaC">Valor C</label>
+    <span id="saidaC"></span>
+
+    <script>
+        function ordenar() {
+
+            let a;
+            let b;
+            let c;
+
+            a = parseInt(document.getElementById("inputA").value);
+            b = parseInt(document.getElementById("inputB").value);
+            c = parseInt(document.getElementById("inputC").value);
+            if (a > b) {
+                aux = a;
+                a = b;
+                b = aux;
+            }
+            if (b > c) {
+                aux = b;
+                b = c;
+                c = aux;
+            }
+            if (a > b) {
+                aux = a;
+                a = b;
+                b = aux;
+            }
+
+            document.getElementById("saidaA").textContent = a;
+            document.getElementById("saidaB").textContent = b;
+            document.getElementById("saidaC").textContent = c;
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da média anual</title>
+</head>
+
+<body>
+    <label for="inputB1">Nota do 1º bimestre</label>
+    <input type="number" name="inputB1" id="inputB1">
+    <br> <!-- <br> break line, ou quebra de linha  -->
+    <label for="inputB2">Nota do 2º bimestre</label>
+    <input type="number" name="inputB2" id="inputB2">
+    <br>
+    <label for="inputB3">Nota do 3º bimestre</label>
+    <input type="number" name="inputB3" id="inputB3">
+    <br>
+    <label for="inputB4">Nota do 4º bimestre</label>
+    <input type="number" name="inputB4" id="inputB4">
+    <br>
+    <input type="button" value="Calcular" onclick="calcularMedia()">
+    <br>
+    
+    <label for="spanMedia">Média anual:</label>
+    <span id="spanMedia"></span> 
+
+    <script>
+        function calcularMedia() {
+            let b1 = parseFloat(document.getElementById("inputB1").value);
+            let b2 = parseFloat(document.getElementById("inputB2").value);
+            let b3 = parseFloat(document.getElementById("inputB3").value);
+            let b4 = parseFloat(document.getElementById("inputB4").value);
+            let media = (b1 + b2 + b3 + b4) / 4;
+            
+            document.getElementById("spanMedia").         
+             = media;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucessor e Antecessor</title>
+</head>
+<body>
+    <label for="inputNumero">Digite um número inteiro:</label>
+    <input type="number" name="inputNumero" id="inputNumero">
+    <br>
+    <button onclick="calcular()">Calcular Sucessor e Antecessor</button>
+    <br>
+    <div id="resultado"></div>
+
+    <script>
+        // Função para calcular o antecessor
+        function antecessor(numero) {
+            return numero - 1;
+        }
+
+        // Função para calcular o sucessor
+        function sucessor(numero) {
+            return numero + 1;
+        }
+
+        // Função para exibir o resultado
+        function exibirResultado(antecessor, sucessor) {
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = `
+                <p>Antecessor: ${antecessor}</p>
+                <p>Sucessor: ${sucessor}</p>
+            `;
+        }
+
+        // Função principal para calcular e exibir o resultado
+        function calcular() {
+            let numero = parseInt(document.getElementById("inputNumero").value);
+            
+            // Verificando se a entrada é um número
+            if (isNaN(numero)) {
+                let resultadoDiv = document.getElementById("resultado");
+                resultadoDiv.innerHTML = "<p>Por favor, insira um número válido.</p>";
+            } else {
+                let ant = antecessor(numero);
+                let suc = sucessor(numero);
+                exibirResultado(ant, suc);
+            }
+        }
+    </script>
+</body>
+</html>

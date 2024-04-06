@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior, menor ou igual</title>
+</head>
+
+<body>
+    <label for="primeiro">Primeiro número</label>
+    <input type="number" name="primeiro" id="primeiro">
+    <br>
+    <label for="segundo">Segundo número</label>
+    <input type="number" name="segundo" id="segundo">
+    <br>
+    <input type="button" value="Verificar" onclick="verifique()">
+
+    <br> 
+    <label for="resposta">Resposta</label>
+    <input type="text" name="resposta" id="resposta" style="width: 250px;">
+
+
+    <script>
+        function verifique() {
+            let p = parseFloat(document.getElementById('primeiro').value);
+            let s = parseFloat(document.getElementById('segundo').value);
+            let r = document.getElementById("resposta");
+
+            if (p > s) {
+                r.value = "O primeiro é maior que o segundo";
+            } else if (p < s) {
+                r.value = "O segundo é maior que o primeiro";
+            }
+            else {
+                r.value = "os valores são iguais";
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

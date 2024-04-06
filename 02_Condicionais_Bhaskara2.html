@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaskara</title>
+</head>
+<body>
+    <label for="inputA">Valor A</label>
+    <input type="number" name="inputA" id="inputA">
+    <label for="inputB">Valor B</label>
+    <input type="number" name="inputB" id="inputB">
+    <label for="inputC">Valor C</label>
+    <input type="number" name="inputC" id="inputC">
+
+    <br>
+    <br>
+    <input type="button" value="calcular" onclick="calcular()">
+    <br>
+    <br>
+
+    <label for="x1">X1=</label>
+    <span id="x1"></span>
+    <br>
+    <label for="x2">X2=</label>
+    <span id="x2"></span>
+    <br>
+    <label for="resp">Aviso: </label>
+    <span id="resp">---</span>
+
+    <script>
+        function calcular(){
+
+            a = parseFloat(document.getElementById("inputA").value);
+            b = parseFloat(document.getElementById("inputB").value);
+            c = parseFloat(document.getElementById("inputC").value);
+
+            delta = b**2-4*a*c;
+
+            if (delta<0) {
+                resp = "Impossível calcular";
+            } else {
+                x1 = (-b+Math.sqrt(delta))/(2*a);
+                x2 = (-b-Math.sqrt(delta))/(2*a);
+                resp = "Foi possível calcular";
+            }
+
+            if (delta >0) {
+                document.getElementById("x1").textContent = x1;
+                document.getElementById("x2").textContent = x2;
+            } else {
+                document.getElementById("x1").textContent = "----";
+                document.getElementById("x2").textContent = "----";
+            }
+            document.getElementById("resp").textContent=resp;//o erro estava na falta do .textContent que eu havia esquecido
+        }
+
+    </script>
+
+
+
+</body>
+</html>

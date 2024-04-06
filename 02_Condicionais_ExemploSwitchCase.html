@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia da Semana</title>
+    <style>
+        .container {
+            background-color: aquamarine;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="input">
+            <label for="diaInput">Digite o número do dia da semana (1 a 7):</label>
+            <input type="number" id="diaInput" min="1" max="7">
+        </div>
+        <div class="button">
+            <button onclick="calcularDia()">Calcular</button>
+        </div>
+        <div class="output">
+            <p id="resultado"></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularDia() {
+            let diaInput = document.getElementById("diaInput").value;
+            let nomeDia;
+
+            switch (parseInt(diaInput)) {
+                case 1:
+                    nomeDia = 'Domingo';
+                    break;
+                case 2:
+                    nomeDia = 'Segunda-feira';
+                    break;
+                case 3:
+                    nomeDia = 'Terça-feira';
+                    break;
+                case 4:
+                    nomeDia = 'Quarta-feira';
+                    break;
+                case 5:
+                    nomeDia = 'Quinta-feira';
+                    break;
+                case 6:
+                    nomeDia = 'Sexta-feira';
+                    break;
+                case 7:
+                    nomeDia = 'Sábado';
+                    break;
+                default:
+                    nomeDia = 'Dia inválido';
+            }
+
+            document.getElementById("resultado").innerText = `O dia ${diaInput} da semana é ${nomeDia}.`;
+        }
+    </script>
+
+</body>
+
+</html>
