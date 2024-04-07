@@ -1,0 +1,56 @@
+<!-- Escreva um algoritmo que receba a idade de uma pessoa e informe se ela é 
+    criança, adolescente, adulta ou idosa. Criança até 12 anos, adolescente 
+    até 18 anos, adulta até 60 anos e idosa acima de 60;
+ -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador</title>
+</head>
+
+<body>
+    <h1>
+        Classifica pessoas conforme a idade
+    </h1>
+    <label for="inputIdade">Idade em anos</label>
+    <input type="number" name="inputIdade" id="inputIdade">
+    <br>
+    <input type="button" value="Classificar" onclick="classificar()">
+    <br>
+    <label for="resposta"></label>
+    <span id="resposta"></span>
+
+
+    <script>
+        function classificar() {
+            let idade = parseInt(document.getElementById("inputIdade").value);
+
+            let resp = "";
+
+            if (isNaN(idade)) {
+                resp = "dados incorretos";
+            } else if (idade <= 12) {
+                resp = "Criança";
+            } else if (idade <= 18) {
+                resp = "Adolescente";
+            } else if (idade <= 60) {
+                resp = "Adulta";
+            } else {
+                resp = "Idosa";
+            }
+
+
+            document.getElementById("resposta").textContent = resp;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

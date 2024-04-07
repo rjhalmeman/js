@@ -1,0 +1,41 @@
+<!-- 1) Escreva um programa que resolva o seguinte problema: uma cópia “xerox” custa R$ 0,25 
+    por folha, mas acima de 100 folhas esse valor cai para R$ 0,20 por unidade. Dado o total 
+    de cópias, informe o valor a ser pago. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiadora</title>
+</head>
+
+<body>
+    <label for="inputQtdeCopias">Quantas cópias</label>
+    <input type="number" name="inputQtdeCopias" id="inputQtdeCopias">
+
+    <input type="button" value="Calcular" onclick="calcular()">
+
+
+    <label for="resposta">Valor</label>
+    <span id="resposta">0</span>
+
+    <script>
+        function calcular() {
+            let qtde = parseInt(document.getElementById("inputQtdeCopias").value);
+            let resp;
+            if (qtde > 100) {
+                resp = (qtde * 0.20).toFixed(2);
+            } else {
+                resp = (qtde * 0.25).toFixed(2);
+            }
+            document.getElementById("resposta").textContent = resp;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

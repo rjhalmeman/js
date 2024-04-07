@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Hipotenusa</title>
+</head>
+
+<body>
+    <label for="inputB">Valor de B</label>
+    <input type="number" name="inputB" id="inputB">
+    <br>
+    <label for="inputC">Valor de C</label>
+    <input type="number" name="inputC" id="inputC">
+    <br>
+    <input type="button" value="Calcular" onclick="calcular()">
+    <br>
+    <label for="resposta">Hipotenusa</label>
+    <input type="text" name="resposta" id="resposta">
+    <script>
+        function calcular(){
+            let valorB = 
+               parseFloat(document.getElementById("inputB").value);
+            let valorC = 
+               parseFloat(document.getElementById("inputC").value);
+            let valorH = 
+               Math.sqrt(valorB*valorB+valorC*valorC);
+            document.getElementById("resposta").value = valorH;
+        }
+    </script>
+</body>
+</html>

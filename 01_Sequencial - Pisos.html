@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo da quantidade de pisos</title>
+  </head>
+
+  <body>
+    <label for="inputLA">Largura do ambiente</label>
+    <input type="number" name="inputLA" id="inputLA" />
+    <br />
+    <label for="inputCA">Comprimento do ambiente</label>
+    <input type="number" name="inputCA" id="inputCA" />
+    <br />
+    <label for="inputLP">Largura do piso</label>
+    <input type="number" name="inputLP" id="inputLP" />
+    <br />
+    <label for="inputCP">Comprimento do piso</label>
+    <input type="number" name="inputCP" id="inputCP" />
+    <br />
+    <br />
+    <input type="button" value="Calcular" onclick="calcular()" />
+    <br />
+    <br />
+    <label for="resposta">Quantidade de pisos</label>
+    <input type="text" name="resposta" id="resposta" />
+
+    <script>
+      function calcular() {
+        let lA = parseFloat(document.getElementById("inputLA").value);
+        let cA = parseFloat(document.getElementById("inputCA").value);
+        let lP = parseFloat(document.getElementById("inputLP").value);
+        let cP = parseFloat(document.getElementById("inputCP").value);
+
+        lA = lA *100;
+        cA = cA*100;
+        
+        let quantidadeDePisos = (lA/lP * cA/cP);
+        quantidadeDePisos = quantidadeDePisos + (10 / 100) * quantidadeDePisos;
+       
+
+        document.getElementById("resposta").value = quantidadeDePisos;
+      }
+    </script>
+  </body>
+</html>

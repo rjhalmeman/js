@@ -1,0 +1,36 @@
+<!-- programa em JS -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de três números</title>
+</head>
+
+<body>
+    <label for="inputNum1">Primeiro número</label>
+    <input type="number" name="inputNum1" id="inputNum1">
+    <br> <!-- <br> break line, ou quebra de linha -->
+    <label for="inputNum2">Segundo número</label>
+    <input type="number" name="inputNum2" id="inputNum2">
+    <br>
+    <label for="inputNum3">Terceiro número</label>
+    <input type="number" name="inputNum3" id="inputNum3">
+    <br>
+    <input type="button" value="Somar" onclick="calcularSoma()">
+    <br>
+    <label for="spanSoma">Soma dos números:</label>
+    <span id="spanSoma"></span>
+    <script>
+        function calcularSoma() {
+            let num1 = parseFloat(document.getElementById("inputNum1").value);
+            let num2 = parseFloat(document.getElementById("inputNum2").value);
+            let num3 = parseFloat(document.getElementById("inputNum3").value);
+            let soma = num1 + num2 + num3;
+            document.getElementById("spanSoma").textContent = soma;
+        }
+    </script>
+</body>
+
+</html>

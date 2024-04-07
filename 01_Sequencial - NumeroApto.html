@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andar e número</title>
+</head>
+
+<body>
+    <label for="inputA">Valor de A</label>
+    <input type="number" name="inputA" id="inputA">
+    <br>
+
+    <input type="button" value="Mostrar" onclick="trocar()">
+    <br>
+    <label for="spanA">Andar=</label>
+    <span id="spanA"></span>
+    <br>
+    <label for="spanB">Apartamento=</label>
+    <span id="spanB"></span>
+
+    <script>
+        function trocar() {
+            let completo;
+            let andar;
+            let apartamento;
+            completo = parseInt(document.getElementById("inputA").value);
+            andar = parseInt(completo / 100);
+            apartamento = completo - andar*100;
+
+           // alert(completo);
+            document.getElementById("spanA").textContent = andar;
+            document.getElementById("spanB").textContent = apartamento;
+        }
+
+    </script>
+</body>
+
+</html>
