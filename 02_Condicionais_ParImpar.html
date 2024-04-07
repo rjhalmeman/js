@@ -20,6 +20,18 @@
         <input type="text" name="resp" id="resp" readonly>
     </div>
 
+    <script>
+        function verificar(){
+            let num  = parseInt(document.getElementById("num").value);
+            let resp="";
+            if (num%2==0) {
+                resp = "par";
+            } else {
+                resp = "ímpar";
+            }
+            document.getElementById("resp").value = resp;
+        }
+    </script>
 </body>
 
 </html>
