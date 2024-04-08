@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual o conceito</title>
+</head>
+
+<body>
+    <label for="inputNota">Nota</label>
+    <input type="number" name="inputNota" id="inputNota">
+    <label for="inputFaltas">Faltas</label>
+    <input type="number" name="inputFaltas" id="inputFaltas">
+
+    <br>
+    <input type="button" value="conceituar" onclick="conceituar()">
+
+    <br>
+    <label for="resposta">Conceito</label>
+    <div id="resposta"></div>
+
+    <script>
+        function conceituar() {
+            let nota = parseInt(document.getElementById("inputNota").value);
+            let faltas = parseInt(document.getElementById("inputFaltas").value);
+            if (faltas <= 20) {
+                if (nota < 4) {
+                    conceito = "E";
+                } else if (nota < 5) {
+                    conceito = "D";
+                } else if (nota < 7.5) {
+                    conceito = "C";
+                } else if (nota < 9) {
+                    conceito = "B";
+                } else {
+                    conceito = "A";
+                }
+            } else {
+                if (nota < 5) {
+                    conceito = "E";
+                } else if (nota < 7.5) {
+                    conceito = "D";
+                } else if (nota < 9) {
+                    conceito = "C";
+                } else {
+                    conceito = "B";
+                }
+            }
+
+            document.getElementById("resposta").innerText = 
+            "Com nota "+nota+" e "+ faltas + " faltas o conceito é "+ conceito;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoria do nadador</title>
+</head>
+
+<body>
+    <label for="inputIdade">Idade</label>
+    <input type="number" name="inputIdade" id="inputIdade">
+    <br>
+    <input type="button" value="categorizar" onclick="categorizar()">
+    <br><br>
+    <label for="categoria">Categoria</label>
+    <span id="categoria"></span>
+
+    <script>
+        function categorizar() {
+            let idade = parseInt(document.getElementById("inputIdade").value);
+            if (idade < 5) {
+                categ = "Muito jovem para competir";
+            } else if (idade < 7) {
+                categ = "Infantil A";
+            } else if (idade < 10) {
+                categ = "Infantil B";
+            } else if (idade < 13) {
+                categ = "Juvenil A";
+            } else if (idade <= 17) {
+                categ = "Juvenil B";
+            } else {
+                categ = "Sênior";
+            }
+
+            document.getElementById("categoria").textContent = categ;
+        }
+
+
+    </script>
+</body>
+
+</html>

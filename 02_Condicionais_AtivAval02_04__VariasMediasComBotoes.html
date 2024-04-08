@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médias</title>
+</head>
+
+<body>
+    <label for="inputX">X</label>
+    <input type="number" name="inputX" id="inputX">
+    <br>
+    <label for="inputY">Y</label>
+    <input type="number" name="inputY" id="inputY">
+    <br>
+    <label for="inputZ">Z</label>
+    <input type="number" name="inputZ" id="inputZ">
+    <br>
+    <input type="button" value="Geométrica" onclick="geometrica()">
+    <input type="button" value="Ponderada" onclick="ponderada()">
+    <input type="button" value="Geométrica" onclick="harmonica()">
+    <input type="button" value="Aritmética" onclick="aritmetica()">
+    <br>
+    <label for="saida">Resultado</label>
+    <div id="saida"></div>
+
+
+    <script>
+        let x;
+        let y;
+        let z;
+        let resp;
+
+        function getDados() {
+            x = parseFloat(document.getElementById("inputX").value);
+            y = parseFloat(document.getElementById("inputY").value);
+            z = parseFloat(document.getElementById("inputZ").value);
+        }
+
+        function geometrica() {
+            getDados();
+            resp = (x*y*z)**(1/3);
+            document.getElementById("saida").innerText = resp.toFixed(2); //mostra apenas 2 casas decimais
+        }
+
+        function ponderada() {
+            getDados();
+            resp = (x+2*y+3*z)/6;
+            document.getElementById("saida").innerText = resp.toFixed(2);
+        }
+
+        function harmonica() {
+            getDados();
+            resp = 1/(1/x+1/y+1/z);
+            document.getElementById("saida").innerText = resp.toFixed(2);
+        }
+
+        function aritmetica() {
+            getDados();
+            resp = (x+y+z)/3;
+            document.getElementById("saida").innerText = resp.toFixed(2);
+        }
+
+    </script>
+</body>
+
+</html>
