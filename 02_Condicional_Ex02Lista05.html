@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="valor">Valor</label>
+    <input type="number" name="valor" id="valor">
+
+    <label for="opcao">Opção</label>
+    <input type="number" name="opcao" id="opcao">
+
+    <input type="button" value="Calcular" onclick="funcaoCalcular()">
+
+    <label for="resposta">Valor a pagar</label>
+    <span id="resposta">0,0</span>
+
+    <script>
+        function funcaoCalcular() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let opc = parseInt(document.getElementById("opcao").value);
+            let resp;
+            let vezes;
+            if (opc == 1) {
+                 resp = v - (15 / 100) * v;
+                 vezes =1;
+            } else if (opc == 2) {
+                 resp = v - (10 / 100) * v;
+                 vezes =1;
+            } else if (opc == 3) {
+                 resp = v / 2;
+                 vezes =2;
+            } else {
+                 resp = (v + (5 / 100) * v) / 3;
+                 vezes =3;
+            }
+
+            document.getElementById("resposta").textContent = vezes + " vez(es) de " + resp.toFixed(2);
+        }   
+    </script>
+</body>
+
+</html>

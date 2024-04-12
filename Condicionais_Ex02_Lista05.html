@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="valor">Valor</label>
+    <input type="number" name="valor" id="valor">
+
+    <input type="button" value="À vista em Dinheiro" onclick="funcaoOpcao1()">
+    <input type="button" value="À vista no Cartão" onclick="funcaoOpcao2()">
+    <input type="button" value="Em 2 vezes" onclick="funcaoOpcao3()">
+    <input type="button" value="Em 3 vezes" onclick="funcaoOpcao4()">
+    <label for="resposta">Valor a pagar</label>
+    <span id="resposta">0,0</span>
+    
+    <script>
+        function funcaoOpcao1() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let resp = v - (15 / 100) * v;
+            document.getElementById("resposta").textContent = resp.toFixed(2);
+        }
+        function funcaoOpcao2() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let resp = v - (10 / 100) * v;
+            document.getElementById("resposta").textContent = resp.toFixed(2);
+        }
+        function funcaoOpcao3() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let resp = v/2;
+            document.getElementById("resposta").textContent ="2 vezes de "+ resp.toFixed(2);
+        }
+
+        function funcaoOpcao4() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let resp =( v+(5/100)*v)/3;
+            document.getElementById("resposta").textContent ="3 vezes de "+ resp.toFixed(2);
+        }
+
+    </script>
+</body>
+
+</html>
