@@ -38,10 +38,10 @@
 
     <script>
         function calcularDia() {
-            let diaInput = document.getElementById("diaInput").value;
+            let diaInput = parseInt(document.getElementById("diaInput").value);
             let nomeDia;
 
-            switch (parseInt(diaInput)) {
+            switch (diaInput) {
                 case 1:
                     nomeDia = 'Domingo';
                     break;
