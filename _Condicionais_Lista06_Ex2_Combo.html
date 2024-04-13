@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferentes pagamentos - com combobox</title>
+</head>
+
+<body>
+    <label for="valor">Valor</label>
+    <input type="number" name="valor" id="valor">
+
+    <select id="opcoesPagamento" onchange="calcularPagamento()">
+        <option value="opcao1">À vista em Dinheiro</option>
+        <option value="opcao2">À vista no Cartão</option>
+        <option value="opcao3">Em 2 vezes</option>
+        <option value="opcao4">Em 3 vezes</option>
+    </select>
+
+    <label for="resposta">Valor a pagar</label>
+    <span id="resposta">0,0</span>
+    
+    <script>
+        function calcularPagamento() {
+            let v = parseFloat(document.getElementById("valor").value);
+            let opcaoSelecionada = document.getElementById("opcoesPagamento").value;
+
+            switch (opcaoSelecionada) {
+                case "opcao1":
+                    let resp1 = v - (15 / 100) * v;
+                    document.getElementById("resposta").textContent = resp1.toFixed(2);
+                    break;
+                case "opcao2":
+                    let resp2 = v - (10 / 100) * v;
+                    document.getElementById("resposta").textContent = resp2.toFixed(2);
+                    break;
+                case "opcao3":
+                    let resp3 = v / 2;
+                    document.getElementById("resposta").textContent = "2 vezes de " + resp3.toFixed(2);
+                    break;
+                case "opcao4":
+                    let resp4 = (v + (5 / 100) * v) / 3;
+                    document.getElementById("resposta").textContent = "3 vezes de " + resp4.toFixed(2);
+                    break;
+                default:
+                    document.getElementById("resposta").textContent = "0.00";
+            }
+        }
+    </script>
+</body>
+
+</html>
