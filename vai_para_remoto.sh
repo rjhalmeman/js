@@ -7,5 +7,5 @@ git add .
 git commit -m "$1"
 
 # Faz o push para o repositório remoto no GitHub
-git push https://github.com/rjhalmeman/js "$2"
+git push https://github.com/rjhalmeman/js
 
