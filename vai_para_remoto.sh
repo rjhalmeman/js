@@ -11,4 +11,3 @@ git commit -m "$timestamp"
 
 # Faz o push para o repositório remoto no GitHub
 git push https://github.com/rjhalmeman/js
-

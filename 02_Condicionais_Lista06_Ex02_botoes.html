@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diferentes pagamentos com 4 botões</title>
+    <title>Diferentes pagamentos com quatro botões</title>
 </head>
 <!-- 
 2) Elabore um algoritmo (e programa em JS) que calcule o que deve ser pago por um produto, considerando o preço normal de etiqueta 
@@ -27,17 +27,21 @@ Código -  Condição de pagamento
     <input type="number" name="valor" id="valor">
 
     <input type="button" value="À vista em Dinheiro" onclick="funcaoOpcao1()">
+
     <input type="button" value="À vista no Cartão" onclick="funcaoOpcao2()">
+
     <input type="button" value="Em 2 vezes" onclick="funcaoOpcao3()">
+
     <input type="button" value="Em 3 vezes" onclick="funcaoOpcao4()">
-    <label for="resposta">Valor a pagar</label>
+
+    <label for="resposta">Valor a pagar: </label>
     <span id="resposta">0,0</span>
     
     <script>
         function funcaoOpcao1() {
             let v = parseFloat(document.getElementById("valor").value);
             let resp = v - (15 / 100) * v;
-            document.getElementById("resposta").textContent = resp.toFixed(2);
+            document.getElementById("resposta").textContent = resp.toFixed(2); //fixa duas casas decimais na resposta
         }
         function funcaoOpcao2() {
             let v = parseFloat(document.getElementById("valor").value);
