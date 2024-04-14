@@ -23,7 +23,7 @@ function exibirResultado(ant,suc) {
     console.log(`Sucessor: ${suc}`);
 }
 
-// Perguntando ao usuário para digitar um número inteiro
+// Perguntando ao usuário para digitar um número inteiro .
 rl.question('Digite um número inteiro: ', (numero) => {
     // Convertendo a entrada do usuário para um número inteiro
     numero = parseInt(numero);

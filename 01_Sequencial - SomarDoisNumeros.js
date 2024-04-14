@@ -21,7 +21,7 @@ rl.question('Digite o primeiro valor: ', (valor1) => {
             const soma = num1 + num2;
             
             // Exibindo o resultado
-            console.log('A soma dos valores é:', soma);
+            console.log('A soma dos valores é = ', soma);
         } else {
             console.log('Pelo menos um dos valores digitados não é um número válido.');
         }

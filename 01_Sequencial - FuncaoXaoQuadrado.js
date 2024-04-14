@@ -14,7 +14,7 @@ rl.question('Digite o valor de x: ', (x) => {
     const resultado = calcularQuadrado(x);
     console.log(`O resultado de f(${x}) = ${resultado}`);
   } else {
-    console.log("Por favor, insira um valor numérico válido.");
+    console.log("Por favor, insira um valor numérico válido .");
   }
 
   rl.close();

@@ -35,7 +35,7 @@ function exibirResultado(resultado) {
     rl.close();
 }
 
-// Função principal para coordenar a entrada, processamento e saída de dados
+// Função principal para coordenar a entrada, processamento e saída de dados.
 async function main() {
     try {
         const entrada = await obterEntrada();
