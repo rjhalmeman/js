@@ -26,15 +26,24 @@ Código -  Condição de pagamento
 
 
 <body>
+
+    <p>
+        1 - À vista, dinheiro ou cheque.<br>
+        2 - À vista, cartão de crédito.<br>
+        3 - Parcelado em 2 vezes.<br>
+        4 - Parcelado em 3 vezes.<br><br>
+    </p>
+
+    <label for="opcao">Opção</label>
+    <input type="number" name="opcao" id="opcao" min="1" max="5">
+    <br>
+    
     <label for="valor">Valor</label>
     <input type="number" name="valor" id="valor">
 
-    <label for="opcao">Opção</label>
-    <input type="number" name="opcao" id="opcao">
-
     <input type="button" value="Calcular" onclick="funcaoCalcular()">
+    <br><br>
 
-    <label for="resposta">Valor a pagar</label>
     <span id="resposta">0,0</span>
 
     <script>
@@ -45,19 +54,30 @@ Código -  Condição de pagamento
             let vezes;
             if (opc == 1) {
                 resp = v - (15 / 100) * v;
-                vezes = 1;
+                exibir = "<h2>Você vai pagar R$" + resp.toFixed(2) +
+                    "<br> O valor de etiqueta é R$" + v.toFixed(2) +
+                    "<br> você economizou 20% de " + v.toFixed(2) + " ,ou seja, R$" + (15 / 100 * v).toFixed(2) + " pagando com dinheiro ou cheque<h2>";
+
             } else if (opc == 2) {
                 resp = v - (10 / 100) * v;
-                vezes = 1;
+                exibir = "<h2>Você vai pagar R$" + resp.toFixed(2) +
+                    "<br> O valor de etiqueta é R$" + v.toFixed(2) +
+                    "<br> você economizou 10% de " + v.toFixed(2) + " ,ou seja, R$" + (10 / 100 * v).toFixed(2) +
+                    "<br> pagando à vista com Cartão de Crédito<h2>";
             } else if (opc == 3) {
                 resp = v / 2;
-                vezes = 2;
+                exibir = "<h2>Você pagará 2 parcelas de R$" + resp.toFixed(2) +
+                    "<br> O valor de etiqueta é R$" + v.toFixed(2) +
+                    "<br> você terá mais prazo para pagar R$" + v.toFixed(2) + "<h2>";
             } else {
                 resp = (v + (5 / 100) * v) / 3;
-                vezes = 3;
+                exibir = "<h2>Você pagará 3 parcelas de R$" + resp.toFixed(2) +
+                    "<br> O valor de etiqueta é R$" + v.toFixed(2) +
+                    "<br> você terá mais prazo para pagar o valor de R$" + (resp * 3).toFixed(2) + ", pagará R$" + (v * 5 / 100).toFixed(2) + " (5%) a mais." +
+                    "<h2>";
             }
 
-            document.getElementById("resposta").textContent = vezes + " vez(es) de " + resp.toFixed(2);//mostra 2 casas decimais
+            document.getElementById("resposta").innerHTML = exibir; //interpreta e exibe o html, que foi colocado na variável chamada exibir
         }   
     </script>
 </body>

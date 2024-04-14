@@ -3,8 +3,11 @@
 # Adiciona todas as alterações ao índice do Git
 git add .
 
-# Realiza um commit com a mensagem passada como argumento
-git commit -m "$1"
+# Obtém a data e hora atual e formata para o formato desejado (por exemplo, YYYY-MM-DD HH:MM:SS)
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+
+# Realiza um commit com a mensagem contendo a data e hora
+git commit -m "$timestamp"
 
 # Faz o push para o repositório remoto no GitHub
 git push https://github.com/rjhalmeman/js
