@@ -1,0 +1,74 @@
+<!-- 
+   Informados, o ano e o número do mês, mostre quantos dias tem o mês naquele ano.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias de cada mês</title>
+</head>
+
+<body>
+    <label for="inputAno">Informe o ano:</label>
+    <input type="number" name="inputAno" id="inputAno">
+    <label for="inputMes">Informe o mês:</label>
+    <input type="number" name="inputMes" id="inputMes">
+
+    <br>
+    <input type="button" value="Calcular" onclick="calcular()">
+
+    <br>
+
+    <span id="resposta"></span>
+
+    <script>
+        function calcular() {
+            let ano = parseInt(document.getElementById("inputAno").value);
+            let mes = parseInt(document.getElementById("inputMes").value);
+            let dias = 0;
+            switch (mes) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    dias = 31;
+                    break;
+                case 2:
+                    dias = 28;
+                    if (ano % 4 == 0) {
+                        dias = 29;
+                    }
+                    break;
+                default:
+                    dias = 30;
+                    break;
+            }
+
+            /* uma outra maneira de fazer seria
+                        if (mes === 1 || mes === 3 || mes === 5 || mes === 7 || mes === 8 || mes === 10 || mes === 12) {
+                            dias = 31;
+                        } else if (mes === 2) {
+                            dias = 28;
+                            if (ano % 4 === 0) {
+                                dias = 29;
+                            }
+                        } else {
+                            dias = 30;
+                        }
+            */
+            document.getElementById("resposta").innerText = "No ano de " + ano + " o mês de " + mes + " têm " + dias + " dias";
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
