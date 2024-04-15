@@ -38,7 +38,7 @@
     <input type="text" id="opcao"><br><br>
 
     <button onclick="calcular()">Calcular</button><br><br>
-
+    <label for="resultado">Resultado:</label>
     <div id="resultado"></div>
 
     <script>
@@ -47,41 +47,60 @@
             const num2 = parseFloat(document.getElementById('num2').value);
             const opcao = document.getElementById('opcao').value.toLowerCase();
             let resultado = '';
-
-            switch (opcao) {
-                case 'a':
-                    r = num1*-1;
-                    resultado = "O oposto de " + num1 + " é " + r;
-                    break;
-                case 'b':
-                    r = num1 * (num2 ** 2);
-                    resultado = "O produto de " + num1 + " pelo quadrado de " + num2 + " é " + r;
-                    break;
-                case 'c':
-                    resp = num1 ** 2;
-                    resultado = "O quadrado de " + num1 + " é " + resp;
-                    break;
-                case 'd':
-                    soma = num1 + num2;
-                    rc = soma ** (1 / 3);
-                    resultado = "A raiz cúbica da soma de " + num1 + " + " + num2 + " é " + rc.toFixed(2);
-                    break;
-                case 'e':
-                    if (num1 >= 0) {
-                        raiz = Math.sqrt(num1);
-                        resultado = "A raiz quadrada de " + num1 + " é " + raiz;
-                    } else {
-                        resultado = "O número " + num1 + " é negativo, não possui raiz quadrada real.";
-                    }
-                    break;
-                case 'f':
-                    modulo = Math.abs(num1);
-                    resultado = "O módulo (ou valor absoluto) de " + num1 + " é " + modulo;
-                    break;
-                default:
-                    resultado = 'Opção inválida.';
+            if (opcao == 'a') {
+                r = num1 * -1;
+                resultado = "O oposto de " + num1 + " é " + r;
+            } else if (opcao == 'b') {
+                r = num1 * (num2 ** 2);
+                resultado = "O produto de " + num1 + " pelo quadrado de " + num2 + " é " + r + " ,ou seja," + num1 + "*" + num2 ** 2 + "=" + r;
+            } else if (opcao == 'c') {
+                resp = num1 ** 2;
+                resultado = "O quadrado de " + num1 + " é " + resp;
+            } else if (opcao == 'd') {
+                soma = num1 + num2;
+                rc = soma ** (1 / 3);
+                resultado = "A raiz cúbica da soma de " + num1 + " + " + num2 + " é " + rc.toFixed(2);
+            } else if (opcao == 'f') {
+                modulo = Math.abs(num1);
+                resultado = "O módulo (ou valor absoluto) de " + num1 + " é " + modulo;
+            } else {
+                resultado = 'Opção inválida.';
             }
-
+            /*
+                        switch (opcao) {
+                            case 'a':
+                                r = num1 * -1;
+                                resultado = "O oposto de " + num1 + " é " + r;
+                                break;
+                            case 'b':
+                                r = num1 * (num2 ** 2);
+                                resultado = "O produto de " + num1 + " pelo quadrado de " + num2 + " é " + r + " ,ou seja," + num1 + "*" + num2 ** 2 + "=" + r;
+                                break;
+                            case 'c':
+                                resp = num1 ** 2;
+                                resultado = "O quadrado de " + num1 + " é " + resp;
+                                break;
+                            case 'd':
+                                soma = num1 + num2;
+                                rc = soma ** (1 / 3);
+                                resultado = "A raiz cúbica da soma de " + num1 + " + " + num2 + " é " + rc.toFixed(2);
+                                break;
+                            case 'e':
+                                if (num1 >= 0) {
+                                    raiz = Math.sqrt(num1);
+                                    resultado = "A raiz quadrada de " + num1 + " é " + raiz;
+                                } else {
+                                    resultado = "O número " + num1 + " é negativo, não possui raiz quadrada real.";
+                                }
+                                break;
+                            case 'f':
+                                modulo = Math.abs(num1);
+                                resultado = "O módulo (ou valor absoluto) de " + num1 + " é " + modulo;
+                                break;
+                            default:
+                                resultado = 'Opção inválida.';
+                        }
+            */
             document.getElementById('resultado').innerText = resultado;
         }
     </script>
