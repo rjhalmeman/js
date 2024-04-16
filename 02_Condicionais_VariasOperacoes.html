@@ -60,7 +60,15 @@
                 soma = num1 + num2;
                 rc = soma ** (1 / 3);
                 resultado = "A raiz cúbica da soma de " + num1 + " + " + num2 + " é " + rc.toFixed(2);
-            } else if (opcao == 'f') {
+            } else if (opcao == 'e') {
+                if (num1 >= 0) {
+                    raiz = Math.sqrt(num1);
+                    resultado = "A raiz quadrada de " + num1 + " é " + raiz;
+                } else {
+                    resultado = "O número " + num1 + " é negativo, não possui raiz quadrada real.";
+                }
+            }
+            else if (opcao == 'f') {
                 modulo = Math.abs(num1);
                 resultado = "O módulo (ou valor absoluto) de " + num1 + " é " + modulo;
             } else {
