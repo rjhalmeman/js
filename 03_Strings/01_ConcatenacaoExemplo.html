@@ -23,8 +23,8 @@
 
     <script>
         function someValores() {
-            const valor1 = parseInt(document.getElementById("inputValor1").value);
-            const valor2 = parseInt(document.getElementById("inputValor2").value);
+            const valor1 = document.getElementById("inputValor1").value;
+            const valor2 = document.getElementById("inputValor2").value;
             let resp = valor1 + valor2;
 
             document.getElementById("resultado").innerText = resp;
