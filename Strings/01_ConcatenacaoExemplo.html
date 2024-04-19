@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somando coisas</title>
+</head>
+
+<body>
+    <label for="inputValor1">Valor 1</label>
+    <input type="text" name="inputValor1" id="inputValor1">
+    <br>
+    <label for="inputValor2">Valor 2</label>
+    <input type="text" name="inputValor2" id="inputValor2">
+    <br>
+    <input type="button" value="Somar" onclick="someValores()">
+    <br>
+    <br>
+    <label for="resultado">Resultado: </label>
+
+    <div id="resultado" style="color:red">AQUI É O INNER</div>
+
+    <script>
+        function someValores() {
+            const valor1 = parseInt(document.getElementById("inputValor1").value);
+            const valor2 = parseInt(document.getElementById("inputValor2").value);
+            let resp = valor1 + valor2;
+
+            document.getElementById("resultado").innerText = resp;
+        }
+    </script>
+</body>
+
+</html>
