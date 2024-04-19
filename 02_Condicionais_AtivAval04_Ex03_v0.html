@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Atletas</title>
+</head>
+
+<body>
+
+    <h2>Classificação de Atletas</h2>
+
+    <label for="nome">Nome do Atleta:</label><br>
+    <input type="text" id="nome" name="nome"><br><br>
+
+    <label for="genero">Gênero:</label><br>
+    <input type="text" id="genero" name="genero"><br><br>
+
+    <label for="modalidade">Modalidade Esportiva:</label><br>
+    <input type="text" id="modalidade" name="modalidade"><br><br>
+
+    <label for="idade">Idade:</label><br>
+    <input type="number" id="idade" name="idade"><br><br>
+
+    <button type="button" onclick="classificarAtleta()">Classificar</button>
+
+
+    <script>
+        // Função para classificar o atleta
+        function classificarAtleta() {
+            // Obter os valores dos campos do formulário
+            const nome = document.getElementById('nome').value;
+            const genero = document.getElementById('genero').value;
+            const modalidade = document.getElementById('modalidade').value;
+            const idade = parseInt(document.getElementById('idade').value);
+
+            let categoria = "";
+
+            if (genero === "Masculino") {
+                if (modalidade === "Futsal") {
+                    if (idade <= 12) {
+                        categoria = "Sub12";
+                    } else if (idade <= 16) {
+                        categoria = "Sub16";
+                    } else if (idade > 18) {
+                        categoria = "Adulto";
+                    }
+                } else { //só pode ser basquete
+                    if (idade <= 12) {
+                        categoria = "Sub12";
+                    } else if (idade <= 16) {
+                        categoria = "Sub16";
+                    } else if (idade <= 18) {
+                        categoria = "Sub 18";
+                    } else if (idade < 40) {
+                        categoria = "Adulto";
+                    } else {
+                        categoria = "Veteranos";
+                    }
+                }
+            } else {//se for feminino
+                if (modalidade === "Futsal") {
+                    if (idade <= 12) {
+                        categoria = "Sub12";
+                    } else if (idade <= 16) {
+                        categoria = "Sub16";
+                    } else if (idade > 18) {
+                        categoria = "Adulto";
+                    }
+                } else {//modalidade basquete
+                    if (idade <= 12) {
+                        categoria = "Sub12";
+                    } else if (idade <= 16) {
+                        categoria = "Sub16";
+                    } else if (idade <= 18) {
+                        categoria = "Sub 18";
+                    } else if (idade < 40) {
+                        categoria = "Adulto";
+                    } else {
+                        categoria = "Veteranos";
+                    }
+                }
+
+            }
+
+            // Construir a mensagem de saída
+            let mensagem = "<br><br>" + "Nome: " + nome + "<br>";
+            mensagem += "Categoria: " + modalidade+" "+genero+" "+categoria;
+
+            // Exibir a mensagem na página
+            document.getElementById('resultado').innerHTML = mensagem;
+        }
+    </script>
+
+    <div id="resultado"></div>
+
+</body>
+
+</html>
