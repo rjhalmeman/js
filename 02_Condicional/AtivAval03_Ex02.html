@@ -1,0 +1,62 @@
+<!-- Crie um programa em JavaScript que solicite ao usuário que
+insira sua idade e, em seguida, determine e exiba a faixa etária a
+que ele pertence. Utilize as seguintes faixas de idade:
+Criança: até 12 anos.
+Adolescente: de 13 a 17 anos.
+Jovem adulto: de 18 a 29 anos.
+Adulto: de 30 a 59 anos.
+Idoso: 60 anos ou mais. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faixa etária</title>
+</head>
+
+<body>
+
+    <label for="inputIdade">Informe a idade: </label>
+    <input type="number" name="inputIdade" id="inputIdade" onchange="acharFaixaEtaria()">
+    <br>
+    <br>
+    <br>
+    <input type="button" value="Faixa etária" onclick="acharFaixaEtaria()">
+    <br>
+    <br>
+
+    <label for="resposta">Faixa etária: </label>
+    <div id="resposta">...</div>
+
+
+    <script>
+        function acharFaixaEtaria() {
+            let idade = parseInt(document.getElementById("inputIdade").value);
+            let resp = "";
+            if (idade < 0) {
+                resp = "idade inválida"
+            } else if (idade <= 12) {
+                resp = "Criança";
+            } else if (idade < 17) {
+                resp = "Adolescente";
+            } else if (idade < 29) {
+                resp = "Jovem adulto";
+            } else if (idade < 59) {
+                resp = "Adulto";
+            } else {
+                resp = "Idoso";
+            }
+            document.getElementById("resposta").innerText = resp;
+
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
