@@ -1,0 +1,68 @@
+<!-- 
+    informato um número de 1 a 7, qual o nome do dia da semana?
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia da semana</title>
+</head>
+
+<body>
+    <label for="inputNumDiaSemana">Informe o número do dia da semana: </label>
+    <input type="number" name="inputNumDiaSemana" id="inputNumDiaSemana" onchange="mostrarNomeDiaDaSemana()">
+
+    <!-- maneira um pouco diferente de fazer. Preferi usar o onchange (ao mudar o valor, aciona) 
+        no próprio inputNumDiaSemana em vez de criar um novo botão para chamar a função -->
+
+
+    <br>
+    <br>
+    <br>
+    <label for="resposta">Nome do dia da semana: </label>
+    <span id="resposta"></span>
+
+
+    <script>
+        function mostrarNomeDiaDaSemana() {
+            let dia = parseInt(document.getElementById("inputNumDiaSemana").value);
+            let resp = "";
+            switch (dia) {
+                case 1:
+                    resp = "Domingo";
+                    break;
+                case 2:
+                    resp = "Segunda-feira";
+                    break;
+                case 3:
+                    resp = "Terça-feira";
+                    break;
+                case 4:
+                    resp = "Quarta-feira";
+                    break;
+                case 5:
+                    resp = "Quinta-feira";
+                    break;
+                case 6:
+                    resp = "Sexta-feira";
+                    break;
+                case 7:
+                    resp = "Sábado";
+                    break;
+
+                default:
+                    resp = "Número errado na entrada de dados";
+                    break;
+            }
+
+            document.getElementById("resposta").innerText = resp;
+
+        }
+    </script>
+</body>
+
+</html>
