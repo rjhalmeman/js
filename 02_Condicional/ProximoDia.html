@@ -4,19 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Próximo dia...</title>
 </head>
 
 <body>
     <label for="inputDia">Dia</label>
     <input type="number" name="inputDia" id="inputDia">
-    <br>
-    <br>
+    
     <label for="inputMes">Mês</label>
     <input type="number" name="inputMes" id="inputMes" min="1" max="12">
-    <br>
-    <br>
-
+    
     <label for="inputAno">Ano</label>
     <input type="number" name="inputAno" id="inputAno">
     <br>
@@ -37,6 +34,8 @@
             let dia = parseInt(document.getElementById("inputDia").value);
             let mes = parseInt(document.getElementById("inputMes").value);
             let ano = parseInt(document.getElementById("inputAno").value);
+
+            let diaMesAno = dia + "/" + mes + "/" + ano; //para melhorar experiência do usuário
 
             if ((mes == 1) || (mes == 3) || (mes == 5)
                 || (mes == 7) || (mes == 8) || (mes == 10)) {
@@ -80,10 +79,13 @@
                 }
             }
             resp = dia + "/" + mes + "/" + ano;
-            document.getElementById("resposta").innerText = resp;
+            document.getElementById("resposta").innerText = "Para o dia " + diaMesAno + " o próximo dia é " + resp;
+
+            // essas 3 linhas são para ele preencher na interface (tela) e facilitar os testes
+            document.getElementById("inputDia").value = dia;
+            document.getElementById("inputMes").value = mes;
+            document.getElementById("inputAno").value = ano;
         }
-
-
     </script>
 </body>
 
