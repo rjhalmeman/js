@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celsius para Fahrenheit e vice-versa</title>
+</head>
+
+<body>
+    <label for="inputTemperatura">Temperatura</label>
+    <input type="number" name="inputTemperatura" id="inputTemperatura">
+    <span id="msgSpan"></span>
+    <br>
+    <label for="inputOpcao">Opção</label>
+    <input type="text" name="inputOpcao" id="inputOpcao" onchange="calcule()">
+    <br>
+    <input type="button" value="Calcular" onclick="calcule()">
+    <br>
+    <label for="saida"></label>
+    <input type="text" name="saida" id="saida" size="100">
+
+    <script>
+       
+        function calcule() {
+            let msg="";
+            let temp = parseFloat(document.getElementById("inputTemperatura").value);
+            let opcao = document.getElementById("inputOpcao").value.toLowerCase();
+            //alert(opcao);
+            let resp = 0.0;
+            if (opcao == 'c') {
+                let f = (temp * (9 / 5) + 32);
+                resp = "O equivalente a " + temp + " graus Celcius em Fahrenheit é " + f;
+                msg = "Celcius";
+            } else if (opcao == 'f') {
+                let c = (temp - 32) * (9 / 5);
+                resp = "O equivalente a " + temp + " Fahrenheit em Celsius é " + c;
+                msg = "Fahrenheit";
+            } else {
+                resp = "Erro na escolha da opção";
+            }
+            document.getElementById("saida").value = resp;
+            document.getElementById("msgSpan").innerText = msg;
+        }
+    </script>
+</body>
+
+</html>
