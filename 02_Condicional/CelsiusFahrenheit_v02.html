@@ -1,0 +1,35 @@
+<!-- exercício 5 da lista 06 de algoritmos -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celsius para Fahrenheit e vice-versa</title>
+</head>
+
+<body>
+    <label for="inputC">Temperatura em Celsius</label>
+    <input type="number" name="inputC" id="inputC" oninput="toFahrenheit()">
+    <br>
+    <br>
+    <label for="inputF">Temperatura em Fahrenheit</label>
+    <input type="number" name="inputF" id="inputF" oninput="toCelcius()">
+    <br>
+
+    <script>
+        function toFahrenheit() {
+            let c = parseFloat(document.getElementById("inputC").value);
+            let fah = (c * (9 / 5)) + 32;
+            document.getElementById("inputF").value = fah;
+        }
+        function toCelcius() {
+            let f = parseFloat(document.getElementById("inputF").value);
+            let c = (f - 32) * (5 / 9);
+            document.getElementById("inputC").value = c;
+        }
+    </script>
+</body>
+
+</html>

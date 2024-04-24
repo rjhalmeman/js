@@ -31,11 +31,11 @@
             //alert(opcao);
             let resp = 0.0;
             if (opcao == 'c') {
-                let f = (temp * (9 / 5) + 32);
+                let f = (temp * (9 / 5)) + 32;
                 resp = "O equivalente a " + temp + " graus Celcius em Fahrenheit é " + f;
                 msg = "Celcius";
             } else if (opcao == 'f') {
-                let c = (temp - 32) * (9 / 5);
+                let c = (temp - 32) * (5 / 9);
                 resp = "O equivalente a " + temp + " Fahrenheit em Celsius é " + c;
                 msg = "Fahrenheit";
             } else {
