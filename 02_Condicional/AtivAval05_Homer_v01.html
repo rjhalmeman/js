@@ -22,14 +22,16 @@
 
     <script>
         function contarRosquinhas() {
-
+//leia(mes)
+//leia(ano)
             let mes = parseInt(document.getElementById('mes').value);
             let ano = parseInt(document.getElementById('ano').value);
 
             let rosquinhasPorDia = 0;
             let diasNoMes = 0;
+
             if (mes === 2) {
-                if (ano % 4 === 0) {
+                if (ano % 4 === 0) {                  
                     rosquinhasPorDia = 9;
                     diasNoMes = 29;
                 } else {
@@ -45,13 +47,13 @@
             }
 
             //let diasImpares = Math.ceil(diasNoMes / 2);
-            let diasImpares = (diasNoMes - 1) / 2 + 1; //usando a fórmula de progressão aritmética com razão 2
+            let diasImpares = parseInt((diasNoMes - 1) / 2) + 1; //usando a fórmula de progressão aritmética com razão 2
 
             let totalRosquinhas = diasImpares * rosquinhasPorDia;
             document.getElementById('resultado').innerText = "Homer comeu " + totalRosquinhas
                 + " rosquinhas nos dias ímpares do mês " + mes
                 + " que têm " + diasNoMes + " dias "
-                + " ,ou seja, foram " + rosquinhasPorDia + " rosquinhas por dia ímpar "+(totalRosquinhas*2.5);
+                + " ,ou seja, foram " + rosquinhasPorDia + " rosquinhas por dia ímpar."
         }
     </script>
 </body>
