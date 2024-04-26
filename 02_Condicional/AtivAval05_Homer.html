@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Rosquinhas do Homer</title>
+</head>
+
+<body>
+    <h1>Contador de Rosquinhas do Homer</h1>
+
+    <label for="mes">Mês (1 para Janeiro, 2 para Fevereiro, etc.): </label>
+    <input type="number" id="mes" min="1" max="12" required>
+    <br>
+    <label for="ano">Ano: </label>
+    <input type="number" id="ano" required>
+    <br>
+    <input type="button" value="Calcular Rosquinhas" onclick="contarRosquinhas()"/>
+
+    <div id="resultado"></div>
+
+    <script>
+        function contarRosquinhas() {
+
+            let mes = parseInt(document.getElementById('mes').value);
+            let ano = parseInt(document.getElementById('ano').value);
+
+            let rosquinhasPorDia = 0;
+            let diasNoMes = 0;
+            if (mes === 2) {
+                if (ano % 4 === 0) {
+                    rosquinhasPorDia = 9;
+                    diasNoMes = 29;
+                } else {
+                    rosquinhasPorDia = 7;
+                    diasNoMes = 28;
+                }
+            } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                diasNoMes = 31;
+                rosquinhasPorDia = 8;
+            } else {
+                rosquinhasPorDia = 6;
+                diasNoMes = 30;
+            }
+
+            //let diasImpares = Math.ceil(diasNoMes / 2);
+            let diasImpares = parseInt((diasNoMes - 1) / 2) + 1;
+            alert(diasNoMes+" "+diasImpares);
+
+            let totalRosquinhas = diasImpares * rosquinhasPorDia;
+            document.getElementById('resultado').innerText = "Homer comeu " + totalRosquinhas
+                + " rosquinhas nos dias ímpares do mês " + mes
+                + " que têm " + diasNoMes + " dias "
+                + " ,ou seja, foram " + rosquinhasPorDia + " rosquinhas por dia ímpar "+(totalRosquinhas*2.5);
+        }
+    </script>
+</body>
+
+</html>

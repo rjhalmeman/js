@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +16,15 @@
     <input type="button" value="Calcular" onclick="calcular()">
     <br>
     <label for="resposta">Hipotenusa</label>
-    <input type="text" name="resposta" id="resposta">
+    <span id="resposta"></span>
     <script>
-        function calcular(){
-            let valorB = 
-               parseFloat(document.getElementById("inputB").value);
-            let valorC = 
-               parseFloat(document.getElementById("inputC").value);
-            let valorH = 
-               Math.sqrt(valorB*valorB+valorC*valorC);
-            document.getElementById("resposta").value = valorH;
+        function calcular() {
+            let valorB = parseFloat(document.getElementById("inputB").value);
+            let valorC = parseFloat(document.getElementById("inputC").value);
+            let valorH = Math.sqrt(valorB * valorB + valorC * valorC);
+            document.getElementById("resposta").textContent = valorH;
         }
     </script>
 </body>
+
 </html>
