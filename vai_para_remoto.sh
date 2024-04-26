@@ -10,4 +10,4 @@ timestamp=$(date +"%d/%m/%Y - %H:%M:%S")
 git commit -m "$timestamp"
 
 # Faz o push para o repositório remoto no GitHub
-git push --force https://github.com/rjhalmeman/js
+git push %1 https://github.com/rjhalmeman/js
