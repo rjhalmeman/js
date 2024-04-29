@@ -23,20 +23,19 @@
     <button onclick="calcularPrecoFinal()">Calcular</button><br><br>
 
     <h3>Valor original do produto: R$ <span id="valorProduto"></span></h3>
-    <h3>Estado de destino: R$ <span id="destino"></span></h3>
-    <h3>Peso real do produto: R$ <span id="pesoProduto"></span></h3>
-    <h3>Peso adicional: R$ <span id="pesoAdicional"></span></h3>
+    <h3>Estado de destino: <span id="destino"></span></h3>
+    <h3>Peso real do produto: <span id="pesoProduto"></span></h3>
+    <h3>Peso adicional: <span id="pesoAdicional"></span></h3>
     <h3>Valor por KG adicional: R$ <span id="valorKGAdicional"></span></h3>
     <h3>Custo adicional por peso: R$ <span id="custoAdicionalPorPeso"></span></h3>
-    <h3>Distância: R$ <span id="distancia"></span></h3>
-    <h3>Distância adicional: R$ <span id="distanciaAdicional"></span></h3>
+    <h3>Distância: <span id="distancia"></span></h3>
+    <h3>Distância adicional: <span id="distanciaAdicional"></span></h3>
     <h3>Valor por Km adicional: R$ <span id="valorPorKmAdicional"></span></h3>
     <h3>Custo pelos Kms adicionais: R$ <span id="custoKmAdicional"></span></h3>
-    <h3>Custo pelos Kms adicionais: R$ <span id="custoKmAdicional"></span></h3>
+    <h3>Frete base: R$ <span id="freteBase"></span></h3>
     <h3>Frete: R$ <span id="frete"></span></h3>
-    <h3>Frete calculado: R$ <span id="freteCalculado"></span></h3>
     <h3>Valor do Imposto: R$ <span id="imposto"></span></h3>
-    <h3>Preço final do produto: R$ <span id="preco_final"></span></h3>
+    <h3>Preço final do produto: R$ <span id="precoFinal"></span></h3>
 
 
     <script>
@@ -48,6 +47,147 @@
             let pesoProduto = (parseFloat(document.getElementById("inputPeso").value));
             let distancia = parseFloat(document.getElementById("inputDistancia").value);
 
+            let imposto = valorProduto * functionAliquotaPorEstado(estado); // chama a funçao aliquotaPorEstado(estado), procure no final do script
+
+            let pesoAdicional = 0.0;
+            if (pesoProduto > 1) {
+                pesoAdicional = Math.ceil(pesoProduto) - 1;
+            }
+
+            let valorKGAdicional = 11.00;
+            let acrescimoPorPeso = valorKGAdicional * pesoAdicional;
+
+            let distanciaAdicional = 0.0;
+            if (distancia > 100) {
+                distanciaAdicional = distancia - 100;
+            }
+            let valorPorKmAdicional = 0.12;
+            let custoKmAdicional = distanciaAdicional * valorPorKmAdicional;
+            let freteBase = 21.00;
+            let frete = freteBase + acrescimoPorPeso + custoKmAdicional;
+
+            // Calcular o preço final do produto
+            let precoFinal = valorProduto + frete + imposto;
+
+            document.getElementById("valorProduto").textContent = valorProduto.toFixed(2);
+            document.getElementById("destino").textContent = functionObterNomeEstado(estado);
+            document.getElementById("pesoProduto").textContent = pesoProduto + " Kg";
+
+            document.getElementById("pesoAdicional").textContent = pesoAdicional + " Kg";
+
+            document.getElementById("valorKGAdicional").textContent = valorKGAdicional.toFixed(2);
+            document.getElementById("custoAdicionalPorPeso").textContent = acrescimoPorPeso.toFixed(2);
+            document.getElementById("distancia").textContent = distancia + "Km";
+            document.getElementById("distanciaAdicional").textContent = distanciaAdicional + " Km";
+            document.getElementById("valorPorKmAdicional").textContent = valorPorKmAdicional.toFixed(2);
+            document.getElementById("custoKmAdicional").textContent = custoKmAdicional.toFixed(2);
+            document.getElementById("freteBase").textContent = freteBase.toFixed(2);
+            document.getElementById("frete").textContent = frete.toFixed(2);
+            document.getElementById("imposto").textContent = imposto.toFixed(2);
+            document.getElementById("precoFinal").textContent = precoFinal.toFixed(2);
+
+        } //fim da função calcularPrecoFinal
+
+        function functionObterNomeEstado(sigla) {
+            // Converter a sigla para minúsculas para garantir a comparação insensível a maiúsculas
+            // Esta função recebe a sigla do estado e devolve o nome do estado.
+            var siglaLowerCase = sigla.toLowerCase();
+
+            // Inicializar a variável para armazenar o nome completo do estado
+            var nomeEstado;
+
+            // Usar um switch case para comparar a sigla do estado
+            switch (siglaLowerCase) {
+                case "ac":
+                    nomeEstado = "Acre";
+                    break;
+                case "al":
+                    nomeEstado = "Alagoas";
+                    break;
+                case "ap":
+                    nomeEstado = "Amapá";
+                    break;
+                case "am":
+                    nomeEstado = "Amazonas";
+                    break;
+                case "ba":
+                    nomeEstado = "Bahia";
+                    break;
+                case "ce":
+                    nomeEstado = "Ceará";
+                    break;
+                case "df":
+                    nomeEstado = "Distrito Federal";
+                    break;
+                case "es":
+                    nomeEstado = "Espírito Santo";
+                    break;
+                case "go":
+                    nomeEstado = "Goiás";
+                    break;
+                case "ma":
+                    nomeEstado = "Maranhão";
+                    break;
+                case "mt":
+                    nomeEstado = "Mato Grosso";
+                    break;
+                case "ms":
+                    nomeEstado = "Mato Grosso do Sul";
+                    break;
+                case "mg":
+                    nomeEstado = "Minas Gerais";
+                    break;
+                case "pa":
+                    nomeEstado = "Pará";
+                    break;
+                case "pb":
+                    nomeEstado = "Paraíba";
+                    break;
+                case "pr":
+                    nomeEstado = "Paraná";
+                    break;
+                case "pe":
+                    nomeEstado = "Pernambuco";
+                    break;
+                case "pi":
+                    nomeEstado = "Piauí";
+                    break;
+                case "rj":
+                    nomeEstado = "Rio de Janeiro";
+                    break;
+                case "rn":
+                    nomeEstado = "Rio Grande do Norte";
+                    break;
+                case "rs":
+                    nomeEstado = "Rio Grande do Sul";
+                    break;
+                case "ro":
+                    nomeEstado = "Rondônia";
+                    break;
+                case "rr":
+                    nomeEstado = "Roraima";
+                    break;
+                case "sc":
+                    nomeEstado = "Santa Catarina";
+                    break;
+                case "sp":
+                    nomeEstado = "São Paulo";
+                    break;
+                case "se":
+                    nomeEstado = "Sergipe";
+                    break;
+                case "to":
+                    nomeEstado = "Tocantins";
+                    break;
+                default:
+                    nomeEstado = "Sigla de estado inválida";
+            }
+
+            // Retornar o nome completo do estado
+            return nomeEstado;
+        }
+
+        function functionAliquotaPorEstado(estado) {
             // Definir as alíquotas de imposto para cada inputEstado
             let aliquotaImposto;
             switch (estado) {
@@ -66,58 +206,8 @@
                 default:
                     aliquotaImposto = 0; // Se o inputEstado não for reconhecido, imposto é zero
             }
-            let acrescimoPorPeso = 0;
-            let pesoCalculado = 1.0;
-            if (pesoProduto > 1) {
-                pesoCalculado = pesoCalculado + Math.ceil(pesoProduto - 1);
-                acrescimoPorPeso = 0.12;
-            }
-
-            let adicionalDistancia = 0;
-            if (distancia > 100) {
-                adicionalDistancia = (distancia - 100) * acrescimoPorPeso;
-            }
-
-            // Calcular o frete
-            let freteFixo = 21;
-            let frete;
-            let respFrete = "";
-            if (pesoProduto <= 1 && distancia <= 100) {
-                frete = freteFixo;
-                respFrete = "Frete fixo de R$" + freteFixo.toFixed(2) + "(abaixo de 1kg e abaixo de 100km)";
-            } else if (pesoProduto <= 1) {
-                frete = freteFixo + (distancia - 100) * 0.12;
-                respFrete = frete.toFixed(2) + ". Composto de frete fixo de " + freteFixo.toFixed(2)
-                    + " e adicional por distância de " + ((distancia - 100) * 0.12).toFixed(2);
-            } else {
-                frete = freteFixo + (pesoCalculado + adicionalDistancia);
-                respFrete = frete.toFixed(2) + ". Composto de frete fixo de " + freteFixo.toFixed(2)
-                    + " e adicional por distância de " + adicionalDistancia.toFixed(2) + " adicional por peso " + pesoCalculado * acrescimoPorPeso;
-            }
-
-            // Calcular o imposto
-            let imposto = valorProduto * aliquotaImposto;
-
-            // Calcular o preço final do produto
-            let precoFinal = valorProduto + frete + imposto;
-
-            document.getElementById("valorProduto").textContent = valorProduto;
-            document.getElementById("destino").textContent = estado;
-            document.getElementById("pesoProduto").textContent = pesoProduto;
-            document.getElementById("pesoAdicional").textContent = pesoAdicional;
-            document.getElementById("valorKGAdicional").textContent = valorKGAdicional;
-            document.getElementById("custoAdicionalPorPeso").textContent = custoAdicionalPorPeso;
-            document.getElementById("distancia").textContent = distancia;
-            document.getElementById("distanciaAdicional").textContent = distanciaAdicional;
-            document.getElementById("valorPorKmAdicional").textContent = valorPorKmAdicional;
-            document.getElementById("custoKmAdicional").textContent = custoKmAdicional;
-            document.getElementById("frete").textContent = frete;
-            document.getElementById("freteCalculado").textContent = freteCalculado;
-            document.getElementById("imposto").textContent = imposto;
-            document.getElementById("preco_final").textContent = preco_final;
-
+            return aliquotaImposto;
         }
-
     </script>
 
 </body>
