@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cálculo do Preço Final</title>
+</head>
+
+<body>
+    <h1>Cálculo do Preço Final</h1>
+    <label for="inputValor">Valor do Produto:</label>
+    <input type="number" id="inputValor"><br>
+
+    <label for="inputPeso">Peso do Produto (kg):</label>
+    <input type="number" id="inputPeso"><br>
+
+    <label for="inputDistancia">Distância da Entrega (Km):</label>
+    <input type="number" id="inputDistancia"><br>
+
+    <label for="inputEstado">Estado de Destino:</label>
+    <input type="text" name="inputEstado" id="inputEstado">
+
+    <br>
+    <button onclick="calcularPrecoFinal()">Calcular</button><br><br>
+
+    <h3>Valor original do produto: R$ <span id="valorProduto"></span></h3>
+    <h3>Estado de destino: <span id="destino"></span></h3>
+    <h3>Peso real do produto: <span id="pesoProduto"></span></h3>
+    <h3>Peso adicional: <span id="pesoAdicional"></span></h3>
+    <h3>Valor por KG adicional: R$ <span id="valorKGAdicional"></span></h3>
+    <h3>Custo adicional por peso: R$ <span id="custoAdicionalPorPeso"></span></h3>
+    <h3>Distância: <span id="distancia"></span></h3>
+    <h3>Distância adicional: <span id="distanciaAdicional"></span></h3>
+    <h3>Valor por Km adicional: R$ <span id="valorPorKmAdicional"></span></h3>
+    <h3>Custo pelos Kms adicionais: R$ <span id="custoKmAdicional"></span></h3>
+    <h3>Frete base: R$ <span id="freteBase"></span></h3>
+    <h3>Frete: R$ <span id="frete"></span></h3>
+    <h3>Valor do Imposto: R$ <span id="imposto"></span></h3>
+    <h3>Preço final do produto: R$ <span id="precoFinal"></span></h3>
+
+    <script src="../tools/estados.js"></script>
+    <script>
+        // Função para calcular o preço final do produto
+        function calcularPrecoFinal() {
+            // Obter os valores dos campos de entrada
+            let valorProduto = parseFloat(document.getElementById("inputValor").value);
+            let estado = document.getElementById("inputEstado").value.toLowerCase();
+            let pesoProduto = (parseFloat(document.getElementById("inputPeso").value));
+            let distancia = parseFloat(document.getElementById("inputDistancia").value);
+
+            let imposto = valorProduto * functionAliquotaPorEstado(estado); // chama a funçao aliquotaPorEstado(estado), procure no final do script
+
+            let pesoAdicional = 0.0;
+            if (pesoProduto > 1) {
+                pesoAdicional = Math.ceil(pesoProduto) - 1;
+            }
+
+            let valorKGAdicional = 11.00;
+            let acrescimoPorPeso = valorKGAdicional * pesoAdicional;
+
+            let distanciaAdicional = 0.0;
+            if (distancia > 100) {
+                distanciaAdicional = distancia - 100;
+            }
+            let valorPorKmAdicional = 0.12;
+            let custoKmAdicional = distanciaAdicional * valorPorKmAdicional;
+            let freteBase = 21.00;
+            let frete = freteBase + acrescimoPorPeso + custoKmAdicional;
+
+            // Calcular o preço final do produto
+            let precoFinal = valorProduto + frete + imposto;
+
+            document.getElementById("valorProduto").textContent = valorProduto.toFixed(2);
+            document.getElementById("destino").textContent = functionObterNomeEstado(estado);
+            document.getElementById("pesoProduto").textContent = pesoProduto + " Kg";
+
+            document.getElementById("pesoAdicional").textContent = pesoAdicional + " Kg";
+
+            document.getElementById("valorKGAdicional").textContent = valorKGAdicional.toFixed(2);
+            document.getElementById("custoAdicionalPorPeso").textContent = acrescimoPorPeso.toFixed(2);
+            document.getElementById("distancia").textContent = distancia + "Km";
+            document.getElementById("distanciaAdicional").textContent = distanciaAdicional + " Km";
+            document.getElementById("valorPorKmAdicional").textContent = valorPorKmAdicional.toFixed(2);
+            document.getElementById("custoKmAdicional").textContent = custoKmAdicional.toFixed(2);
+            document.getElementById("freteBase").textContent = freteBase.toFixed(2);
+            document.getElementById("frete").textContent = frete.toFixed(2);
+            document.getElementById("imposto").textContent = imposto.toFixed(2);
+            document.getElementById("precoFinal").textContent = precoFinal.toFixed(2);
+
+        } //fim da função calcularPrecoFinal
+
+      
+
+        function functionAliquotaPorEstado(estado) {
+            // Definir as alíquotas de imposto para cada inputEstado
+            let aliquotaImposto;
+            switch (estado) {
+                case "sp":
+                    aliquotaImposto = 0.18;
+                    break;
+                case "rj":
+                    aliquotaImposto = 0.13;
+                    break;
+                case "mg":
+                    aliquotaImposto = 0.15;
+                    break;
+                case "sc":
+                    aliquotaImposto = 0.19;
+                    break;
+                default:
+                    aliquotaImposto = 0; // Se o inputEstado não for reconhecido, imposto é zero
+            }
+            return aliquotaImposto;
+        }
+    </script>
+
+</body>
+
+</html>
