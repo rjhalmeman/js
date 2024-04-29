@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cálculo do Preço Final</title>
+</head>
+
+<body>
+    <h1>Cálculo do Preço Final</h1>
+    <label for="valor_produto">Valor do Produto:</label>
+    <input type="number" id="valor_produto"><br><br>
+
+    <label for="peso_produto">Peso do Produto (kg):</label>
+    <input type="number" id="peso_produto"><br><br>
+
+    <label for="distancia_entrega">Distância da Entrega (km):</label>
+    <input type="number" id="distancia_entrega"><br><br>
+
+    <label for="estado">Estado de Destino:</label>
+    <input type="text" name="estado" id="estado">
+
+    <br><br>
+
+    <button onclick="calcularPrecoFinal()">Calcular Preço</button><br><br>
+
+    <h2>Frete: R$ <span id="frete"></span></h2>
+    <h2>Imposto: R$ <span id="imposto"></span></h2>
+    <h2>Preço Final: R$ <span id="preco_final"></span></h2>
+
+    <script>
+        // Função para calcular o preço final do produto
+        function calcularPrecoFinal() {
+            // Obter os valores dos campos de entrada
+            let valorProduto = parseFloat(document.getElementById("valor_produto").value);
+            let pesoProduto = (parseFloat(document.getElementById("peso_produto").value));
+            let distanciaEntrega = parseFloat(document.getElementById("distancia_entrega").value);
+            let estado = document.getElementById("estado").value.toLowerCase();
+
+            // Definir as alíquotas de imposto para cada estado
+            let aliquotaImposto;
+            switch (estado) {
+                case "sp":
+                    aliquotaImposto = 0.18;
+                    break;
+                case "rj":
+                    aliquotaImposto = 0.13;
+                    break;
+                case "mg":
+                    aliquotaImposto = 0.15;
+                    break;
+                case "sc":
+                    aliquotaImposto = 0.19;
+                    break;
+                default:
+                    aliquotaImposto = 0; // Se o estado não for reconhecido, imposto é zero
+            }
+            let acrescimoPorPeso = 0;
+            let pesoCalculado = 1.0;
+            if (pesoProduto > 1) {
+                pesoCalculado = pesoCalculado + Math.ceil(pesoProduto - 1);
+                acrescimoPorPeso = 0.12;
+            }
+
+            let adicionalDistancia = 0;
+            if (distanciaEntrega > 100) {
+                adicionalDistancia = (distanciaEntrega - 100) * acrescimoPorPeso;
+            }
+
+            // Calcular o frete
+            let freteFixo = 21;
+            let frete;
+            let respFrete = "";
+            if (pesoProduto <= 1 && distanciaEntrega <= 100) {
+                frete = freteFixo;
+                respFrete = "Frete fixo de R$" + freteFixo.toFixed(2) + "(abaixo de 1kg e abaixo de 100km)";
+            } else if (pesoProduto <= 1) {
+                frete = freteFixo + (distanciaEntrega - 100) * 0.12;
+                respFrete = frete.toFixed(2) + ". Composto de frete fixo de " + freteFixo.toFixed(2)
+                    + " e adicional por distância de " + ((distanciaEntrega - 100) * 0.12).toFixed(2);
+            } else {
+                frete = freteFixo + (pesoCalculado + adicionalDistancia);
+                respFrete = frete.toFixed(2) + ". Composto de frete fixo de " + freteFixo.toFixed(2)
+                    + " e adicional por distância de " + adicionalDistancia.toFixed(2) + " adicional por peso " + pesoCalculado*acrescimoPorPeso;
+            }
+
+            // Calcular o imposto
+            let imposto = valorProduto * aliquotaImposto;
+
+            // Calcular o preço final do produto
+            let precoFinal = valorProduto + frete + imposto;
+
+            // Exibir o preço final na tela
+
+            document.getElementById("frete").innerText = respFrete;
+            + freteFixo.toFixed(2) + " peso de " + pesoCalculado + "kg a";
+            document.getElementById("imposto").innerText = imposto.toFixed(2);
+            document.getElementById("preco_final").innerText = precoFinal.toFixed(2);
+        }
+
+    </script>
+
+</body>
+
+</html>
