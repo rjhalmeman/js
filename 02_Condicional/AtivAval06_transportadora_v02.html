@@ -20,7 +20,8 @@
     <input type="text" name="inputEstado" id="inputEstado">
 
     <br>
-    <button onclick="calcularPrecoFinal()">Calcular</button><br><br>
+    <input type="button" value="Calcular" onclick="calcularPrecoFinal()">
+    <br><br>
 
     <h3>Valor original do produto: R$ <span id="valorProduto"></span></h3>
     <h3>Estado de destino: <span id="destino"></span></h3>
@@ -37,7 +38,14 @@
     <h3>Valor do Imposto: R$ <span id="imposto"></span></h3>
     <h3>Preço final do produto: R$ <span id="precoFinal"></span></h3>
 
-    <script src="../tools/estados.js"></script>
+    <!-- 
+        coloquei a função functionObterNomeEstado(estado) em um arquivo separado, na pasta tools. Assim, quando eu precisar do nome do estado
+        basta colocar a linha abaixo e "chamar" a função
+        desta maneira, meu código fica menor, mais organizado e com possibilidade de reaproveitamento
+     -->
+    <script src="../tools/estados.js"></script> 
+
+
     <script>
         // Função para calcular o preço final do produto
         function calcularPrecoFinal() {
@@ -88,8 +96,6 @@
 
         } //fim da função calcularPrecoFinal
 
-      
-
         function functionAliquotaPorEstado(estado) {
             // Definir as alíquotas de imposto para cada inputEstado
             let aliquotaImposto;
@@ -112,7 +118,5 @@
             return aliquotaImposto;
         }
     </script>
-
 </body>
-
 </html>

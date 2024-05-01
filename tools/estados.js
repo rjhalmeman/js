@@ -1,3 +1,4 @@
+// esta função pode ser usada em diversos programas em que seja necessário o nome do estado a partir da sigla.
 function functionObterNomeEstado(sigla) {
     // Converter a sigla para minúsculas para garantir a comparação insensível a maiúsculas
     var siglaLowerCase = sigla.toLowerCase();
