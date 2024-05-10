@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imprimir Nome 10 Vezes</title>
+</head>
+
+<body>
+
+  <h2>Digite um nome:</h2>
+  <input type="text" id="nome">
+  <button onclick="imprimirNome()">Imprimir</button>
+  <div id="resultado"></div>
+
+  
+
+  <script>
+    function imprimirNome() {
+      // Obter o valor do input
+      let nome = document.getElementById("nome").value;
+
+      // Obter o elemento onde o nome será impresso
+      let resultado = document.getElementById("resultado");
+
+      // Limpar qualquer conteúdo anterior
+      resultado.innerHTML = "";
+
+      // Imprimir o nome 10 vezes
+      for (let i = 0; i < 100; i++) {
+        resultado.innerHTML += i + " " + nome + "<br>";
+      }
+    }
+  </script>
+</body>
+
+</html>

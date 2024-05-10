@@ -1,0 +1,49 @@
+<!-- 
+    Desenvolva um programa que permita ao usuário digitar uma lista de números, sendo um número por linha em um TextArea, 
+    e que calcule a soma desses números. O programa deve exibir o resultado da soma.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de Números</title>   
+</head>
+
+<body>
+
+    <h2>Digite os números abaixo, um por linha:</h2>
+    <textarea id="numeros" rows="10" cols="50"></textarea><br>
+    <button onclick="somarNumeros()">Somar Números</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function somarNumeros() {
+            // Obter o valor do textarea
+            let numerosTexto = document.getElementById("numeros").value;
+
+            // Dividir o texto em linhas
+            let linhas = numerosTexto.split('\n');
+
+            // Inicializar a variável para a soma
+            let soma = 0;
+
+                   // Percorrer as linhas e somar os números
+            for (let i = 0; i < linhas.length; i++) {
+                // Converter a linha para número e somá-la à soma total
+                let numero = parseFloat(linhas[i]);
+                if (!isNaN(numero)) { 
+                    soma += numero;
+                }
+            }
+
+            // Exibir o resultado da soma
+            document.getElementById("resultado").innerHTML = "A soma dos números é: " + soma;
+        }
+    </script>
+</body>
+
+</html>

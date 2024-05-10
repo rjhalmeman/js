@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imprimir Nome 10 Vezes</title>
+</head>
+
+<body>
+  <h2>Digite um nome:</h2>
+  <input type="text" id="nome">
+  <button onclick="imprimirNome()">Imprimir</button>
+  <div id="resultado"></div>
+  <script>
+    function imprimirNome() {
+      let nome = document.getElementById("nome").value;
+      let resultado = document.getElementById("resultado");
+      resultado.innerText = "";
+      for (let i = 0; i < 100; i++) {
+        resultado.innerText += i + " " + nome + "\n";
+      }
+    }
+  </script>
+</body>
+
+</html>
