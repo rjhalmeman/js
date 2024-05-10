@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de Números</title>
+</head>
+
+<body>
+
+    <h2>Digite os números abaixo, um por linha:</h2>
+    <textarea id="numeros" rows="10" cols="50"></textarea><br>
+    <button onclick="somarNumeros()">Somar Números</button>
+
+    <div id="resultado"></div>
+
+    <script src="../tools/numeros.js"></script>
+
+    <script>
+        function somarNumeros() {
+            // Obter o valor do textarea
+            let numerosEmFormatoTexto = document.getElementById("numeros").value;
+
+            // Inicializar a variável para a soma
+            let soma = 0;
+
+            // Inicializar a variável para armazenar cada número
+            let numeroAtual = '';
+
+            // Percorrer a string caractere por caractere
+            for (let i = 0; i < numerosEmFormatoTexto.length; i++) {
+                let char = numerosEmFormatoTexto[i];
+
+                // Se o caractere atual for uma quebra de linha ou estamos no último caractere
+                if (char === '\n' || i === numerosEmFormatoTexto.length - 1) {
+                    // Converter o número atual para um número de ponto flutuante e somá-lo à soma total
+                    let numero = parseFloat(numeroAtual);
+                    if (simEhNumero(numero)) {
+                        soma += numero;
+                    }
+                    // Limpar a string para armazenar o próximo número
+                    numeroAtual = '';
+                } else {
+                    // Se o caractere não for uma quebra de linha, concatená-lo à string do número atual
+                    numeroAtual += char;
+                }
+            }
+
+            // Exibir o resultado da soma
+            document.getElementById("resultado").innerHTML = "A soma dos números é: " + soma;
+        }
+    </script>
+</body>
+
+</html>

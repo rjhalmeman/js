@@ -1,4 +1,4 @@
-function isNumber(value) {
+function simEhNumero(value) {
     return typeof value === 'number' && !isNaN(value);
     /*
      console.log(isNumber(42));      // Retorna true
