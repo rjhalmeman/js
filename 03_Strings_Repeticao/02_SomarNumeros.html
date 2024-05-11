@@ -11,11 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soma de Números</title>
     <script src="../tools/numeros.js"></script>
-
 </head>
 
 <body>
-
     <h2>Digite os números abaixo, um por linha:</h2>
     <textarea id="numeros" rows="10" cols="50"></textarea><br>
     <button onclick="somarNumeros()">Somar Números</button>
@@ -25,10 +23,10 @@
     <script>
         function somarNumeros() {
             // Obter o valor do textarea
-            let numerosTexto = document.getElementById("numeros").value;
+            let numerosDigitadosNoTextArea = document.getElementById("numeros").value;
 
             // Dividir o texto em linhas
-            let linhas = numerosTexto.split('\n');
+            let linhas = numerosDigitadosNoTextArea.split('\n');
 
             // Inicializar a variável para a soma
             let soma = 0;
@@ -36,13 +34,12 @@
             // Percorrer as linhas e somar os números
             for (let i = 0; i < linhas.length; i++) {
                 // Converter a linha para número e somá-la à soma total
-                let numero = 0;
+                let numero = 0.0;
                 if (numeroValido(linhas[i]) !== null) {
                     numero = parseFloat(linhas[i]);
+                    soma += numero;
                 }
-                soma += numero;
             }
-
             // Exibir o resultado da soma
             document.getElementById("resultado").innerHTML = "A soma dos números é: " + soma;
         }
