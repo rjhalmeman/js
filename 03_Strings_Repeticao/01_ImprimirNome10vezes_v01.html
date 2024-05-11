@@ -12,9 +12,9 @@
   <h2>Digite um nome:</h2>
   <input type="text" id="nome">
   <button onclick="imprimirNome()">Imprimir</button>
-  <div id="resultado"></div>
-
   
+  <!-- a div será usada para saída de dados -->
+  <div id="resultado"></div>
 
   <script>
     function imprimirNome() {
@@ -22,14 +22,16 @@
       let nome = document.getElementById("nome").value;
 
       // Obter o elemento onde o nome será impresso
-      let resultado = document.getElementById("resultado");
+      //declara uma variável chamada r que representa todo o elemento chamado resultado
+      let r = document.getElementById("resultado"); 
 
       // Limpar qualquer conteúdo anterior
-      resultado.innerHTML = "";
+      r.innerHTML = "";
 
       // Imprimir o nome 10 vezes
-      for (let i = 0; i < 100; i++) {
-        resultado.innerHTML += i + " " + nome + "<br>";
+      for (let i = 0; i < 10; i++) {
+        r.innerHTML += i + " " + nome + "<br>";
+        //quando for innerHTML, obrigatoriamente tem que usar <br> para mudar de linha
       }
     }
   </script>

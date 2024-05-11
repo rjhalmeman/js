@@ -11,14 +11,19 @@
   <h2>Digite um nome:</h2>
   <input type="text" id="nome">
   <button onclick="imprimirNome()">Imprimir</button>
+
+  <!-- a div será usada para saída de dados -->
   <div id="resultado"></div>
   <script>
     function imprimirNome() {
       let nome = document.getElementById("nome").value;
-      let resultado = document.getElementById("resultado");
-      resultado.innerText = "";
-      for (let i = 0; i < 100; i++) {
-        resultado.innerText += i + " " + nome + "\n";
+
+      //cria uma variável chamada r que "aponta" para o elemento identificado como resultado no documento
+      let r = document.getElementById("resultado");
+      r.innerText = "";
+      for (let i = 0; i < 10; i++) {
+        r.innerText += i + " " + nome + "\n";
+        //quando for innerText, obrigatoriamente tem que usar \n para mudar de linha
       }
     }
   </script>

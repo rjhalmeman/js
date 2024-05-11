@@ -9,7 +9,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soma de Números</title>   
+    <title>Soma de Números</title>
+    <script src="../tools/numeros.js"></script>
+
 </head>
 
 <body>
@@ -31,13 +33,14 @@
             // Inicializar a variável para a soma
             let soma = 0;
 
-                   // Percorrer as linhas e somar os números
+            // Percorrer as linhas e somar os números
             for (let i = 0; i < linhas.length; i++) {
                 // Converter a linha para número e somá-la à soma total
-                let numero = parseFloat(linhas[i]);
-                if (!isNaN(numero)) { 
-                    soma += numero;
+                let numero = 0;
+                if (numeroValido(linhas[i]) !== null) {
+                    numero = parseFloat(linhas[i]);
                 }
+                soma += numero;
             }
 
             // Exibir o resultado da soma
