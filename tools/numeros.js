@@ -10,7 +10,7 @@
      console.log(numeroValido(1.5));     // Retorna  1.5
 
     */
-function numeroValido(str) {
+function numeroValido3(str) {
     let deuErro = false;
     if (isNaN(str) || str === "") {
         return null;
@@ -31,5 +31,23 @@ function numeroValido(str) {
         } else {
             return parseFloat(str); // Retorna o número convertido para real se não encontrar erros
         }
+    }
+}
+
+function numeroValido(str) {
+    try {
+        // Tenta converter a string para número
+        const numero = parseFloat(str);
+
+        // Verifica se o número é um número válido
+        if (isNaN(numero)) {
+            return null; // Retorna null se não for um número válido
+        }
+
+        return numero; // Retorna o número se for válido
+    } catch (error) {
+        // Se ocorrer uma exceção ao tentar converter a string para número
+        // ou durante outra operação no bloco try, capturamos a exceção aqui
+        return null; // Retorna null em caso de exceção
     }
 }

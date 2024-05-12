@@ -5,19 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
-
 </head>
 
 <body>
+    <input type="text" name="umNumero" id="umNumero">
+    <button type="button" onClick="testar()">Teste"</button>
+    <br>
+    <br>
+    <br>
+    <label for="divResposta">Saída de dados</label>
+    <div id="divResposta">___</div>
 
-    <button type="button" onClick="testar()" >Teste"</button>
-
-    <script src="../tools/numeros.js"></script> 
+    <script src="../tools/numeros.js"></script>
     <script>
         function testar() {
-            alert(numeroValido("24zzz")); // Saída: null
-            alert(numeroValido("123"));   // Saída: 123
+
+            let num = document.getElementById("umNumero").value;
+
+            let r = document.getElementById("divResposta");
+            if (numeroValido(num) !== null) {
+                r.innerText = numeroValido(num);
+             }else {
+                r.innerText = "Número inválido";
+             }
         }
     </script>
 </body>

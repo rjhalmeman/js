@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somar até N</title>
+    <script src="../tools/numeros.js"></script>
+</head>
+<body>
+    <label for="inputN">N</label>
+    <input type="number" name="inputN" id="inputN">
+
+    <input type="button" value="Calcular" onclick="calcular()">
+    <br>
+    <label for="resposta">Soma:</label>
+    <div id="resposta">
+
+    </div>
+
+    <script>
+        function calcular(){
+            let n = document.getElementById("inputN").value;
+            let resp = document.getElementById("resposta");
+            if (numeroValido(n)!==null) {
+                let soma =0;
+                for (let i = 1; i <= n; i++) {
+                    soma = soma+i;                    
+                }
+                resp.innerText = soma;
+            } else {
+                alert("Erro no valor de N")
+            }
+        }
+    </script>
+</body>
+</html>
