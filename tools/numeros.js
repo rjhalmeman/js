@@ -10,7 +10,7 @@
      console.log(numeroValido(1.5));     // Retorna  1.5
 
     */
-function numeroValido3(str) {
+function numeroValido(str) {
     let deuErro = false;
     if (isNaN(str) || str === "") {
         return null;
@@ -34,7 +34,7 @@ function numeroValido3(str) {
     }
 }
 
-function numeroValido(str) {
+function numeroValidoTryCatch(str) {
     try {
         // Tenta converter a string para número
         const numero = parseFloat(str);
