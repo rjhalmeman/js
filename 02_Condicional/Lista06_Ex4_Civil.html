@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil</title>
+</head>
+
+<body>
+
+    <!--  
+        Faça um algoritmo que leia o nome, o sexo e o estado civil de uma pessoa. 
+        Caso sexo seja “F” e estado civil seja “CASADA”, solicitar o tempo de casada (anos). 
+        (Este exercício vai misturar coisas da entrada de dados com o processamento. 
+        Preste atenção nisso, pois algumas vezes temos que adaptar a solução ao problema).
+ -->
+
+    <label for="inputNome">Nome: </label>
+    <input type="text" name="inputNome" id="inputNome">
+
+    <label for="inputSexo">Sexo (F ou M): </label>
+    <input type="text" name="inputSexo" id="inputSexo">
+
+
+    <label for="inputEstadoCivil">Estado civil (C ou S) </label>
+    <input type="text" name="inputEstadoCivil" id="inputEstadoCivil">
+
+    <input type="button" value="Verificar" onclick="verificar()">
+
+    <div id="tempo">
+
+    </div>
+
+
+    <script>
+        function verificar() {
+            const sexo = document.getElementById("inputSexo").value.toLowerCase();
+            const ec = document.getElementById("inputEstadoCivil").value.toLowerCase();
+            let inputExtra = "";
+            if (sexo === "f" && ec === "c") {
+                inputExtra = ` <label for="inputTempo">Tempo: </label>
+                               <input type="text" name="inputTempo" id="inputTempo">`;
+
+            } else {
+                inputExtra = "";
+            }
+            document.getElementById("tempo").innerHTML = inputExtra;
+        }
+    </script>
+
+
+</body>
+
+</html>
