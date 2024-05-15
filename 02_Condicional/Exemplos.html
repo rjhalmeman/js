@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos</title>    
+</head>
+
+<body>
+        <label for="inputNum">Digite um número inteiro qualquer</label>
+        <input type="text" name="inputNum" id="inputNum">
+        <button type="button" onclick="verificar()"> Verificar</button>  
+        <br>
+        <label for="resp">Rótulo da div resp: </label>
+        <input type="text" id="resp" readonly>
+    <script>
+        function verificar(){
+            let respostaDaPessoa = "uma frase qualquer <br> outra linha <br> mais uma";
+            document.getElementById("resp").value = respostaDaPessoa;
+        }
+    </script>
+</body>
+
+</html>

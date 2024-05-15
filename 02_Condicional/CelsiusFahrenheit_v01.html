@@ -1,14 +1,10 @@
-<!-- exercício 5 da lista 06 de algoritmos -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celsius para Fahrenheit e vice-versa</title>
 </head>
-
 <body>
     <label for="inputTemperatura">Temperatura</label>
     <input type="number" name="inputTemperatura" id="inputTemperatura">
@@ -21,14 +17,11 @@
     <br>
     <label for="saida"></label>
     <input type="text" name="saida" id="saida" size="100">
-
-    <script>
-       
+    <script>       
         function calcule() {
             let msg="";
             let temp = parseFloat(document.getElementById("inputTemperatura").value);
-            let opcao = document.getElementById("inputOpcao").value.toLowerCase();
-            //alert(opcao);
+            let opcao = document.getElementById("inputOpcao").value.toLowerCase();            
             let resp = 0.0;
             if (opcao == 'c') {
                 let f = (temp * (9 / 5)) + 32;
@@ -46,5 +39,4 @@
         }
     </script>
 </body>
-
 </html>
