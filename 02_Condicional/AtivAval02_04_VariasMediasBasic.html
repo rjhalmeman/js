@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médias (básico)</title>
+</head>
+<body>
+    <p>Informe os valores:</p>
+    <label for="inputX">X</label>
+    <input type="number" name="inputX" id="inputX"><br>
+    <label for="inputY">Y</label>
+    <input type="number" name="inputY" id="inputY"><br>
+    <label for="inputZ">Z</label>
+    <input type="number" name="inputZ" id="inputZ"><br>
+    <label for="inputOpcao"> a) Geométrica b) Ponderada  c) Harmônica d) Aritmética <br> Qual a opção?</label>
+    <input type="text" name="inputOpcao" id="inputOpcao">
+    <input type="button" value="Calcular" onclick="calcular()"><br>
+    <label for="saida">Resultado</label>
+    <div id="saida"></div>
+    <script>
+        let x=0.0;
+        let y=0.0;
+        let z=0.0;
+        let resp=0.0;
+        let qualFormula="";
+        function calcular() {
+            x = parseFloat(document.getElementById("inputX").value);
+            y = parseFloat(document.getElementById("inputY").value);
+            z = parseFloat(document.getElementById("inputZ").value);
+            qualFormula = document.getElementById("inputOpcao").value.toUpperCase();            
+            if (qualFormula === "A") {
+                resp = (x * y * z) ** (1 / 3); 
+            } else if (qualFormula === "B") {
+                resp = (x + 2 * y + 3 * z) / 6;
+            } else if (qualFormula === "C") {
+                resp = 1 / (1 / x + 1 / y + 1 / z);
+            } else {
+                resp = (x + y + z) / 3;
+            }
+            document.getElementById("saida").innerText = resp.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+
