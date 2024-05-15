@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranger</title>
+</head>
+
+<body>
+    <label for="inputTotalDeVendas">Total de vendas</label>
+    <input type="number" name="inputTotalDeVendas " id="inputTotalDeVendas">
+    <br>
+
+    <label for="inputMes">Mês</label>
+    <input type="number" name="inputMes " id="inputMes">
+    <br>
+
+    <label for="inputAno">Ano</label>
+    <input type="number" name="inputAno " id="inputAno">
+    <br>
+
+    <input type="button" value="Eleven" onclick="calculaParaEleven()">
+    <input type="button" value="Mike" onclick="calculaParaMike()">
+    <input type="button" value="Dustin" onclick="calculaParaDustin()">
+    <input type="button" value="Lucas" onclick="calculaParaLucas()">
+
+    <div id="resposta">
+
+    </div>
+
+    <script>
+        let totalDeVendas = 0.0;
+        let mes = 0;
+        let ano = 0;
+        let comissao = 0.0;
+        let nome = "";
+        let salario = 0.0;
+
+        function lerDadosInformados() {
+            totalDeVendas = parseFloat(document.getElementById("inputTotalDeVendas").value);
+            mes = parseInt(document.getElementById("inputMes").value);
+            ano = parseInt(document.getElementById("inputAno").value);
+        }
+
+        function calculaComissao() {
+            if (mes == 2 && (ano % 4 == 0)) {
+                comissao = comissao + 5 / 100;
+            } else if (mes == 10 || mes == 12) {
+                comissao = comissao + 2 / 100;
+            }
+        }
+
+        function mostrarAResposta() {
+            let resp = "O vendedor " + nome + " no mês " + mes + " do ano " + ano + " vai receber um salario de " + salario.toFixed(2);
+            document.getElementById("resposta").innerText = resp;
+        }
+
+        function calculaParaEleven() {
+            lerDadosInformados();
+            comissao = 10 / 100;
+            calculaComissao();
+            nome = "Eleven";
+            salario = totalDeVendas * comissao;
+            mostrarAResposta();
+        }
+
+        function calculaParaMike() {
+            lerDadosInformados();
+            comissao = 12 / 100;
+            calculaComissao();
+            nome = "Mike";
+            salario = totalDeVendas * comissao;
+            mostrarAResposta();
+        }
+
+        function calculaParaDustin() {
+            lerDadosInformados();
+            comissao = 11 / 100;
+            if (totalDeVendas > 10000) {
+                comissao = 13 / 100;
+            }
+            calculaComissao();
+            nome = "Dustin";
+            salario = totalDeVendas * comissao;
+            mostrarAResposta();
+        }
+
+        function calculaParaLucas() {
+            lerDadosInformados();
+            comissao = 12.5 / 100;
+            calculaComissao();
+            nome = "Lucas";
+            salario = totalDeVendas * comissao;
+            mostrarAResposta();
+        }
+    </script>
+</body>
+</html>
