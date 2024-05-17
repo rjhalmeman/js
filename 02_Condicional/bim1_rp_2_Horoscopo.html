@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horóscopo</title>
+</head>
+<body>
+    <h2>Determinar Horóscopo Ocidental</h2>
+    <label for="nome">Digite seu nome:</label>
+    <input type="text" id="nome"><br>
+    <label for="dia">Dia de nascimento:</label>
+    <input type="number" id="dia" min="1" max="31">
+    <label for="mes">Mês de nascimento:</label>
+    <input type="number" id="mes" min="1" max="12">
+    <input type="button" value="Determinar Horóscopo" onclick="determinarHoroscopo()">
+    <p id="resultado"></p>
+    <script>
+        function determinarHoroscopo() {
+            let nome = document.getElementById("nome").value;
+            let dia = parseInt(document.getElementById("dia").value);
+            let mes = parseInt(document.getElementById("mes").value);
+            let resultado = document.getElementById("resultado");
+            let signo = ""; let planeta = "";
+            if ((mes === 3 && dia >= 21) || (mes === 4 && dia <= 19)) {
+                signo = "Áries";
+                planeta = "Marte";
+            } else if ((mes === 4 && dia >= 20) || (mes === 5 && dia <= 20)) {
+                signo = "Touro";
+                planeta = "Vênus";
+            } else if ((mes === 5 && dia >= 21) || (mes === 6 && dia <= 20)) {
+                signo = "Gêmeos";
+                planeta = "Mercúrio";
+            } else if ((mes === 6 && dia >= 21) || (mes === 7 && dia <= 22)) {
+                signo = "Câncer";
+                planeta = "Lua";
+            } else if ((mes === 7 && dia >= 23) || (mes === 8 && dia <= 22)) {
+                signo = "Leão";
+                planeta = "Sol";
+            } else if ((mes === 8 && dia >= 23) || (mes === 9 && dia <= 22)) {
+                signo = "Virgem";
+                planeta = "Mercúrio";
+            } else if ((mes === 9 && dia >= 23) || (mes === 10 && dia <= 22)) {
+                signo = "Libra";
+                planeta = "Vênus";
+            } else if ((mes === 10 && dia >= 23) || (mes === 11 && dia <= 21)) {
+                signo = "Escorpião";
+                planeta = "Marte";
+            } else if ((mes === 11 && dia >= 22) || (mes === 12 && dia <= 21)) {
+                signo = "Sagitário";
+                planeta = "Júpiter";
+            } else if ((mes === 12 && dia >= 22) || (mes === 1 && dia <= 19)) {
+                signo = "Capricórnio";
+                planeta = "Saturno";
+            } else if ((mes === 1 && dia >= 20) || (mes === 2 && dia <= 18)) {
+                signo = "Aquário";
+                planeta = "Urano";
+            } else if ((mes === 2 && dia >= 19) || (mes === 3 && dia <= 20)) {
+                signo = "Peixes";
+                planeta = "Netuno";
+            }
+            resultado.textContent = nome + ", você que nasceu em " + dia + "/" + mes +
+                ", seu signo do horóscopo é " + signo + " e o planeta regente é " + planeta + ".";
+        }
+    </script>
+</body>
+</html>
