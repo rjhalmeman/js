@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2pr</title>
+</head>
+
+<body>
+    <label for="mes">selecione o mes desejado</label>
+    <select name="mes" id="mes">
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="4">Abril</option>
+        <option value="5">Maio</option>
+        <option value="6">Junho</option>
+        <option value="7">Julho</option>
+        <option value="8">Agosto</option>
+        <option value="9">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+    </select>
+    <br>
+    <label for="ano">digite o ano</label>
+    <input type="number" name="ano" id="ano">
+    <br>
+    <label for="valort">digite o valor total das vendas</label>
+    <input type="number" name="valort" id="valort">
+    <br>
+    <label for="nome"></label>nome do vendedor</label>
+    <input type="text" name="nome" id="nome">
+    <br>
+    <input type="button" value="verificar" onclick="verificar()">
+    <br>
+    <label for="resposta">valor a pagar:</label>
+
+    <div id="resp"></div>
+
+    <script>
+
+        function verificar() {
+            let comissao = 0;
+            let mes = parseInt(document.getElementById("mes").value);
+            let ano = parseInt(document.getElementById("ano").value);
+            let valort = parseFloat(document.getElementById("valort").value);
+            let nome = document.getElementById("nome").value;
+
+            if (nome == "eleven") {
+                comissao = (10 / 100) * valort;
+                if (mes == 2) {
+                    if (ano % 4 == 0) {
+                        comissao = (15 / 100) * valort;
+                    } else if (mes == 10 || mes == 12) {
+                        comissao = (12 / 100) * valort;
+                    }
+                }
+            }
+            if (nome == "mike") {
+                comissao = (12 / 100) * valort;
+                if (mes == 2) {
+                    if (ano % 4 == 0) {
+                        comissao = (17 / 100) * valort;
+                    } else {
+                        comissao = (12 / 100) * valort;
+                    }
+                } else if (mes == 10 || mes == 12) {
+                    comissao = (14 / 100) * valort;
+                }
+            }
+            if (nome == "lucas") {
+                comissao = (12.5 / 100) * valort;
+                if ((mes == 2) && (ano % 4 == 0)) {
+                    comissao = (17.5 / 100) * valort;
+                } else if (mes == 10 || mes == 12)
+                    comissao = (14.5 / 100) * valort;
+            }
+
+            if (nome == "dustin") {
+                if (valort >= 10000) {
+                    comissao = (13 / 100) * valort;
+                } else {
+                    comissao == (11 / 100) * valort;
+                }
+                if (mes == 2) {
+                    if (ano % 4 == 0) {
+                        comissao = (18 / 100) * valort;
+                    }
+                } else if (mes == 10 || mes == 12) {
+                    if (valort >= 10000) {
+                        comissao = (15 / 100) * valort;
+                    } else {
+                        comissao = (13 / 100) * valort;
+
+                    }
+                }
+            }
+            document.getElementById("resp").innerText = "o valor a pagar para "
+                + nome + "será R$" + comissao;
+        }
+    </script>
+</body>
+
+</html>

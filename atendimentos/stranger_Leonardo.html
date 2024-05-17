@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Cod dos vendedores:
+        <br>
+        Eleven: a
+        <br>
+        Mike: b
+        <br>
+        Dustin: c
+        <br>
+        Lucas: d
+        <br>
+    </p>
+    <label for="vendasT">Total de vedas:</label>
+    <input type="number" name="vendasT" id="vendasT">
+    <br>
+
+    <label for="ano">Ano da venda:</label>
+    <input type="number" name="ano" id="ano">
+    <br>
+
+    <label for="mes">Mes da venda(minimo 1 e maximo 12):</label>
+    <input type="number" name="mes" id="mes" min="1" max="12">
+    <br>
+
+    <label for="ven">Vendedor:</label>
+    <input type="text" name="ven" id="ven">
+    <br>
+
+    <input type="button" value="Calcular" onclick="Calcular()">
+    <br>
+
+    <label for="resposta">Resultado:</label>
+    <span id="resposta"></span>
+
+    <script>
+        function Calcular() {
+            let vendas = parseFloat(document.getElementById("vendasT").value);
+            let ano = parseInt(document.getElementById("ano").value);
+            let mes = parseInt(document.getElementById("mes").value);
+            let vend = document.getElementById("ven").value;
+            let porc = 0;
+            let porcm = 0;
+            if (vend == "a") {
+                porc = 0.1;
+            }
+            else if (vend == "b") {
+                porc = 0.12;
+            }
+            else if (vend == "c") {
+                if (vendas >= 10000) {
+                    porc = 0.13;
+                }
+                else {
+                    porc = 0.11;
+                }
+            }
+            else if (vend == "d") {
+                porc = 0.125;
+            }
+            if (mes == 10 ||mes== 12) {
+                porc = porc + 0.02;
+            }
+            else if (mes == 2){
+                if (ano%4==0){
+                    porc = porc + 0.05;
+                }
+            }
+            // else (mes== 1||mes==3||mes==4||mes==5||mes==6||mes==7||mes==8||mes==9||mes==11) ;{
+            //     porc = porc
+            // }
+            
+        let comissao= vendas * porc
+        let fin = comissao.toFixed(2);
+            document.getElementById("resposta").textContent = "No mês " + mes + " do " + ano + " as vendas que o vendedor "
+             + vend + " fez, totalizaram: " + fin
+        }
+    </script>
+</body>
+
+</html>
