@@ -15,14 +15,14 @@
   
   <!-- as divs serão usadas para saída de dados -->
   <div id="conjuntoDeNumeros" style="background-color: #7FFFD4;"></div>
-  <div id="resultadoSoma" style="background-color: #b8d9ff;">soma</div>
+  <div id="resultadoSoma" style="background-color: #f704ba;">soma</div>
   
   
   <script>
     function executar() {
 
       //entrada de dados
-      let conjunto = [4, 2, 1, 5];
+      let conjunto = [4, 2, 1, 5,6,3,9];
 
       //essas variáveis serão usadas para facilitar a saída
       let conjuntoDeNumeros = document.getElementById("conjuntoDeNumeros");
@@ -31,9 +31,14 @@
       conjuntoDeNumeros.innerText = "";
 
       let soma = 0;
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < conjunto.length; i++) {
         conjuntoDeNumeros.innerText += conjunto[i] + "\n";
         soma = soma + conjunto[i];
+
+        alert("valor i="+ i+ "  valor soma="+soma
+                +"   valor conj[]="+ conjunto[i]);
+
+
         //quando for innerText, obrigatoriamente tem que usar \n para mudar de linha
       }
       resultadoSoma.innerText = "A soma dos números é =" + soma;

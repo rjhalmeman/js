@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>
+        Frase: <input type="text" name="texto" id="texto">
+    </label>
+    <br>
+    <br>
+    <button onclick="Calcular()">Ver total de vogais</button>
+    <br>
+    <br>
+    <div id="resp">aqui</div>
+
+    <script>
+        function Calcular() {
+            let textoDigitado = document.getElementById("texto").value;
+            let visor = 0;
+
+            for (let i = 0; i< textoDigitado.length; i++) {
+                let vogais = textoDigitado.charAt(i).toLowerCase();
+                if (vogais === 'a' || vogais === 'e' || vogais === 'i' || vogais === 'o' || vogais === 'u') {
+                    visor = visor + 1;
+                }
+            }
+
+            document.getElementById("resp").innerHTML = visor;
+        }
+    </script>
+</body>
+</html>
