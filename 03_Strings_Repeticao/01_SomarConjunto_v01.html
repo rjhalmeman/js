@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Somar conjunto</title>
+</head>
+
+<body>
+
+  <br><br>
+  <button onclick="executar()">Executar</button>
+  <br><br>
+  
+  <!-- as divs serão usadas para saída de dados -->
+  <div id="conjuntoDeNumeros" style="background-color: #7FFFD4;"></div>
+  <div id="resultadoSoma" style="background-color: #b8d9ff;">soma</div>
+  
+  
+  <script>
+    function executar() {
+
+      //entrada de dados
+      let conjunto = [4, 2, 1, 5];
+
+      //essas variáveis serão usadas para facilitar a saída
+      let conjuntoDeNumeros = document.getElementById("conjuntoDeNumeros");
+      let resultadoSoma = document.getElementById("resultadoSoma");
+
+      conjuntoDeNumeros.innerText = "";
+
+      let soma = 0;
+      for (let i = 0; i < 4; i++) {
+        conjuntoDeNumeros.innerText += conjunto[i] + "\n";
+        soma = soma + conjunto[i];
+        //quando for innerText, obrigatoriamente tem que usar \n para mudar de linha
+      }
+      resultadoSoma.innerText = "A soma dos números é =" + soma;
+    }
+  </script>
+</body>
+
+</html>
