@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Somar conjunto</title>
+
+    <!-- Este programa tem o funcionamento diferente dos demais
+    Não há entrada de dados, os dados estão junto com a criação da 
+    variável conjunto
+    Não tem botão para executar, a execução é feita pelo evento onLoad, no fim do script
+    esse evento é executado sempre que a página é carregada
+     -->
+
+
     <script>
         function executar() {
             let conjunto = [1, 2, 3, 4];
@@ -23,7 +32,6 @@
             let s = document.getElementById("resultadoSoma");
             s.innerText = "A soma dos números é = " + soma;
         }
-
         window.onload = executar;
     </script>
 </head>
