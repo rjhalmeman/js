@@ -1,3 +1,5 @@
+<!-- Este programa foi feito pelo Emanuel Hort e ajustado pelo professor -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +15,13 @@
     </label>
     <br>
     <br>
-    <button onclick="Calcular()">Ver total de vogais</button>
+    <button onclick="calcular()">Contar as vogais</button>
     <br>
     <br>
     <div id="resp">aqui</div>
 
     <script>
-        function Calcular() {
+        function calcular() {
             let textoDigitado = document.getElementById("texto").value;
             let contador = 0;
 
@@ -30,7 +32,7 @@
                 }
             }
 
-            document.getElementById("resp").innerHTML = contador;
+            document.getElementById("resp").innerHTML = "A string tem " + contador + " vogais";
         }
     </script>
 </body>
