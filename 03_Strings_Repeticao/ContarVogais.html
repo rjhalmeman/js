@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contador de vogais</title>
 </head>
+
 <body>
     <label>
         Frase: <input type="text" name="texto" id="texto">
@@ -19,17 +21,18 @@
     <script>
         function Calcular() {
             let textoDigitado = document.getElementById("texto").value;
-            let visor = 0;
+            let contador = 0;
 
-            for (let i = 0; i< textoDigitado.length; i++) {
+            for (let i = 0; i < textoDigitado.length; i++) {
                 let vogais = textoDigitado.charAt(i).toLowerCase();
                 if (vogais === 'a' || vogais === 'e' || vogais === 'i' || vogais === 'o' || vogais === 'u') {
-                    visor = visor + 1;
+                    contador = contador + 1;
                 }
             }
 
-            document.getElementById("resp").innerHTML = visor;
+            document.getElementById("resp").innerHTML = contador;
         }
     </script>
 </body>
+
 </html>
