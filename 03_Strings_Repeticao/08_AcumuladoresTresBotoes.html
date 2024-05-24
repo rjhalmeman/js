@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com Vetor</title>
+</head>
+
+<body>
+    <h1>Operações</h1>
+    <label for="entradaDeDados">Conjunto fornecido</label>
+    <div id="entradaDeDados"></div>
+    <br>
+    <br>
+    <br>
+
+    <input type="button" value="Somar todos os números" onclick="somarNumeros()">
+    <p id="somaResultado"></p>
+
+    <input type="button" value="Calcular média aritmética" onclick="calcularMedia()">
+    <p id="mediaResultado"></p>
+
+    <input type="number" id="numeroParaContar" placeholder="Digite um número">
+    <input type="button" value="Contar ocorrências do número" onclick="contarNumero()">
+    <p id="contagemResultado"></p>
+
+    <script>
+        // Vetor de números inteiros
+        const numeros = [5, 9, 6, 7, 4, 2, 6, 7, 9, 10, 2];
+
+        document.getElementById("entradaDeDados").innerText = numeros;
+
+
+        // Função para somar todos os números do vetor
+        function somarNumeros() {
+            let soma = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                soma += numeros[i];
+            }
+            document.getElementById('somaResultado').innerText = `A soma dos números é: ${soma}`;
+        }
+
+        // Função para calcular a média aritmética dos números do vetor
+        function calcularMedia() {
+            let soma = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                soma += numeros[i];
+            }
+            const media = soma / numeros.length;
+            document.getElementById('mediaResultado').innerText = `A média aritmética é: ${media.toFixed(2)}`;
+        }
+
+        // Função para contar quantas vezes um número específico aparece no vetor
+        function contarNumero() {
+            const numeroParaContar = parseInt(document.getElementById('numeroParaContar').value);
+            if (isNaN(numeroParaContar)) {
+                document.getElementById('contagemResultado').innerText = `Por favor, insira um número válido.`;
+                return;
+            }
+            let contagem = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                if (numeros[i] === numeroParaContar) {
+                    contagem++;
+                }
+            }
+            document.getElementById('contagemResultado').innerText = `O número ${numeroParaContar} aparece ${contagem} vezes no vetor.`;
+        }
+    </script>
+</body>
+
+</html>
