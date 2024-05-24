@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem de vogais na frase</title>
+</head>
+
+<body>
+    <h1> Digite uma frase:</h1>
+    <label for="Frase">Frase</label>
+    <input type="text" name="Frase" id="Frase">
+    <br>
+    <br>
+
+    <input type="button" value="calcular" onclick="contarAsVogais()">
+    <br>
+    <h2>
+        <label for="resultado">A quantidade de vogais na frase é</label>
+        <span id="resultado">0</span>
+    </h2>
+    <script>
+        function contarAsVogais() {
+            let cont = 0;
+            let frase = document.getElementById("Frase").value;
+
+            for (let i = 0; i < frase.length; i++) {
+                let l = frase.charAt(i).toLowerCase();
+               // alert("passou " + frase.length + " i = " + i);
+                if (l === "a" || l === "e" || l === "i" || l === "o" || l === "u") {
+                    cont = cont + 1
+                }
+            }
+            document.getElementById("resultado").innerText = cont;
+        }
+    </script>
+</body>
+
+</html>

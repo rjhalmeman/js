@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contagem da frase</title>
+</head>
+
+<body>
+    <h1> Digite uma frase e some as vogais:</h1>
+    <label for="Frase">Frase</label>
+    <input type="text" name="Frase" id="Frase">
+    <br>
+
+    <input type="button" value="calcular" onclick="CalcularVO()">
+    <br>
+    <h2>
+        <div id="resultado">RESPOSTA :</div>
+    </h2>
+    <script>
+        function CalcularVO() {
+            let cont = 0;
+            let frase = document.getElementById("Frase").value;
+
+            for (let i = 0; i < frase.length; i++) {
+                let l = frase.charAt(i).toLowerCase();
+                alert("passou " + frase.length + " i = " + i);
+                if (l === "a" || l === "e" || l === "i" || l === "o" || l === "u") {
+                    cont = cont + 1
+                }
+            }
+            document.getElementById("resultado").innerText = cont;
+        }
+    </script>
+</body>
+
+</html>
