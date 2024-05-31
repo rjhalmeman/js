@@ -34,18 +34,14 @@
         <h1>Algoritmos - 2024 - TIII</h1>
 
         <h2>Professor Radames</h2>
-        <br>
-
-        <h1 style="color:blue">Listas de exercícios e <br>
-            atividades autoavaliativas</h1>
-        <br>
+        
         <div id="links-container">
             <!-- Os links serão inseridos aqui pelo JavaScript -->
         </div>
     </div>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             fetch('links.csv')
                 .then(response => response.text())
                 .then(data => {
