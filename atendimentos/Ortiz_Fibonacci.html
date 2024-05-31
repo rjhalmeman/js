@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci - Ortiz</title>
+</head>
+<body>
+    <input type="number" id="termo" placeholder="digite seu termo">
+    <br>
+    <button onclick="caclcular()">click</button>
+    <br>
+    <div id="resp">resposta aqui:</div>
+    <script>
+        function caclcular(){
+            let termo= parseInt(document.getElementById("termo").value);
+            let ant=0;
+            let pre=1;
+            let soma=0;
+            let resp= "";
+            for(let i=0;i<termo-1;i++){
+                soma= ant+pre;
+                pre=ant
+                ant=soma;
+                resp+=","+ soma;
+            }
+            document.getElementById("resp").innerText=0 +resp
+        }
+    </script>
+</body>
+</html>

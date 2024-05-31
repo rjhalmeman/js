@@ -22,12 +22,15 @@
             let nomeIngles = "";
             let ultimoEspaco = 0;
 
-            for (let i = nome.length - 1; i >= 0; i--) {
-                if (nome.charAt(i) === ' ') {
-                    ultimoEspaco = i;
-                    break;
-                }
-            }
+            // for (let i = nome.length - 1; i >= 0; i--) {
+            //     if (nome.charAt(i) === ' ') {
+            //         break;
+            //     }
+            // }
+            let i=nome.length - 1;
+            for (;nome.charAt(i) !== ' ' && i>0; i--);
+            ultimoEspaco = i;
+            
             for (let i = ultimoEspaco; i < nome.length; i++) {
                 nomeIngles += nome.charAt(i);
             }
