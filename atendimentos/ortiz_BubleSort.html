@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobble sort</title>
+</head>
+
+<body>
+    <input type="text" id="inputVetor" placeholder="digite números separados por vírgula" size="100">
+    <br>
+    <button accesskey="s" onclick="ordenar()">Obter dados</button>
+    <br>
+    <label for="vetorObtido"> Obtido</label>
+    <div id="vetorObtido">.....</div>
+    <label for="vetorOrdenado">Ordenado</label>
+    <div id="vetorOrdenado">.</div>
+    <script>
+        function ordenar() {
+            let numerosDigitados = document.getElementById("inputVetor").value;
+            let vetor = numerosDigitados.split(",").map(Number);
+            document.getElementById("vetorObtido").innerText = vetor;
+
+            for (let i = vetor.length - 1;
+             i > 0; 
+             i--) {
+                let status = 0;
+                for (let j = 0; j < i; j++) {
+                    if (vetor[j] > vetor[j + 1]) {
+                        let aux = vetor[j];
+                        vetor[j] = vetor[j + 1];
+                        vetor[j + 1] = aux;
+                        status++;
+                    }
+                }
+                if (status === 0) break;
+            }
+              document.getElementById("vetorOrdenado").innerText = vetor;
+        }
+    </script>
+</body>
+
+</html>
