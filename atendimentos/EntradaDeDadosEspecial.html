@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando</title>
+</head>
+
+<body>
+
+    <button id="btnEntrada" onclick="controle()">Entrada de dados</button>
+    <div id="divEntradaDeDados"></div>
+    <br>
+    <label for="vetorObtido"> Obtido</label>
+    <div id="vetorObtido">.....</div>
+    <label for="vetorOrdenado">Ordenado</label>
+    <div id="vetorOrdenado">.</div>
+    <script>
+        function obterDadosNumericos(quantos) {
+            let aux = "";
+            for (let i = 0; i < quantos; i++) {
+                aux += `<label for="inputNum${i}">Número ${i + 1}</label>
+                <input type="number" id="inputNum${i}" placeholder="digite ${i + 1}º número inteiro">
+                <br>`;
+            }
+            document.getElementById("divEntradaDeDados").innerHTML = aux;
+            
+            // Muda o botão para obter os dados
+            document.getElementById("btnEntrada").innerText = "Obter dados";
+            document.getElementById("btnEntrada").onclick = function() { vetorizarDados(quantos); };
+        }
+
+        function vetorizarDados(quantos) {
+            let vet = [];
+            for (let i = 0; i < quantos; i++) {
+                let nomeVar = `inputNum${i}`;
+                vet[i] = parseInt(document.getElementById(nomeVar).value);
+            }
+            
+            document.getElementById("vetorObtido").innerText = vet;
+
+            // Ordena o vetor e exibe o resultado
+            let vetorOrdenado = vet.slice().sort((a, b) => a - b);
+            document.getElementById("vetorOrdenado").innerText = vetorOrdenado;
+        }
+
+        function controle() {
+            obterDadosNumericos(3);
+        }
+    </script>
+</body>
+
+</html>
