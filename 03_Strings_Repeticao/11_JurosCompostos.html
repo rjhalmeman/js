@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juros compostos - Mensalidade</title>
+</head>
+
+<body>
+    <h2>Tabuada</h2>
+    <label for="inputParcelas">Digite a quantidade de parcelas:</label>
+    <input type="number" id="inputParcelas" value="10">
+    <br>
+    <label for="inputJurosPorMes">Juros por mês(%):</label>
+    <input type="number" id="inputJurosPorMes" value="2">
+    <br>
+    <label for="inputValor">Valor:</label>
+    <input type="number" id="inputValor" value="1000">
+    <br>
+    <br>
+    <button onclick="calcularParcelas()">Calcular</button>
+    <br>
+    <textarea id="demonstrativoJuros" rows="12" cols="30" readonly></textarea>
+    <br>
+    <div id="divValorParcela"></div>
+
+    <script>
+        function calcularParcelas() {
+            // Obtém dados digitados pelo usuário
+            let parcelas = parseInt(document.getElementById("inputParcelas").value);
+            let valor = parseFloat(document.getElementById("inputValor").value);
+            let juros = parseFloat(document.getElementById("inputJurosPorMes").value);
+
+            // Saída de dados
+            let saidaDemonstrativo = document.getElementById("demonstrativoJuros");
+            saidaDemonstrativo.value = "";
+
+            let valorParcela = document.getElementById("divValorParcela");
+
+          
+            resp = "1 "+valor+"\n"; //acumulador dos resultados
+          
+            for (let i = 2; i <= parcelas; i++) {
+                let resultado = valor+ valor * (juros/100);
+                resp += i+" "+  resultado.toFixed(2) + "\n";
+                valor = resultado;
+            }
+            saidaDemonstrativo.value = resp;
+            valorParcela.innerText ="Serão apenas "+parcelas+" vezes de R$"+ (valor / parcelas).toFixed(2);
+
+        }
+    </script>
+</body>
+
+</html>
