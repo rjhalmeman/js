@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área de um Retângulo</title>
+    <title>Sequência de Fibonacci</title>
 </head>
 
 <body>
-    <label for="inputNumero">Número</label>
-    <input type="number" name="inputNumero" id="inputNumero">
+    <label for="inputTermo">Termo</label>
+    <input type="number" name="inputTermo" id="inputTermo">
     <br>
    
     <br>
-    <input type="button" value="Calcular" onclick="CalcularArea()">
+    <input type="button" value="Calcular" onclick="gerarSequenciaFibonacci()">
     <br>
     <br>
     <label for="resposta">Área =</label>
@@ -21,8 +21,8 @@
     <br>
     <br>
     <script>
-        function CalcularArea() {
-            num = document.getElementById("inputNumero").value;
+        function gerarSequenciaFibonacci() {
+            num = document.getElementById("inputTermo").value;
             let a =0;
             let b=1;
             let s = 0;
