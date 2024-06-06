@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromos</title>
+</head>
+
+<body>
+    
+    <label for="inputPalavra">Palavra</label>
+    <input type="text" name="inputPalavra" id="inputPalavra" placeholder="Digite uma palavra" size="50">
+    <br>
+
+    <input type="button" value="calcular" onclick="verificarSeEPalindromo()">
+    <br>
+    <h2>
+        <div id="resultado">...</div>
+    </h2>
+    <script>
+        function verificarSeEPalindromo() {
+
+            let palavra = document.getElementById("inputPalavra").value.toLowerCase();
+            let resp = document.getElementById("resultado"); //para facilitar a resposta
+            let novaPalavra = "";
+            let letra = "";
+
+            for (let i = palavra.length - 1; i >= 0; i--) {
+                letra = palavra.charAt(i);
+                novaPalavra += letra;
+            }
+            if (palavra === novaPalavra) {
+                resultado = "É um palíndromo";
+            } else {
+                resultado = "Não é um palíndromo";
+            }
+            resp.innerText = resultado;
+        }
+    </script>
+</body>
+
+</html>
