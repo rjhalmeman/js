@@ -16,7 +16,7 @@
     <input type="button" value="Calcular" onclick="gerarSequenciaFibonacci()">
     <br>
     <br>
-    <label for="resposta">Área =</label>
+    <label for="resposta">Sequência =</label>
     <span id="resposta"></span>
     <br>
     <br>
@@ -33,7 +33,7 @@
                 b= s;
                 resp+=s+',';                
             }
-            document.getElementById("resposta").textContent = resp;
+            document.getElementById("resposta").textContent = resp.substring(0,resp.length-1);//mostra a resposta e retira a vírgula do final
         }
     </script>
 </body>
