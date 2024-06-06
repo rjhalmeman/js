@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somar os pares até N</title>
+
+</head>
+
+<body>
+    <label for="inputN">Até que número deve somar? N = </label>
+    <input type="number" name="inputN" id="inputN">
+
+    <input type="button" value="Calcular" onclick="calcular()">
+    <br>
+    <label for="resposta">Soma:</label>
+    <div id="resposta">...</div>
+
+    <script>
+        function calcular() {
+            let n = parseInt(document.getElementById("inputN").value);
+            let resp = document.getElementById("resposta");
+            let soma = 0;
+            for (let i = 0; i <= n; i+=2) {
+                soma = soma + i;
+            }
+            resp.innerText = soma;
+        }
+    </script>
+</body>
+</html>
