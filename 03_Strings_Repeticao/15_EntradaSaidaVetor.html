@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo entrada/saída com vetor</title>   
+</head>
+
+<body>
+    <label for="inputVetor">Vetor</label>
+    <input type="text" name="inputVetor" id="inputVetor" placeholder="3,6,2,7,1,7, por exemplo" size="100">
+    <br>
+    <input type="button" value="Obter Dados" onclick="obterDados()">
+    <br>
+    <input type="button" value="Mostrar na div Rosa" onclick="mostrarDados(`outputRosa`)">
+    <br>
+    <input type="button" value="Mostrar na div Verde" onclick="mostrarDados(`outputVerde`)">
+    <br>
+    <label for="outputRosa">Saída rosa:</label>
+    <div id="outputRosa" style="background-color: rgb(245, 195, 255);"></div>
+    <br>
+    <label for="outputVerde">Saída verde:</label>
+    <div id="outputVerde" style="background-color: aquamarine;"> </div>
+    <br>
+
+    <script>
+        let dados = [];
+        function obterDados() {
+            dadosEmFormatoTexto = document.getElementById("inputVetor").value;
+            if (dadosEmFormatoTexto.) {
+                
+            }
+            dados = dadosEmFormatoTexto.split(",");
+        }
+
+        function mostrarDados(mostrarEmQualElemento) {
+            let textoSaida = "";
+            for (let i = 0; i < dados.length; i++) {
+                textoSaida += dados[i] + ",";
+            }
+            textoSaida = textoSaida.substring(0, textoSaida.length - 1);
+            document.getElementById(mostrarEmQualElemento).innerText = textoSaida;
+        }           
+    </script>
+</body>
+
+</html>
