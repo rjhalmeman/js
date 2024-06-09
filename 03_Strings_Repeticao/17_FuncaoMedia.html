@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo entrada/saída com vetor</title>
+</head>
+
+<body>
+    <label for="inputVetor">Vetor</label>
+    <input type="text" name="inputVetor" id="inputVetor" placeholder="3,6,2,7,1,7, por exemplo" size="100">
+    <br>
+    <input type="button" value="Calcular" onclick="fazerTudo()">
+    <br>
+
+    <label for="outputRosa" id="rotuloOutputRosa"></label>
+    <div id="outputRosa" style="background-color: rgb(245, 195, 255);"></div>
+    <br>
+
+    <label for="outputVerde" id="rotuloOutputVerde"></label>
+    <div id="outputVerde" style="background-color: rgb(82, 255, 246);"></div>
+    <br>
+
+    <script>
+
+        function obterDados() {
+            let dados = [];
+            dadosEmFormatoTexto = document.getElementById("inputVetor").value;
+            dados = dadosEmFormatoTexto.split(",").map(Number);
+            return dados;
+        }
+
+        function calcularMedia(oVetor) {
+            let media = 0.0;
+            let soma = 0.0;
+            for (let i = 0; i < oVetor.length; i++) {
+                soma += oVetor[i];
+            }
+            media = soma / oVetor.length;
+            return media;
+        }
+
+        function mostrarVetor(oVetor, mostrarNoElemento) {
+            let textoSaida = "";
+            for (let i = 0; i < oVetor.length; i++) {
+                textoSaida += oVetor[i] + ",";
+            }
+            textoSaida = textoSaida.substring(0, textoSaida.length - 1);
+            document.getElementById(mostrarNoElemento).innerText = textoSaida;
+        }
+
+        function mostrarResposta(resp, mostrarNoElemento) {
+            document.getElementById(mostrarNoElemento).innerText = resp;
+        }
+
+        function fazerTudo() {
+            let oVetor = obterDados();
+            let media = calcularMedia(oVetor);
+            //  mostrarVetor(oVetor, "outputRosa");
+            mostrarResposta("A média é " + media, "outputVerde");
+        }
+
+    </script>
+</body>
+
+</html>

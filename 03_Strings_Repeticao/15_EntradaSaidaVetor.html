@@ -27,11 +27,8 @@
     <script>
         let dados = [];
         function obterDados() {
-            dadosEmFormatoTexto = document.getElementById("inputVetor").value;
-            if (dadosEmFormatoTexto.) {
-                
-            }
-            dados = dadosEmFormatoTexto.split(",");
+            dadosEmFormatoTexto = document.getElementById("inputVetor").value;          
+            dados = dadosEmFormatoTexto.split(",").map(Number);
         }
 
         function mostrarDados(mostrarEmQualElemento) {

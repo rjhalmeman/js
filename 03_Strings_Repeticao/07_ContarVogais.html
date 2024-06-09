@@ -26,7 +26,9 @@
             let frase = document.getElementById("Frase").value;
 
             for (let i = 0; i < frase.length; i++) {
-                let l = frase.charAt(i).toLowerCase();
+                let l = frase[i].toLowerCase();
+                // let l = frase.charAt(i).toLowerCase();
+
                // alert("passou " + frase.length + " i = " + i);
                 if (l === "a" || l === "e" || l === "i" || l === "o" || l === "u") {
                     cont = cont + 1

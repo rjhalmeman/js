@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+
+<body>
+    <label for="inputVetor">Vetor</label>
+    <input type="text" name="inputVetor" id="inputVetor" placeholder="3,6,2,7,1,7, por exemplo" size="100">
+    <br>
+    <input type="button" value="Obter Dados" onclick="obterDados()">
+    <br>
+    <div id="outputAzul" style="background-color: #28d4ff;"></div> <!-- div para mostrar o vetor obtido -->
+    <br>
+    <input type="button" value="Achar menor número" onclick="acharMenorNumero()">
+    <br>
+    <input type="button" value="Achar maior número" onclick="acharMaiorNumero()">
+    <br>
+    <input type="button" value="Soma dos ímpares" onclick="somarImpares()">
+    <br>
+    <input type="button" value="Vetor ao quadrado" onclick="vetorAoQuadrado()">
+    <br>
+    <label for="outputRosa">Saída rosa:</label>
+    <div id="outputRosa" style="background-color: #F5C3FF;"></div>
+    <br>
+    <label for="outputVerde">Saída verde:</label>
+    <div id="outputVerde" style="background-color: #8effe6;"> </div>
+    <br>
+
+    <script>
+        let dados = [];
+        function obterDados() {
+            dadosEmFormatoTexto = document.getElementById("inputVetor").value;
+            dados = dadosEmFormatoTexto.split(",").map(Number);
+            document.getElementById('outputAzul').innerText = 'Vetor obtido: ' + dados;
+        }
+        function acharMenorNumero() {
+
+            const vetorOriginal = dados; //pega os dados já convertidos para usar nessa função
+            // Novo vetor para armazenar os valores ao quadrado
+            let oMenor = vetorOriginal[0];//pega o primeiro elemento do vetor para "começar"
+            for (let i = 1; i < vetorOriginal.length; i++) { //a partir do segundo elemento do vetor, vai comparando.
+                if (vetorOriginal[i] < oMenor) {
+                    oMenor = vetorOriginal[i];// quando encontra um número menor do que o número que está na variável oMenor, substitui o conteúdo da variável.
+                }
+            }
+            document.getElementById('outputVerde').innerText = 'O menor é  ' + oMenor;
+        }
+
+        function acharMaiorNumero() {
+            // Vetor original
+            const vetorOriginal = dados;
+            // Novo vetor para armazenar os valores ao quadrado
+            let oMaior = vetorOriginal[0];//pega o primeiro elemento do vetor para "começar"
+            for (let i = 1; i < vetorOriginal.length; i++) {
+                if (vetorOriginal[i] > oMaior) {
+                    oMaior = vetorOriginal[i];
+                }
+            }
+            document.getElementById('outputVerde').innerText = 'O Maior é  ' + oMaior;
+        }
+
+        function somarImpares() {
+            // Vetor original
+            const vetorOriginal = dados;
+            let oMenor = vetorOriginal[0];//pega o primeiro elemento do vetor para "começar"
+            let soma = 0;
+            if (vetorOriginal[0] % 2 !== 0) { //se o primeiro elemento for ímpar, tem que soma-lo.
+                soma = vetorOriginal[0];
+            }
+            for (let i = 1; i < vetorOriginal.length; i++) {
+                if (vetorOriginal[i] % 2 !== 0) {
+                    soma += vetorOriginal[i];
+                }
+                if (vetorOriginal[i] < oMenor) {
+                    oMenor = vetorOriginal[i];
+                }
+            }
+            let resultado = soma / oMenor;
+            document.getElementById('outputVerde').innerText = 'A soma dos ímpares é ' + soma + " e o menor número é " + oMenor + " a divisão é " + resultado.toFixed(2);
+        }
+
+        function vetorAoQuadrado() {
+            // Vetor original
+            const vetorOriginal = dados;
+            // Novo vetor para armazenar os valores ao quadrado
+            const vetorAoQuadrado = new Array(vetorOriginal.length); //cria um vetor vazio com o mesmo tamanho do original
+
+            // Usando um laço for para elevar cada valor ao quadrado e armazenar no novo vetor
+            for (let i = 0; i < vetorOriginal.length; i++) {
+                vetorAoQuadrado[i] = vetorOriginal[i] * vetorOriginal[i];
+            }
+
+            // Exibir o vetor ao quadrado
+            document.getElementById('outputVerde').innerText = 'Vetor ao Quadrado: ' + vetorAoQuadrado;
+        }
+
+    </script>
+</body>
+
+</html>
