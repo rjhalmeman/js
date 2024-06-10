@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função</title>
+</head>
+
+<body>
+    <label for="inputNota">Insira algumas notas separadas por vírgula</label>
+    <input type="text" name="inputNota" id="inputNota">
+    <br>
+    <br>
+    <input type="button" value="Calcular média" onclick="calcular()">
+    <br>
+    <br>
+    <label for="resp">A média é</label>
+    <div id="resp">Mostrar Média: </div>
+    <script>
+        let inputNota = [];
+        function calcular() {
+            n = document.getElementById("inputNota").value;
+            notas = n.split(",").map(Number);
+            let media = calcularMedia(notas);
+            document.getElementById("resp").innerText = media;
+        }
+
+        function calcularMedia(notas) {
+            let soma = 0
+            for (let i = 0; i < notas.length; i++) {
+                soma = soma + notas[i];
+            }
+
+            let media = soma / notas.length;
+            return media;
+        }
+    </script>
+</body>
+
+</html>
