@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Números Primos</title>
+</head>
+<body>
+
+    <div>
+        <h2>Verificador de Números Primos</h2>
+        <input type="number" id="numberInput" placeholder="Digite um número" />
+        <button onclick="checkPrime()">Verificar</button>
+        <div id="result"></div>
+    </div>
+    <script src="18_isPrime.js"></script>
+    <script>      
+
+        function checkPrime() {
+            const num = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');                  
+            if (isPrime(num)) {
+                resultDiv.innerText = num + " é um número primo.";
+            } else {
+                resultDiv.innerText = num + " não é um número primo.";
+            }
+        }
+    </script>
+</body>
+</html>
