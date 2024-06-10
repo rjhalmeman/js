@@ -4,29 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo entrada/saída com vetor</title>
+    <title>Calcular média (com funções)</title>
 </head>
 
 <body>
     <label for="inputVetor">Vetor</label>
     <input type="text" name="inputVetor" id="inputVetor" placeholder="3,6,2,7,1,7, por exemplo" size="100">
     <br>
-    <input type="button" value="Calcular" onclick="fazerTudo()">
+    <input type="button" value="Calcular" onclick="funcaoMain()">
     <br>
-
-    <label for="outputRosa" id="rotuloOutputRosa"></label>
+ 
     <div id="outputRosa" style="background-color: rgb(245, 195, 255);"></div>
     <br>
-
-    <label for="outputVerde" id="rotuloOutputVerde"></label>
+ 
     <div id="outputVerde" style="background-color: rgb(82, 255, 246);"></div>
     <br>
 
     <script>
-        function obterDados() {
+
+        function funcaoMain() {
+            let vet = entradaDeDados();
+            let media = calcularMedia(vet);            
+            mostrarResposta("A média é " + media, "outputVerde");
+        }
+
+        function transformeEmVetorDeNumeros(vetor) {
+            //essa função faz o mesmo que map(Number)
+            let v = new Array(vetor.length); //cria um vetor vazio com a mesma quantidade de elementos do vetor.
+            for (let i = 0; i < vetor.length; i++) {
+                v[i] = parseFloat(vetor[i]); //transforma cada elemento do vetor em número                
+            }
+            return v; //retorna o novo vetor
+        }
+
+        function entradaDeDados() {
             let dados = [];
             dadosEmFormatoTexto = document.getElementById("inputVetor").value;
-            dados = dadosEmFormatoTexto.split(",").map(Number);
+            // dados = dadosEmFormatoTexto.split(",").map(Number);
+            dados = dadosEmFormatoTexto.split(",");//cria um vetor separando por vírgula
+            dados = transformeEmVetorDeNumeros(dados); // converte cada elemento texto em elemento numérico
             return dados;
         }
 
@@ -34,10 +50,10 @@
             let media = 0.0;
             let soma = 0.0;
             for (let i = 0; i < oVetor.length; i++) {
-                soma += oVetor[i];
+                soma += oVetor[i];//acumulador
             }
             media = soma / oVetor.length;
-            return media;
+            return media.toFixed(1);
         }
 
         function mostrarVetor(oVetor, mostrarNoElemento) {
@@ -53,12 +69,7 @@
             document.getElementById(mostrarNoElemento).innerText = resp;
         }
 
-        function fazerTudo() {
-            let oVetor = obterDados();
-            let media = calcularMedia(oVetor);
-            //  mostrarVetor(oVetor, "outputRosa");
-            mostrarResposta("A média é " + media, "outputRosa");
-        }
+
 
     </script>
 </body>

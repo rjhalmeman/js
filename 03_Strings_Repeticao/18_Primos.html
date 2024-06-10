@@ -10,19 +10,19 @@
     <div>
         <h2>Verificador de Números Primos</h2>
         <input type="number" id="numberInput" placeholder="Digite um número" />
-        <button onclick="checkPrime()">Verificar</button>
-        <div id="result"></div>
+        <button onclick="verifiqueSeEhNumeroPrimo()">Verificar</button>
+        <div id="resultado"></div>
     </div>
-    <script src="18_isPrime.js"></script>
+    <script src="18_FuncaoPrimo.js"></script>
     <script>      
 
-        function checkPrime() {            
+        function verifiqueSeEhNumeroPrimo() {            
             const num = parseInt(document.getElementById('numberInput').value);
-            const resultDiv = document.getElementById('result');                  
+            const divResultado = document.getElementById('resultado');                  
             if (ehPrimo(num)) {
-                resultDiv.innerText = num + " é um número primo.";
+                divResultado.innerText = num + " é um número primo.";
             } else {
-                resultDiv.innerText = num + " não é um número primo.";
+                divResultado.innerText = num + " não é um número primo.";
             }
         }
     </script>
