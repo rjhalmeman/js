@@ -17,7 +17,7 @@
     <br>
     <label for="resp">A média é</label>
     <div id="resp">Mostrar Média: </div>
-    <script src="funcMedia.js"></script>
+    <!-- <script src="funcMedia.js"></script> -->
     <script>
         let inputNota = [];
         function calcular() {
@@ -26,8 +26,14 @@
             let media = calcularMedia(notas);
             document.getElementById("resp").innerText = media;
         }
-
-        
+        function calcularMedia(notas) {
+            let soma = 0
+            for (let i = 0; i < notas.length; i++) {
+                soma = soma + notas[i];
+            }
+            let media = soma / notas.length;
+            return media;
+        }
     </script>
 </body>
 

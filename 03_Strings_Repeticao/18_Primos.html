@@ -16,11 +16,10 @@
     <script src="18_isPrime.js"></script>
     <script>      
 
-        function checkPrime() {
-            n = new Array(3)
+        function checkPrime() {            
             const num = parseInt(document.getElementById('numberInput').value);
             const resultDiv = document.getElementById('result');                  
-            if (isPrime(num)) {
+            if (ehPrimo(num)) {
                 resultDiv.innerText = num + " é um número primo.";
             } else {
                 resultDiv.innerText = num + " não é um número primo.";
