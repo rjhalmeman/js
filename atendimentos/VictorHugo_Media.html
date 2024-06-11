@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da média - Victor Hugo</title>
+</head>
+
+<body>
+    <h1>Cálculo de média com base em conjunto de dados fornecido pelo usuário</h1>
+    <h2>Victor Hugo</h2>
+    <label for="inputConjuntoDeNumeros">Digite um conjunto de números(separe com ; ):</label>
+    <input type="text" id="inputConjuntoDeNumeros">
+    <br>
+    <button onclick="verificar()">verificar</button>
+    <br>
+    <div id="resp" style="background-color: crimson;"></div>
+
+    <script>
+        function calculeAMedia(numeros) {
+           // alert(numeros)
+            let soma = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                soma = soma + numeros[i]; //acumulador
+            }
+            let media = soma / numeros.length;
+            return media;
+        }
+        function verificar() {
+            let conjuntoDeNumeros = document.getElementById("inputConjuntoDeNumeros").value; //"8;7;9;4"
+            let vetorDeNumeros = conjuntoDeNumeros.split(";");
+            let novoVetorDeNumeros = new Array(vetorDeNumeros.length);
+            for (let i = 0; i < vetorDeNumeros.length; i++) {
+                novoVetorDeNumeros[i] = parseFloat(vetorDeNumeros[i]); // "4"  4.0
+            }
+            m = calculeAMedia(novoVetorDeNumeros);
+            document.getElementById("resp").innerText = "A média é " + m;
+        }
+    </script>
+</body>
+
+</html>
