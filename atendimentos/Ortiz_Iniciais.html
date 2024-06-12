@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciais dos nomes</title>
+</head>
+
+<body onload="funcaoMain()">
+
+    <div id="saida"></div>
+
+
+    <script>
+        function funcaoMain() {
+            let nome = "João da Silva Sauro Junior dos Pereiras";
+            iniciaisDoNome(nome);
+        }
+        function iniciaisDoNome(nome) {
+           //  alert(nome)
+            pronomes = ["da", "dos", "de", "Filho", "Neto", "Junior"];
+            nomeSplitado = nome.split(" ");
+            document.getElementById("saida").innerHTML = nomeSplitado;
+            let iniciais ="";
+            for (let i = 0; i < nomeSplitado.length; i++) {
+                let achou = false;
+                for (let j = 0; j < pronomes.length; j++) {                    
+                    if (nomeSplitado[i] === pronomes[j]) {
+                        achou = true;
+                    }
+                }
+                if (!achou) {
+                    iniciais+=nomeSplitado[i][0];
+                }
+            }
+            document.getElementById("saida").innerHTML = iniciais;
+
+        }
+    </script>
+</body>
+
+</html>

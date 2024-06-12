@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>É palindromo?</title>
+</head>
+
+<body>
+    <label for="inputpalavra">Digite uma palavra:</label>
+    <input type="text" name="inputpalavra" id="inputpalavra">
+    <br>
+    <input type="button" value="Calcular" onclick="palavras()">
+    <br>
+    <label for="spanresp" style="background-color:rgb(255, 74, 201);">Resposta:</label>
+    <span id="spanresp" style="background-color:rgb(255, 74, 201);"></span>
+   <script src="palindromo.js"></script>
+   
+   <script>
+        function palavras() {
+            let palavra = document.getElementById("inputpalavra").value;
+            let resposta = ehPalindromo(palavra);
+            document.getElementById("spanresp").textContent = resposta;
+        }
+      
+    </script>
+</body>
+
+</html>
