@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qualquer coisa</title>
+</head>
+
+<body>
+    <label for="altura">Altura (m):</label>
+    <input type="number" id="altura" step="0.01"><br><br>
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso"><br><br>
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <br><br>
+    <div id="resultado"></div>
+    <script>
+        function calcularIMC() {
+            let altura = parseFloat(document.getElementById('altura').value.replace(',','.'));// se o usuário digitar ,(vírgula) troca por .(ponto)
+            let peso = parseFloat(document.getElementById('peso').value);
+          //  alert(altura)
+            let imc = peso / (altura * altura);
+            let resultado = document.getElementById('resultado');
+            resp = situacaoIMC(imc);
+            resultado.innerText = resp;
+        }
+
+        function situacaoIMC(imc) {
+            let situacao = "";
+            if (imc < 16.9) {
+                situacao = "muito abaixo do peso"
+            } else if (imc < 18.4) {
+                situacao = "abaixo do peso"
+            } else if (imc <= 25.0) {
+                situacao = "peso normal"
+            } else if (imc <= 30.0) {
+                situacao = "obesidade grau 1 "
+            } else if (imc <= 40.0) {
+                situacao = "muito obeso cara serio"
+            } else if (imc >= 50.0) {
+                situacao = "gordao da Xj"
+            }
+            return situacao;
+        }
+    </script>
+</body>
+
+</html>
