@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocorrencias</title>
+</head>
+<body>
+    <h2>Distribuição de Ocorrências</h2>
+
+    <label>
+        Tipo da ocorrência:
+        <select id="tipo">
+            <option value="direçãoPerigosa">Direção Perigosa</option>
+            <option value="bebedeira">Bebedeira</option>
+            <option value="barulho">Barulho</option>
+            <option value="homer">Homer</option>
+        </select>
+        <br>
+        <br>
+        Gravidade da ocorrência:
+        <select id="gravidade">
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <button onclick="registrar()">Registrar</button>
+    <br>
+    <br>
+    <h2>Resumo das ocorrências</h2>
+    <div id="proximo"></div>
+    <div id="resumoC"></div>
+    <div id="resumoE"></div>
+    <div id="resumoL"></div>
+    <br>
+    <br>
+    <div id="resumo"></div>
+    <div id="resumo2"></div>
+    <div id="resumo3"></div>
+    <div id="resumo4"></div>
+    <div id="resumo5"></div>
+    <div id="porcentagemDp"></div>
+
+    <script>
+        let proximo = "";
+        let dp = 0;
+        let bbdeira = 0;
+        let barulho = 0;
+        let homer = 0;
+        let clancy = 0;
+        let eddie = 0;
+        let lou = 0;
+        let teste = 67;
+        let total = 0; 
+        function registrar() {
+            let cont = 1;
+            let tipo = document.getElementById("tipo").value;
+            let gravidade = document.getElementById("gravidade").value;
+
+            total +=1;
+
+            if (tipo == "direçãoPerigosa") {
+                dp +=1;
+            } else if (tipo == "bebedeira") {
+                bbdeira += 1;
+            }else if (tipo == "barulho") {
+                barulho += 1;
+            } else {
+                homer +=1
+            }
+            
+            if(tipo == "homer" || clancy <= eddie && clancy <= lou) {
+                    clancy += 1;
+                    proximo = "Eddie";
+                    console.log(clancy + " clancy");
+                    console.log(proximo);
+
+                
+            } else if (eddie <= lou) {
+                    eddie += 1;
+                    proximo = "Lou";
+                    console.log(eddie + " eddie");
+                    console.log(proximo);
+            } else {
+                    lou += 1;
+                    proximo = "Clancy";
+                    console.log(lou + " lou");
+                    console.log(proximo)
+            }
+            
+            let porcentagemDp = (dp/total)*100;
+            const resumo = "Total de ocorrências: " + total + ", sendo: ";
+            const resumo2 = "Direção Perigosa: " + dp;
+            const resumo3 = "Bebedeira: " + bbdeira;
+            const resumo4 = "Barulho: " + barulho;
+            const resumo5 = "Homer: " + homer; 
+
+            document.getElementById("resumo").innerHTML = resumo;
+            document.getElementById("resumo2").innerHTML = resumo2;
+            document.getElementById("resumo3").innerHTML = resumo3;
+            document.getElementById("resumo4").innerHTML = resumo4;
+            document.getElementById("resumo5").innerHTML = resumo5;
+            document.getElementById("resumo5").innerHTML = resumo5;
+
+            document.getElementById("proximo").innerHTML = "Próximo: " + proximo;
+            
+            document.getElementById("resumoC").innerHTML = "Clancy: " + clancy;
+            document.getElementById("resumoE").innerHTML = "Eddie: " + eddie;
+            document.getElementById("resumoL").innerHTML = "Lou: " + lou;
+
+            document.getElementById("porcentagemDp").innerHTML = "Porcentagem de ocorrências do tipo Direção Perigosa: " + porcentagemDp + "%"
+        }
+
+    </script>
+</body>
+</html>

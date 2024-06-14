@@ -12,6 +12,9 @@
         <input type="number" id="numberInput" placeholder="Digite um número" />
         <button onclick="verifiqueSeEhNumeroPrimo()">Verificar</button>
         <div id="resultado"></div>
+
+       
+
     </div>
     <script src="18_FuncaoPrimo.js"></script>
     <script>      
@@ -19,7 +22,7 @@
         function verifiqueSeEhNumeroPrimo() {            
             const num = parseInt(document.getElementById('numberInput').value);
             const divResultado = document.getElementById('resultado');                  
-            if (ehPrimo(num)) {
+            if (primoThome(num)) {
                 divResultado.innerText = num + " é um número primo.";
             } else {
                 divResultado.innerText = num + " não é um número primo.";

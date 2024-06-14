@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternar Maiúsculas e Minúsculas</title>   
+</head>
+<body>
+    <h1>Alternar Maiúsculas e Minúsculas</h1>
+    <label for="inputString">Digite uma frase:</label>
+    <input type="text" id="inputString" placeholder="Digite aqui">
+    <button onclick="alternarMaiusculasMinusculas()">Alternar</button>
+    <p id="outputString"></p>
+
+    <script>
+        function alternarMaiusculasMinusculas() {
+            // Obtém a string de entrada do usuário
+            const inputString = document.getElementById('inputString').value;
+            
+            // Inicializa uma variável para armazenar o resultado
+            let resultado = '';
+            
+            // Percorre cada caractere na string de entrada
+            for (let i = 0; i < inputString.length; i++) {
+                const char = inputString.charAt(i);
+                // Alterna entre maiúsculas e minúsculas
+                if (char === char.toUpperCase()) {
+                    resultado += char.toLowerCase();
+                } else {
+                    resultado += char.toUpperCase();
+                }
+            }
+            
+            // Exibe o resultado na página
+            document.getElementById('outputString').innerText = resultado;
+        }
+    </script>
+</body>
+</html>

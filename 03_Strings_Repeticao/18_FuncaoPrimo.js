@@ -12,11 +12,11 @@ function isPrime(num) {
         }
         i++;
     }
-    return true;  
+    return true;
 }
 function ehPrimo(num) {
     let cont = 0;
-    for (let i = 1; i <= num; i++) {      
+    for (let i = 1; i <= num; i++) {
         if (num % i === 0) {
             cont++;
             // alert(i);
@@ -27,3 +27,15 @@ function ehPrimo(num) {
     }
     return true;
 }
+
+function primoThome(dados) {
+    for (i = 2; i <= dados; i++) {
+        let resp;
+        if (i == dados) {
+            return resp;
+        }else if (dados % i === 0) {
+            return false;            
+        }
+    }    
+}
+
