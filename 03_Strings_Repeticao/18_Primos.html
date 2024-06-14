@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificador de Números Primos</title>
 </head>
-<body>
 
+<body>
     <div>
         <h2>Verificador de Números Primos</h2>
         <input type="number" id="numberInput" placeholder="Digite um número" />
         <button onclick="verifiqueSeEhNumeroPrimo()">Verificar</button>
         <div id="resultado"></div>
-
-       
-
     </div>
     <script src="18_FuncaoPrimo.js"></script>
-    <script>      
+    <!-- importa a função do outro arquivo -->
+    <script>
 
-        function verifiqueSeEhNumeroPrimo() {            
+        function verifiqueSeEhNumeroPrimo() {
             const num = parseInt(document.getElementById('numberInput').value);
-            const divResultado = document.getElementById('resultado');                  
+            const divResultado = document.getElementById('resultado');
             if (primoThome(num)) {
                 divResultado.innerText = num + " é um número primo.";
             } else {
@@ -30,4 +29,5 @@
         }
     </script>
 </body>
+
 </html>
