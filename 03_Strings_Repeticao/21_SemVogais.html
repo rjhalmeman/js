@@ -19,11 +19,11 @@
             let novaFraseSemVogais = "";
             for (let i = 0; i < frase.length; i++) {
                 const letra = frase[i];
-                if (!ehVogal(letra)) {
+                if (naoEhVogal(letra)) {
                     novaFraseSemVogais += letra;
                 }
             }
-            document.getElementById("resposta").innerText = "Sem as vogais fica assim: "+novaFraseSemVogais;
+            document.getElementById("resposta").innerText = "Sem as vogais fica assim: " + novaFraseSemVogais;
         }
 
         function ehVogal(letra) {
@@ -49,6 +49,95 @@
             } else {
                 return false;
             }
+        }
+
+        function naoEhVogal(letra) {
+            letra = letra.toLowerCase();
+            if (letra === 'a' ||
+                letra === 'á' ||
+                letra === 'à' ||
+                letra === 'â' ||
+                letra === 'ã' ||
+                letra === 'e' ||
+                letra === 'é' ||
+                letra === 'ê' ||
+                letra === 'i' ||
+                letra === 'í' ||
+                letra === 'o' ||
+                letra === 'ó' ||
+                letra === 'õ' ||
+                letra === 'ô' ||
+                letra === 'u' ||
+                letra === 'ú'
+            ) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function naoEhVogal2(letra) {
+            letra = letra.toLowerCase();
+            if (letra !== 'a' &&
+                letra !== 'á' &&
+                letra !== 'à' &&
+                letra !== 'â' &&
+                letra !== 'ã' &&
+                letra !== 'e' &&
+                letra !== 'é' &&
+                letra !== 'ê' &&
+                letra !== 'i' &&
+                letra !== 'í' &&
+                letra !== 'o' &&
+                letra !== 'ó' &&
+                letra !== 'õ' &&
+                letra !== 'ô' &&
+                letra !== 'u' &&
+                letra !== 'ú'
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        function ehVogal2(letra) {
+            const vogais = [
+                'a', 'e', 'i', 'o', 'u',
+                'A', 'E', 'I', 'O', 'U',
+                'á', 'é', 'í', 'ó', 'ú',
+                'Á', 'É', 'Í', 'Ó', 'Ú',
+                'à', 'è', 'ì', 'ò', 'ù',
+                'À', 'È', 'Ì', 'Ò', 'Ù',
+                'ã', 'õ',
+                'Ã', 'Õ',
+                'â', 'ê', 'î', 'ô', 'û',
+                'Â', 'Ê', 'Î', 'Ô', 'Û'
+            ];
+            for (let i = 0; i < vogais.length; i++) {
+                const element = vogais[i];
+                if (letra === element) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function ehVogal3(letra) {
+            const vogais = [
+                'a', 'e', 'i', 'o', 'u',
+                'A', 'E', 'I', 'O', 'U',
+                'á', 'é', 'í', 'ó', 'ú',
+                'Á', 'É', 'Í', 'Ó', 'Ú',
+                'à', 'è', 'ì', 'ò', 'ù',
+                'À', 'È', 'Ì', 'Ò', 'Ù',
+                'ã', 'õ',
+                'Ã', 'Õ',
+                'â', 'ê', 'î', 'ô', 'û',
+                'Â', 'Ê', 'Î', 'Ô', 'Û'
+            ];
+            return vogais.includes(letra);
         }
 
 
