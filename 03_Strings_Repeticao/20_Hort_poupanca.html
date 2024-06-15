@@ -9,7 +9,7 @@
 
 <body>
     <label>
-        Digite o valor depositado na poupança: <input type="number" id="valor">
+        Digite o valor depositado na poupança: <input type="number" id="inputValor">
     </label>
     <br>
     <button onclick="calcular()">Calcular</button>
@@ -18,7 +18,7 @@
     <script>
 
         function calcular() {
-            let valorOriginal = parseFloat(document.getElementById("valor").value);
+            let valorOriginal = parseFloat(document.getElementById("inputValor").value);
             let rendimentoMensal = [0.71, 0.58, 0.74, 0.58, 0.71, 0.68, 0.66, 0.72, 0.61, 0.60, 0.58, 0.57];
             let r = 0;
             let valorAcumulado = 0;
