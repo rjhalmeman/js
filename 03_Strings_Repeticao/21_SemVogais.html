@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprime string sem vogais</title>
+</head>
+
+<body>
+    <label for="inputFrase">Digite uma frase: </label>
+    <input type="text" name="inputFrase" id="inputFrase">
+    <input type="button" value="Remover as vogais" onclick="removerVogais()">
+    <div id="resposta">...</div>
+
+    <script>
+        function removerVogais() {
+            let frase = document.getElementById("inputFrase").value;
+            let novaFraseSemVogais = "";
+            for (let i = 0; i < frase.length; i++) {
+                const letra = frase[i];
+                if (!ehVogal(letra)) {
+                    novaFraseSemVogais += letra;
+                }
+            }
+            document.getElementById("resposta").innerText = "Sem as vogais fica assim: "+novaFraseSemVogais;
+        }
+
+        function ehVogal(letra) {
+            letra = letra.toLowerCase();
+            if (letra === 'a' ||
+                letra === 'á' ||
+                letra === 'à' ||
+                letra === 'â' ||
+                letra === 'ã' ||
+                letra === 'e' ||
+                letra === 'é' ||
+                letra === 'ê' ||
+                letra === 'i' ||
+                letra === 'í' ||
+                letra === 'o' ||
+                letra === 'ó' ||
+                letra === 'õ' ||
+                letra === 'ô' ||
+                letra === 'u' ||
+                letra === 'ú'
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
