@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poupança Hort</title>
+</head>
+
+<body>
+    <label>
+        Digite o valor depositado na poupança: <input type="number" id="valor">
+    </label>
+    <br>
+    <button onclick="calcular()">Calcular</button>
+    <br>
+    <div id="resp"></div>
+    <script>
+
+        function calcular() {
+            let valorOriginal = parseFloat(document.getElementById("valor").value);
+            let rendimentoMensal = [0.71, 0.58, 0.74, 0.58, 0.71, 0.68, 0.66, 0.72, 0.61, 0.60, 0.58, 0.57];
+            let r = 0;
+            let valorAcumulado = 0;
+            for (let i = 0; i < rendimentoMensal.length; i++) {
+                r = rendimentoMensal[i];
+                valorAcumulado += (r/100) * valorOriginal;
+            }
+            let montante = valorOriginal + valorAcumulado;
+            let rendimento = montante - valorOriginal;
+            document.getElementById("resp").innerHTML ="Após 12 meses, o rendimento foi de "+ rendimento.toFixed(2)+ " e o montante  é de "+ montante.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>
