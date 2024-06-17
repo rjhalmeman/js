@@ -19,7 +19,7 @@
             let novaFraseSemVogais = "";
             for (let i = 0; i < frase.length; i++) {
                 const letra = frase[i];
-                if (naoEhVogal(letra)) {
+                if (!ehVogal(letra)) {
                     novaFraseSemVogais += letra;
                 }
             }

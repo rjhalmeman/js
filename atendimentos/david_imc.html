@@ -29,18 +29,18 @@
 
         function situacaoIMC(imc) {
             let situacao = "";
-            if (imc < 16.9) {
-                situacao = "muito abaixo do peso"
-            } else if (imc < 18.4) {
-                situacao = "abaixo do peso"
-            } else if (imc <= 25.0) {
-                situacao = "peso normal"
-            } else if (imc <= 30.0) {
-                situacao = "obesidade grau 1 "
-            } else if (imc <= 40.0) {
-                situacao = "muito obeso cara serio"
-            } else if (imc >= 50.0) {
-                situacao = "gordao da Xj"
+            if (imc < 16) {
+                situacao = "Subpeso severo"
+            } else if (imc < 20) {
+                situacao = "Subpeso"
+            } else if (imc < 25.0) {
+                situacao = "Peso normal"
+            } else if (imc < 30.0) {
+                situacao = "Sobrepeso"
+            } else if (imc < 40.0) {
+                situacao = "Obeso"
+            } else {
+                situacao = "Obeso mórbido"
             }
             return situacao;
         }

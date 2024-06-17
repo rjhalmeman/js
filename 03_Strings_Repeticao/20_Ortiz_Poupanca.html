@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10 - Poupança</title>
+</head>
+
+<body>
+    <label for="dinheiroInvestido">Insira o dinheiro que voĉe vai investir</label>
+    <input type="number" id="dinheiroInvestido" placeholder="Digite">
+    <br>
+    <button accesskey="s" onclick="calcularInvestimento()">CLICK</button>
+    <br>
+    <label for="saida"> resultado: </label>
+    <div id="saida">.......</div>
+    <script>
+        function calcularInvestimento() {
+            let rendimentoMensal = [0.71, 0.58, 0.74, 0.58, 0.71, 0.68, 0.66, 0.72, 0.61, 0.60, 0.58, 0.57];
+            let dinheiroOriginal = parseFloat(document.getElementById("dinheiroInvestido").value);
+            let montante = dinheiroOriginal;
+            let saida = "";
+            for (let i = 0; i < rendimentoMensal.length; i++) {
+                montante += (rendimentoMensal[i] / 100 * montante) ;       
+            }
+            saida = montante.toFixed(2);
+            document.getElementById("saida").innerText = "Seu rendimento foi igual á "+ saida ;
+        }
+    </script>
+</body>
+
+</html>
