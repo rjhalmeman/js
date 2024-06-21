@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprime string sem vogais</title>
+</head>
+
+<body>
+    <label for="inputNumeroDecimal">Digite um número inteiro: </label>
+    <input type="text" name="inputNumeroDecimal" id="inputNumeroDecimal">
+    <input type="button" value="Converter para binário" onclick="converterParaBinario()">
+    <div id="resposta">...</div>
+
+    <script>
+        function converterParaBinario() {
+            let decimal =parseInt( document.getElementById("inputNumeroDecimal").value);
+            let resto;
+            let stringBinario = "";
+            let n = decimal;
+            while (n>1) {
+                resto = n%2;
+                n = parseInt(n/2);
+                stringBinario+=resto;
+            }
+            stringBinario+=n;
+            resp ="00000000".substring(0,8-stringBinario.length); //preenche à esquerda com zeros
+            
+            //inverte a string
+            let i = stringBinario.length-1;
+            while (i>=0) {
+                resp+=stringBinario[i];
+                i--;
+            }
+           
+            document.getElementById("resposta").innerText = "O número "+decimal+" convertido para binário é "+resp;
+        }
+    </script>
+
+</body>
+
+</html>

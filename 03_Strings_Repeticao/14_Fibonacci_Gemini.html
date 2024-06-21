@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequência de Fibonacci</title>
+</head>
+<body>
+    <h1>Sequência de Fibonacci</h1>
+    <input type="number" id="numeroTermos" placeholder="Digite o número de termos">
+    <button onclick="calcularFibonacci()">Calcular</button>
+    <div id="resultado"></div>
+
+    <script>
+        function calcularFibonacci() {
+            var numeroTermos = parseInt(document.getElementById("numeroTermos").value);
+
+            if (isNaN(numeroTermos) || numeroTermos <= 0) {
+                alert("Número de termos inválido. Digite um número inteiro positivo.");
+                return;
+            }
+
+            var fibonacci = [0, 1];
+
+            for (var i = 2; i < numeroTermos; i++) {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+            }
+
+            var resultado = "Sequência de Fibonacci: ";
+            for (var i = 0; i < numeroTermos; i++) {
+                resultado += fibonacci[i] + ", ";
+            }
+
+            resultado = resultado.substring(0, resultado.length - 2); // Remove a última vírgula
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gráfico da função f(x)</title>
+</head>
+
+<body>
+    <label for="functionInput">y = </label>
+    <input type="text" id="functionInput" placeholder="Digite a função f(x)">
+    <button onclick="startGraph()">Desenhar Gráfico</button>
+    <canvas id="graph" width="400" height="400"></canvas>
+    <script>
+        // Obtém o contexto 2D do canvas
+        var canvas = document.getElementById("graph");
+        var ctx = canvas.getContext("2d");
+
+        // Define a escala do gráfico
+        var scaleX = 20; // Define quantos pixels representam uma unidade no eixo x
+        var scaleY = 20; // Define quantos pixels representam uma unidade no eixo y
+
+        // Função para desenhar o gráfico
+        function drawGraph(func) {
+            // Limpa o canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Desenha os eixos x e y
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.strokeStyle = "#000";
+            ctx.stroke();
+
+            // Desenha a função
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2 - func(0) * scaleY);
+
+            var x = -canvas.width / 2;
+            drawNextPoint(func);
+
+            function drawNextPoint(func) {
+                if (x <= canvas.width / 2) {
+                    var y = func(x / scaleX) * scaleY;
+                    ctx.lineTo(x + canvas.width / 2, canvas.height / 2 - y);
+                    ctx.strokeStyle = "#f00";
+                    ctx.stroke();
+                    x++;
+                    setTimeout(function () {
+                        drawNextPoint(func);
+                    }, 10); // Define o atraso entre cada ponto (em milissegundos)
+                }
+            }
+        }
+
+        // Função para iniciar o desenho do gráfico
+        function startGraph() {
+            var userInput = document.getElementById("functionInput").value;
+            var func;
+            try {
+                func = new Function("x", "return " + userInput); // Cria uma função a partir da entrada do usuário
+            } catch (error) {
+                alert("Erro: Função inválida!");
+                return;
+            }
+            drawGraph(func);
+        }
+    </script>
+</body>
+
+</html>

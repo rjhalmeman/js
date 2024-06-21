@@ -20,10 +20,8 @@
             let numerosDigitados = document.getElementById("inputVetor").value;
             let vetor = numerosDigitados.split(",").map(Number);
             document.getElementById("vetorObtido").innerText = vetor;
-
             let vetorOrdenado = bubbleSort(vetor);
-
-            document.getElementById("vetorOrdenado").innerText = vetor;
+            document.getElementById("vetorOrdenado").innerText = vetorOrdenado;
         }
 
         function bubbleSort(vetor) {

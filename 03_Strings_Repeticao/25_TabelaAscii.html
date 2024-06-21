@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela ASCII</title>
+</head>
+
+<body>
+    <p>para converter de decimal para caractere ascii - String.fromCharCode(num)</p>
+    <p>para converter de caractere ascii para decimal - String.fromCharCode(num)</p>
+    <input type="button" value="Letras maiúsculas" onclick="somenteLetrasMaiusculas()">
+    <br>
+    <input type="button" value="Letras minúsculas" onclick="somenteLetrasMinusculas()">
+    <br>
+    <input type="button" value="Numeros" onclick="somenteNumeros()">
+    <br>
+    <input type="button" value="Tabela completa" onclick="tabelaCompleta()">
+    <br>
+    <label for="charInput">Enter a character:</label>
+    <input type="text" id="charInput" maxlength="1">
+    <button onclick="getCharCode()">Get Decimal Code</button>
+    <div id="resposta"></div>
+
+    <script>
+        function getCharCode() {
+            const charInput = document.getElementById("charInput").value;
+            const charCode = charInput.charCodeAt(0);           
+                document.getElementById("resposta").innerHTML = `O código decimal para '${charInput}' é ${charCode}.`;
+            
+        }
+
+        function somenteNumeros() {
+            let i = 48;
+            let resp = "";
+            while (i < 58) {
+                resp += i + " " + String.fromCharCode(i) + "<br>";
+                i++;
+            }
+
+            document.getElementById("resposta").innerHTML = resp;
+        }
+
+        function somenteLetrasMaiusculas() {
+            let i = 65;
+            let resp = "";
+            while (i < 91) {
+                resp += i + " " + String.fromCharCode(i) + "<br>";
+                i++;
+            }
+
+            document.getElementById("resposta").innerHTML = resp;
+        }
+
+        function somenteLetrasMinusculas() {
+            let i = 97;
+            let resp = "";
+            while (i < 123) {
+                resp += i + " " + String.fromCharCode(i) + "<br>";
+                i++;
+            }
+
+            document.getElementById("resposta").innerHTML = resp;
+        }
+
+        function tabelaCompleta() {
+            let tabela = "<table><tr><th>Código Decimal</th><th>Caractere</th></tr>";
+            let i = 0;
+            let coluna = 0;
+
+            while (i < 256) {
+                if (coluna === 0) {
+                    tabela += "<tr>";
+                }
+
+                tabela += `<td>${i}</td><td>${String.fromCharCode(i)}</td>`;
+
+                coluna++;
+                if (coluna === 10) {
+                    tabela += "</tr>"; // Close the row after 10 columns
+                    tabela += "<tr style='border-bottom: 1px solid blue;'>"; // Add separator line with blue color
+                    coluna = 0;
+                }
+
+                i++;
+            }
+
+            if (coluna > 0) {
+                tabela += "</tr>";
+            }
+
+            tabela += "</table>";
+            document.getElementById("resposta").innerHTML = tabela;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
