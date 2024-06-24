@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valores de x</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1>Calculadora da Oksane</h1>
+    </nav>
+    <h3>Digite o intervalo de cálculo</h3>
+    <label for="inicioX">Inicio do x:</label>
+    <input type="number" id="inicioX" placeholder="Digite um número">
+    <br><br>
+    <label for="fimX">Final do x:</label>
+    <input type="number" id="fimX" placeholder="Digite um número">
+    <br>
+    <br>
+    <h3>Escolha a operação</h3>
+    <h1 class="p-1"><input class="btn btn-primary" type="button" value="a) f(x)= 3x&sup2;+ 1" onclick="Xquadrado()">
+        <br>
+        <input class="btn btn-primary" type="button" value="b) f(x)= &radic;x&sup2; + 7" onclick="raizDeX()">
+        <br>
+        <input class="btn btn-primary" type="button" value="c) f(x)= 3x+ x&radic;" onclick="tresVezesX()">
+        <br>
+        <input class="btn btn-primary" type="button" value="d) f(x)= x&sup2; se x<0 e x&sup3; se x>=0"
+            onclick="duasFuncoes()">
+        <br>
+        <input class="btn btn-primary" type="button" value="e) f(x)= x**(1/3)" onclick="cuboDeX()">
+    </h1>
+    <span id="resposta"></span>
+    <script>
+        function Xquadrado() {
+            let inX = parseInt(document.getElementById("inicioX").value);
+            let fiX = parseInt(document.getElementById("fimX").value);
+            let resp = '<table class="table"> <thead> <tr> <th scope="col">X</th> <th scope="col">Y</th> </tr> </thead> <tbody>';
+            let y = 0;
+            for (let i = inX; i <= fiX; i++) {
+                y = (3 * (i ** 2)) + 1;
+                resp = resp + "<tr> <th>" + i + "</th>";
+                resp = resp + "<th>" + y + "</th>";
+                resp = resp + "</tr>";
+            }
+            resp = resp + "</tbody></table>";
+            document.getElementById("resposta").innerHTML = resp;
+        }
+
+        function raizDeX() {
+            let inX = parseInt(document.getElementById("inicioX").value);
+            let fiX = parseInt(document.getElementById("fimX").value);
+            let resp = "";
+            let y = 0;
+            for (let i = inX; i <= fiX; i++) {
+                y = Math.sqrt(i ** 2 + 7);
+                resp = resp + i + ";" + y + "<br>";
+            }
+            resp = resp + "</tbody></table>";
+            document.getElementById("resposta").innerHTML = resp;
+        }
+        function tresVezesX() {
+            let inX = parseInt(document.getElementById("inicioX").value);
+            let fiX = parseInt(document.getElementById("fimX").value);
+            let resp = "";
+            let y = 0;
+            for (let i = inX; i <= fiX; i++) {
+                y = (3 * i) + Math.sqrt(i);
+                resp = resp + i + ";" + y + "<br>";
+            }
+            resp = resp + "</tbody></table>";
+            document.getElementById("resposta").innerHTML = resp;
+        }
+        function duasFuncoes() {
+            let inX = parseInt(document.getElementById("inicioX").value);
+            let fiX = parseInt(document.getElementById("fimX").value);
+            let resp = "";
+            let y = 0;
+            for (let i = inX; i <= fiX; i++) {
+                if (i < 0) {
+                    y = i ** 2;
+                } else if (i >= 0) {
+                    y = i ** 3;
+                }
+
+                resp = resp + i + ";" + y + "<br>";
+            }
+            resp = resp + "</tbody></table>";
+            document.getElementById("resposta").innerHTML = resp;
+        }
+        function cuboDeX() {
+            let inX = parseInt(document.getElementById("inicioX").value);
+            let fiX = parseInt(document.getElementById("fimX").value);
+            let resp = '<table class="table"> <thead> <tr> <th scope="col">X</th> <th scope="col">Y</th> </tr> </thead> <tbody>';
+            let y = 0;
+            for (let i = inX; i <= fiX; i++) {
+                y = i ** (1 / 3);
+                resp = resp + "<tr> <th>" + i + "</th>";
+                resp = resp + "<th>" + y + "</th>";
+                resp = resp + "</tr>";
+            }
+            resp = resp + "</tbody></table>";
+            document.getElementById("resposta").innerHTML = resp;
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
