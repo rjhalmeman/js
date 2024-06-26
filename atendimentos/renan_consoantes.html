@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acumular consoante</title>
+</head>
+
+<body>
+    <h2>Digite uma frase</h2>
+    <input type="text" name="frase" id="frase">
+    <button onclick="AcumularConso()">Acumular consoante</button>
+    <div id="resposta"></div>
+    <script>
+        function AcumularConso() {            
+            let frase = document.getElementById("frase").value;           
+            let aux="";
+            for (let i = 0; i < frase.length; i++) {
+                if (!ehVogal(frase[i])) {
+                    aux = aux + frase[i];
+                }
+            }
+            resp = aux;
+            document.getElementById("resposta").innerHTML = resp;
+        }
+
+        function ehVogal(letra) {
+            letra = letra.toLowerCase();
+            if (letra === 'a' ||
+                letra === 'á' ||
+                letra === 'à' ||
+                letra === 'â' ||
+                letra === 'ã' ||
+                letra === 'e' ||
+                letra === 'é' ||
+                letra === 'ê' ||
+                letra === 'i' ||
+                letra === 'í' ||
+                letra === 'o' ||
+                letra === 'ó' ||
+                letra === 'õ' ||
+                letra === 'ô' ||
+                letra === 'u' ||
+                letra === 'ú'
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
