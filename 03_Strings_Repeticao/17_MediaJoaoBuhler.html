@@ -20,9 +20,10 @@
        <script>
         let inputNota = [];
         function calcular() {
-            n = document.getElementById("inputNota").value;
-            notas = n.split(",").map(Number);
-            let media = calcularMedia(notas);
+            n = document.getElementById("inputNota").value; //"9,8,5,9"
+            let vetorNotas = n.split(",");//["9","8","5","9"]
+            let vetorNotasNumerico = vetorNotas.map(Number);//[9,8,5,9]
+            let media = calcularMedia(vetorNotasNumerico);
             document.getElementById("resp").innerText = media;
         }
         function calcularMedia(notas) {
