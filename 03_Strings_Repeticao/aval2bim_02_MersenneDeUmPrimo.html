@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números de Mersenne</title>
+
+</head>
+
+<body>
+    <h1>Cálculo do Número de Mersenne</h1>
+    <label for="numberInput">Digite um número primo:</label>
+    <input type="number" id="numberInput">
+    <button onclick="calculateMersenne()">Calcular Número de Mersenne</button>
+    <p id="result"></p>
+
+    <script>
+        // Função para verificar se um número é primo
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+
+            if (num % 2 === 0 || num % 3 === 0) return false;
+
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+
+            return true;
+        }
+
+        // Função para calcular o número de Mersenne
+        function calculateMersenne() {
+            const inputNumero = document.getElementById("numberInput").value;
+            const numero = parseInt(inputNumero);
+            const resposta = document.getElementById("result");
+
+            if (isPrime(numero)) {
+                const mersenneDeUmPrimo = (2 ** numero) - 1;
+                resposta.innerText = "O número de Mersenne para o primo " + numero + " é " + mersenneDeUmPrimo;
+            } else {
+                resposta.innerText = numero + " não é um número primo.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Faz algo ...</title>
+</head>
+
+<body>
+    <label for="inputConjunto">Digite um conjunto de números</label>
+    <input type="text" name="inputConjunto" id="inputConjunto" 
+    placeholder="Separe os valores por vírgulas. Ex. 5,3,7" size="50"> <br>    
+    <input type="button" value="Faça" onclick="facaAMagicaAcontecer()"> <br>
+    <label for="saida">Fez alguma coisa...</label>
+    <div id="saida">...</div>
+    <script>
+        function facaAMagicaAcontecer() {
+            let conjuntoTexto = document.getElementById("inputConjunto").value;
+            let conjuntoVetor = conjuntoTexto.split(",");
+            let conjuntoDeNumeros = conjuntoVetor.map(Number);
+            let novoConjunto = facaAlgoLegal(conjuntoDeNumeros);
+            document.getElementById("saida").innerText = "Depois de pronto fica assim: " + novoConjunto;
+        }
+        function facaAlgoLegal(conjunto) {
+            let p = 0;
+            for (let i = 0; i < conjunto.length; i++) {
+                let m = conjunto[i];
+                let trocarValoresDePosicao = false;
+                for (let j = i; j < conjunto.length; j++) {
+                    if (conjunto[j] < m) {
+                        m = conjunto[j];
+                        p = j;
+                        trocarValoresDePosicao = true;
+                    }
+                }
+                if (trocarValoresDePosicao) {
+                    let auxiliar = conjunto[i];
+                    conjunto[i] = conjunto[p];
+                    conjunto[p] = auxiliar;
+                }
+            }
+            return conjunto;
+        }
+    </script>
+</body>
+
+</html>

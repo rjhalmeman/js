@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformar Texto</title>
+</head>
+
+<body>
+    <div>
+        <h1>Leia o texto</h1>
+        <p>
+            3573 P3QU3N0 73X70 53RV3 4P3N45 P4R4 M057R4R C0M0 N0554 C483Ç4 C0N53GU3 F4Z3R C01545 1MPR35510N4N735!! 
+            R3P4R3 N1550!! N0 C0M3Ç0 3574V4 M310 C0MPL1C4D0, 
+            M45 N3554 L1NH4 5U4 M3N73 V41 D3C1FR4ND0 0 C0D1G0 QU453 4U70M471C4M3N73, 
+            53M PR3C154R P3N54R MU170, C3R70?
+        </p>
+
+        <br><br>
+        <h2>
+            4G0R4 F4Ç4 UM PR0GR4M4 3M J4V45CR1P7 QU3 L314 UM4 FR453 3 7R4N5F0RM3 3554 FR453 D0 M35M0 M0D0 QU3 F01 F3170
+            N4 FR453 4C1M4.
+        </h2>
+        <br><br>
+        <input type="text" id="inputFrase" placeholder="D1G173 5U4 FR453 4QU1..." size="100">
+        <br>
+        <br>
+        <button onclick="transformText()">7R4N5F0RM3</button>
+        <br>
+        <br>
+        <div id="divSaida"></div>
+        <br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <button onclick="prigui()">Preguiça de digitar</button>
+        <br><br>
+
+    </div>
+
+    <script>
+
+        function prigui() {
+            txt = "este pequeno texto serve apenas para mostrar como nossa cabeça consegue" +
+                " fazer coisas impressionantes!! repare nisso!! no começo estava meio complicado, " +
+                "mas nessa linha sua mente vai decifrando o codigo quase automaticamente, sem " +
+                "precisar pensar muito, certo?";
+            document.getElementById("inputFrase").value = txt;
+        }
+        function transformText() {
+            const frase = document.getElementById('inputFrase').value.toUpperCase();
+            const divSaidaElement = document.getElementById('divSaida');
+            let textoTransformado = '';
+            for (let i = 0; i < frase.length; i++) {
+                textoTransformado += transformeA(frase[i]);
+            }
+            divSaidaElement.textContent = textoTransformado;
+        }
+
+        function transformeA(aLetra) {
+            let lt;
+            switch (aLetra) {
+                case 'A':
+                    lt = '4';
+                    break;
+                case 'B':
+                    lt = '8';
+                    break;
+                case 'E':
+                    lt = '3';
+                    break;
+                case 'I':
+                    lt = '1';
+                    break;
+                case 'O':
+                    lt = '0';
+                    break;
+                case 'S':
+                    lt = '5';
+                    break;
+                case 'T':
+                    lt = '7';
+                    break;
+                default:
+                    lt = aLetra; // se não é uma das letras acima, não muda
+            }
+            return lt;
+        }
+        function transformeB(aLetra) {
+            let lt;
+            switch (aLetra) {
+                case 'A':
+                    lt = '4';
+                    break;
+                case 'B':
+                    lt = '8';
+                    break;
+                case 'E':
+                    lt = '3';
+                    break;
+                case 'I':
+                    lt = '1';
+                    break;
+                case 'O':
+                    lt = '0';
+                    break;
+                case 'S':
+                    lt = '5';
+                    break;
+                case 'T':
+                    lt = '7';
+                    break;
+                case 'G':
+                    lt = '9';
+                    break;
+                default:
+                    lt = aLetra; // se não é uma das letras acima, não muda
+            }
+            return lt;
+        }
+    </script>
+</body>
+
+</html>
