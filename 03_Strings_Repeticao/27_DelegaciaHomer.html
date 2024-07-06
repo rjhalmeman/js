@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Atendimento da Polícia</title>
+</head>
+
+<body>
+    <p>
+        16) A delegacia de polícia da pequena cidade de Springfield conta
+        com somente 3 policiais: o chefe de polícia Clancy, e os policiais
+        Eddie e Lou. Como é de se esperar, esse pequeno contingente de
+        policiais não consegue atender imediatamente a todos os chamados
+        policiais. Portanto, você foi contratado para criar um sistema de
+        atendimento, de maneira que cada um dos policiais fique com um
+        conjunto equilibrado de chamados. Considere os requisitos: Cada
+        ocorrência deve ser de um tipo: Direção Perigosa, Barulho,
+        Bebedeira, Homer; Cada ocorrência deve ser de um nível de
+        gravidade: Baixo, Médio, Alto; Toda ocorrência do tipo Homer tem
+        nível de gravidade alto; Novas ocorrências devem ser atribuídas
+        ao policial com menos ocorrências; Ocorrências do tipo Homer
+        sempre são atribuídas ao chefe de polícia; A cada registro de
+        ocorrência o sistema deve imprimir um resumo da quantidade de
+        ocorrências de cada policial, o número de ocorrências do tipo
+        Homer e o percentual de ocorrências do tipo “Direção Perigosa” em
+        relação do total de ocorrências cadastradas.
+    </p>
+    <h1>Sistema de Atendimento da Polícia</h1>
+    <form id="formOcorrencia">
+        <label for="tipo">Tipo de Ocorrência:</label>
+        <select id="tipo">
+            <option value="Direção Perigosa">Direção Perigosa</option>
+            <option value="Barulho">Barulho</option>
+            <option value="Bebedeira">Bebedeira</option>
+            <option value="Homer">Homer</option>
+        </select>
+        <br>
+        <label for="gravidade">Nível de Gravidade:</label>
+        <select id="gravidade">
+            <option value="Baixo">Baixo</option>
+            <option value="Médio">Médio</option>
+            <option value="Alto">Alto</option>
+        </select>
+        <br>
+        <button type="button" onclick="registrarOcorrencia()">Registrar Ocorrência</button>
+    </form>
+    <h2>Resumo de Ocorrências</h2>
+    <div id="resumo"></div>
+
+    <script>
+        let totalOcorrencias = 0;
+        let totalDirecaoPerigosa = 0;
+        let totalBarulho = 0;
+        let totalBebedeira = 0;
+        let totalHomer = 0;
+
+        let policial = ["0;Clancy", "0;Eddie", "0;Lou"];
+        function registrarOcorrencia() {
+            const tipo = document.getElementById('tipo').value;
+            let gravidade = document.getElementById('gravidade').value;
+
+
+            switch (tipo) {
+                case "Direção Perigosa":
+                    totalDirecaoPerigosa++;
+                    break;
+
+                case "Bebedeira":
+                    totalBebedeira++;
+                    break;
+
+                case "Barulho":
+                    totalBarulho++;
+                    break;
+
+                case "Homer":
+                    totalHomer++;
+                    break;
+
+                default:
+                    break;
+            }
+
+            totalOcorrencias++;
+            if (tipo === 'Homer') {
+                policial = atualizar(policial, "Clancy");
+                policial = ordenarCrescente(policial);
+
+            } else {
+                let q = policial[0].split(";")[1];
+                policial = atualizar(policial, q);
+                policial = ordenarCrescente(policial);
+            }
+            atualizarResumo();
+        }
+
+        function atualizar(c, quem) {
+            for (let i = 0; i < c.length; i++) {
+                let s = c[i].split(";");
+                if (s[1] === quem) {
+                    s[0] = parseInt(s[0]) + 1 + "";
+                    c[i] = s[0] + ";" + s[1];
+                }
+            }
+            return c;
+        }
+
+        function ordenarCrescente(c) {
+            let aux;
+            if (c[0] > c[1]) {
+                aux = c[0];
+                c[0] = c[1];
+                c[1] = aux;
+            }
+            if (c[1] > c[2]) {
+                aux = c[1];
+                c[1] = c[2];
+                c[2] = aux;
+            }
+            if (c[0] > c[1]) {
+                aux = c[0];
+                c[0] = c[1];
+                c[1] = aux;
+            }
+            return c;
+        }
+
+        function atualizarResumo() {
+            const resumo = document.getElementById('resumo');
+            const percentualDirecaoPerigosa = (totalDirecaoPerigosa / totalOcorrencias) * 100;
+            let aux;
+            let pp = "Próximo=>";
+            for (let i = 0; i < policial.length; i++) {
+                aux = policial[i].split(";");
+                pp += aux[1] + "=" + aux[0] + "<br>";
+            }
+
+            resumo.innerHTML = " <p>Ocorrências :<br>" + pp + "</p>" +
+                " <p>Total de ocorrências "+totalOcorrencias+", sendo:<br>"+
+                    "Direção perigosa =" + totalDirecaoPerigosa + "<br>"+
+                    "Barulho =" + totalBarulho + "<br>"+
+                    "Bebedeira =" + totalBebedeira + "<br>"+
+                    "Homer =" + totalHomer + "<br>"+
+                    "</p>" +
+                "<p>Percentual de ocorrências do tipo Direção Perigosa:"
+                + percentualDirecaoPerigosa.toFixed(2) + "%</p>";
+        }
+    </script>
+</body>
+
+</html>
