@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextArea para Matriz</title>
+
+</head>
+
+<body>
+
+    <h1>Entrada de Dados para Matriz</h1>
+
+    <textarea id="inputArea" rows="10" cols="30" placeholder="Digite os dados..."></textarea>
+    <br><br>
+    <button onclick="processamento()">Mostrar</button>
+    <br><br>
+    <textarea id="outputArea" rows="10" cols="30" readonly placeholder="Matriz resultante..."></textarea>
+
+
+
+    <script>
+
+        function lerMatriz(dadosDeEntrada) {
+            // Separa em linhas
+            let linhas = dadosDeEntrada.trim().split("\n"); //o sinal para o split é no "\n", divide usando como sinal a quebra de linha
+            let matriz = [];
+
+            // Itera sobre cada linha
+            for (let i = 0; i < linhas.length; i++) {
+                // Separa os números por vírgula e converte-os para números
+                let numeros = linhas[i].split(",").map(Number);
+                matriz.push(numeros);
+            }
+
+            return matriz;
+        }
+
+        function mostrarMatriz (matriz){
+             // Converte a matriz para string com formatação para exibição
+             let output = "";
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    output += matriz[i][j]; // Adiciona o elemento atual à string de saída
+                    if (j < matriz[i].length - 1) {
+                        output += " "; // Adiciona um espaço entre os elementos, exceto após o último elemento da linha
+                    }
+                }
+                output += "\n"; // Adiciona uma nova linha após cada subarray
+            }
+            return output;
+        }
+
+
+
+        function processamento() {
+            // Lê o conteúdo da textarea de entrada
+            let matriz = lerMatriz(document.getElementById("inputArea").value);          
+
+            
+
+
+            // Exibe a matriz formatada no textarea de saída
+            document.getElementById("outputArea").value = mostrarMatriz(matriz);
+        }
+    </script>
+
+
+</body>
+
+</html>
