@@ -24,7 +24,7 @@
             // Lê o conteúdo do textarea de entrada, converte para números e preenche uma variável do tipo matriz
             let matriz = lerMatrizEmTextArea(document.getElementById("inputArea").value);
             //processamento
-            let somaColuna = somarColuna(matriz,2);
+            let somaColuna = somarColuna(matriz,2);//soma a coluna 2 da matriz
 
             // Exibe a matriz formatada no textarea de saída
             document.getElementById("outputArea").value = printarMatriz(matriz);
