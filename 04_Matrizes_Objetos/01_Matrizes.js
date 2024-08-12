@@ -98,9 +98,9 @@ function somarColuna(mat,coluna){
 //testes no terminal
 let fazerTeste = true;
 if (fazerTeste) {
-  let matriz = [[2, 2, 1], [4, 1, 6], [5, 8, 5]];
+  let matriz = [[2, 2, 1,4], [4, 1, 6,6], [5, 8, 5,8]];
   console.log(printarMatriz(matriz));
-  console.log(elementosDaDiagonalPrincipal(matriz));
+  console.log(somarColuna(matriz,2));
   //console.log("soma dos elementos da diagonal principal " + somarDiagonalPrincipal(matriz));
   //console.log("soma dos elementos da diagonal secundaria " + somarDiagonalSecundaria(matriz));
 }
