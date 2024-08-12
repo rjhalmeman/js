@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextArea para Matriz</title>
+</head>
+
+<body>
+    <h1>Entrada / Saída de Dados com Matriz</h1>
+
+    <textarea id="inputArea" rows="10" cols="30" placeholder="Digite os dados..."></textarea>
+    <br><br>
+    <button onclick="executeAsOperacoes()">Vai</button>
+    <br><br>
+    <textarea id="outputArea" rows="10" cols="30" readonly placeholder="Matriz resultante..."></textarea>
+    <div id="somaColuna"></div>
+
+    <script src="./01_Matrizes.js"></script>
+
+    <script>
+        function executeAsOperacoes() {
+            // Lê o conteúdo do textarea de entrada, converte para números e preenche uma variável do tipo matriz
+            let matriz = lerMatrizEmTextArea(document.getElementById("inputArea").value);
+            //processamento
+            let somaColuna = somarColuna(matriz,2);
+
+            // Exibe a matriz formatada no textarea de saída
+            document.getElementById("outputArea").value = printarMatriz(matriz);
+            document.getElementById("somaColuna").innerHTML = "Soma da coluna = " + somaColuna;
+        }
+    </script>
+</body>
+
+</html>

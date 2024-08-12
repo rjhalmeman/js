@@ -65,7 +65,7 @@ function somarDiagonalSecundaria(mat) {
   soma = 0;
   for (let i = 0; i < mat.length; i++) {
     for (let j = 0; j < mat[0].length; j++) {
-      if ((i + j) == (mat[0].length - 1)) {
+      if ((i + j) == (mat.length - 1)) {
         soma = soma + mat[i][j];
       }
     }
@@ -87,9 +87,16 @@ function elementosDaDiagonalPrincipal(mat) {
   return elementos;
 }
 
+function somarColuna(mat,coluna){
+  let soma = 0;
+  for (let i = 0; i < mat.length; i++) {
+     soma = soma+mat[i][coluna];    
+  }
+  return soma;
+}
 
 //testes no terminal
-let fazerTeste = false;
+let fazerTeste = true;
 if (fazerTeste) {
   let matriz = [[2, 2, 1], [4, 1, 6], [5, 8, 5]];
   console.log(printarMatriz(matriz));
