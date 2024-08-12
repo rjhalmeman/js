@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TextArea para Matriz</title>
-
 </head>
 
 <body>
-
-    <h1>Entrada de Dados para Matriz</h1>
+    <h1>Entrada / Saída de Dados com Matriz</h1>
 
     <textarea id="inputArea" rows="10" cols="30" placeholder="Digite os dados..."></textarea>
     <br><br>
@@ -25,14 +23,14 @@
         function executeAsOperacoes() {
             // Lê o conteúdo do textarea de entrada, converte para números e preenche uma variável do tipo matriz
             let matriz = lerMatrizEmTextArea(document.getElementById("inputArea").value);
+            //processamento
             let diag = somarDiagonalPrincipal(matriz);
+
             // Exibe a matriz formatada no textarea de saída
             document.getElementById("outputArea").value = printarMatriz(matriz);
-            document.getElementById("somaDiagonal").innerHTML = "Soma da diagonal principal = "+ diag;
+            document.getElementById("somaDiagonal").innerHTML = "Soma da diagonal principal = " + diag;
         }
     </script>
-
-
 </body>
 
 </html>
