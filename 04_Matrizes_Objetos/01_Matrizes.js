@@ -1,4 +1,6 @@
-
+/*
+funções para manipulação de matrizes bidimencionais
+*/
 
 function lerMatrizEmTextArea(dadosDeEntrada) {
   // Separa em linhas
@@ -9,7 +11,7 @@ function lerMatrizEmTextArea(dadosDeEntrada) {
   for (let i = 0; i < linhas.length; i++) {
     // Separa os números por vírgula e converte-os para números
     let numeros = linhas[i].split(",").map(Number);
-    matriz.push(numeros);
+    matriz.push(numeros); //acrescenta os números na linha da variavel matriz
   }
   return matriz;
 }
@@ -63,7 +65,7 @@ function somarDiagonalSecundaria(mat) {
   soma = 0;
   for (let i = 0; i < mat.length; i++) {
     for (let j = 0; j < mat[0].length; j++) {
-      if ((i + j)==(mat[0].length-1)) {
+      if ((i + j) == (mat[0].length - 1)) {
         soma = soma + mat[i][j];
       }
     }
@@ -71,11 +73,27 @@ function somarDiagonalSecundaria(mat) {
   return soma;
 }
 
+function elementosDaDiagonalPrincipal(mat) {
+  elementos = '';
+  for (let i = 0; i < mat.length; i++) {
+    for (let j = 0; j < mat[0].length; j++) {
+      if (i == j) {
+        elementos = elementos + mat[i][j] + ',';
+      }
+    }
+  }
+  elementos = elementos.substring(0, elementos.length - 1);
+
+  return elementos;
+}
+
+
 //testes no terminal
-let fazerTeste = true;
+let fazerTeste = false;
 if (fazerTeste) {
   let matriz = [[2, 2, 1], [4, 1, 6], [5, 8, 5]];
   console.log(printarMatriz(matriz));
-  console.log("soma dos elementos da diagonal principal " + somarDiagonalPrincipal(matriz));
-  console.log("soma dos elementos da diagonal secundaria " + somarDiagonalSecundaria(matriz));
+  console.log(elementosDaDiagonalPrincipal(matriz));
+  //console.log("soma dos elementos da diagonal principal " + somarDiagonalPrincipal(matriz));
+  //console.log("soma dos elementos da diagonal secundaria " + somarDiagonalSecundaria(matriz));
 }
