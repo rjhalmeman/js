@@ -32,6 +32,15 @@ function printarMatriz(matriz) {
   return output;
 }
 
+function mostrarMatriz(matriz) {
+  for (let i = 0; i < matriz.length; i++) {
+      let aux = "";
+      for (let j = 0; j < matriz[0].length; j++) {
+          aux += matriz[i][j].toString().padStart(3, ' ') + " ";
+      }
+      console.log(aux);
+  }
+}
 
 function somarColuna(mat, coluna) {
   let soma = 0;
@@ -95,11 +104,37 @@ function somarColuna(mat,coluna){
   return soma;
 }
 
+
+function criarMatrizAleatoria(m, n) {
+  let matrix = [];
+  for (let i = 0; i < m; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < n; j++) {
+          let numAleatorio = Math.random(); // Gera um número aleatório entre 0 e 1
+          matrix[i][j] = parseInt(numAleatorio*100); // ajusta para que os números fiquem entre 0 e 100
+
+      }
+  }
+  return matrix;
+}
+
+// Exemplo de uso
+let M = 3;  // Número de linhas
+let N = 4;  // Número de colunas
+let randomMatrix = criarMatrizAleatoria(M, N);
+console.log(randomMatrix);
+
+
 //testes no terminal
 let fazerTeste = true;
 if (fazerTeste) {
-  let matriz = [[2, 2, 1,4], [4, 1, 6,6], [5, 8, 5,8]];
+  //let matriz = [[2, 2, 1,4], [4, 1, 6,6], [5, 8, 5,8]];
+  matriz = criarMatrizAleatoria(3,4);
+  
+  mostrarMatriz(matriz);
   console.log(printarMatriz(matriz));
+
+
   console.log(somarColuna(matriz,2));
   //console.log("soma dos elementos da diagonal principal " + somarDiagonalPrincipal(matriz));
   //console.log("soma dos elementos da diagonal secundaria " + somarDiagonalSecundaria(matriz));
