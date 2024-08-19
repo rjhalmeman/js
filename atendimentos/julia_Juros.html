@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="preco">preço</label>
+    <input type="number" id="preco">
+    <br>
+    <label for="juros">juros</label>
+    <input type="number" id="juros">
+    <br>
+    <label for="NumDeMeses"> numero de meses</label>
+    <input type="number" id="NumDeMeses">
+    <br>
+    <input type="button" value="calcular" onclick="calcular()">
+    <br>
+    <div id="resp">...</div>
+    <script>
+        function calcular() {
+            let preco = parseInt(document.getElementById("preco").value);
+            let juros = parseFloat(document.getElementById("juros").value);
+            let numMeses = parseInt(document.getElementById("NumDeMeses").value);
+            let funcao = totalAPagar(preco, juros, numMeses)
+            document.getElementById("resp").innerHTML = funcao
+        }
+        function totalAPagar(preco, juros, numParcelas) {
+            let p = preco;
+            for (let i = 1; i <= numParcelas; i++) {
+                p += p * juros;
+                //console.log(p);
+            }
+            let parcela = p / numParcelas
+            return parcela.toFixed(2);
+        }
+    </script>
+
+</body>
+
+</html>

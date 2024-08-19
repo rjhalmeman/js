@@ -16,7 +16,6 @@ function lerMatrizEmTextArea(dadosDeEntrada) {
   return matriz;
 }
 
-
 function printarMatriz(matriz) {
   // Converte a matriz para string com formatação para exibição
   let output = "";
@@ -36,7 +35,9 @@ function mostrarMatriz(matriz) {
   for (let i = 0; i < matriz.length; i++) {
       let aux = "";
       for (let j = 0; j < matriz[0].length; j++) {
-          aux += matriz[i][j].toString().padStart(3, ' ') + " ";
+          aux += 
+          matriz[i][j].toString().padStart(5, ' ') 
+          + " ";
       }
       console.log(aux);
   }
@@ -118,24 +119,20 @@ function criarMatrizAleatoria(m, n) {
   return matrix;
 }
 
-// Exemplo de uso
-let M = 3;  // Número de linhas
-let N = 4;  // Número de colunas
-let randomMatrix = criarMatrizAleatoria(M, N);
-console.log(randomMatrix);
-
-
 //testes no terminal
 let fazerTeste = true;
 if (fazerTeste) {
   //let matriz = [[2, 2, 1,4], [4, 1, 6,6], [5, 8, 5,8]];
-  matriz = criarMatrizAleatoria(3,4);
+ 
+  let randomMatrix = criarMatrizAleatoria(5, 8);
+  //console.log(randomMatrix);
   
-  mostrarMatriz(matriz);
-  console.log(printarMatriz(matriz));
+  mostrarMatriz(randomMatrix);
+ // console.log(printarMatriz(matriz));
 
 
-  console.log(somarColuna(matriz,2));
+  console.log(somarColuna(randomMatrix,2));
+
   //console.log("soma dos elementos da diagonal principal " + somarDiagonalPrincipal(matriz));
   //console.log("soma dos elementos da diagonal secundaria " + somarDiagonalSecundaria(matriz));
 }

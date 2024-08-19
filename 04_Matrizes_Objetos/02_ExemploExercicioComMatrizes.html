@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de exercício com matrizes</title>
+</head>
+
+<body>
+    <p>Leia uma matriz de ordem 3x4 (3 linhas e 4 colunas).Faça uma
+        função (para cada item) que calcule e mostre.<br>
+        a) soma dos elementos de cada coluna.<br>
+        b) média de cada linha.<br>
+        c) a soma de todos os elementos da matriz.<br></p>
+
+    <textarea id="inputArea" rows="10" cols="100" placeholder="Digite os dados..."></textarea>
+    <br><br>
+    <button onclick="executeAsOperacoes()">Vai</button>
+    <br><br>
+   
+    <div id="outputSomaDasColunas"></div>
+    <div id="outputMediaDasLinhas"></div>
+    <div id="outputSomaDeTodosOsElementos"></div>
+
+    <script src="./funcoesParaMatrizes.js"></script>
+   
+
+    <script>
+        function executeAsOperacoes() {
+            // Lê o conteúdo do textarea de entrada, converte para números e preenche uma variável do tipo matriz
+            let matriz = lerMatrizEmTextArea(document.getElementById("inputArea").value);
+            //processamento
+            let somaDasColunas = somarElementosDeCadaColuna(matriz);            
+            document.getElementById("outputSomaDasColunas").innerHTML = "Soma das colunas = " + somaDasColunas;
+
+            let mediaDasLinhas = mediaDeCadaLinha(matriz);
+            document.getElementById("outputMediaDasLinhas").innerHTML = "Média das linhas = " + mediaDasLinhas;
+
+            let somaDeTodosOsElementos = somaTodosOsElementos(matriz);
+            document.getElementById("outputSomaDeTodosOsElementos").innerHTML = "Soma de todos os elementos = " + somaDeTodosOsElementos;
+        }
+    </script>
+</body>
+
+</html>

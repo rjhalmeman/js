@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar na Matriz</title>
+</head>
+
+<body>
+    <textarea id="inputArea" rows="15" cols="100" placeholder="Digite os dados..."></textarea>
+    <br><br>
+    <label for="inputNum">Digite o número a ser procurado</label>
+    <input type="number" id="inputNum">
+    <button onclick="executeAsOperacoes()">Vai</button>
+    <br><br>
+    <div id="outputResp"></div>
+
+    <script src="./funcoesPesquisa.js"></script>
+
+    <script>
+        function executeAsOperacoes() {
+            // Lê o conteúdo do textarea de entrada, converte para números e preenche uma variável do tipo matriz
+            let matriz = lerMatrizEmTextArea(document.getElementById("inputArea").value);
+            let n = parseInt(document.getElementById('inputNum').value);
+            //processamento
+            let r = procureONumero(n, matriz);
+            if (r.length == 0) {
+                r = "O número " + n + " não foi encontrado na matriz";
+            } else {
+                let x = "";
+                for (let i = 0; i < r.length; i++) {
+                   let linha = r[i][0] + 1;
+                    let coluna = r[i][1] + 1;
+                    x += "O valor " + n + " está na linha " +
+                        linha + " coluna " + coluna + "<br>";
+                }
+                r= x;
+            }
+            document.getElementById("outputResp").innerHTML = r;
+        }
+    </script>
+</body>
+
+</html>
