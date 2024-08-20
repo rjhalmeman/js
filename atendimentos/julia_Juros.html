@@ -22,11 +22,13 @@
     <div id="resp">...</div>
     <script>
         function calcular() {
-            let preco = parseInt(document.getElementById("preco").value);
+            let preco = parseFloat(document.getElementById("preco").value);
             let juros = parseFloat(document.getElementById("juros").value);
             let numMeses = parseInt(document.getElementById("NumDeMeses").value);
-            let funcao = totalAPagar(preco, juros, numMeses)
-            document.getElementById("resp").innerHTML = funcao
+            // let returnDaFuncao = totalAPagar(preco, juros, numMeses)
+            // document.getElementById("resp").innerHTML = returnDaFuncao;
+            document.getElementById("resp").innerHTML = 
+                             totalAPagar(preco, juros, numMeses);
         }
         function totalAPagar(preco, juros, numParcelas) {
             let p = preco;
