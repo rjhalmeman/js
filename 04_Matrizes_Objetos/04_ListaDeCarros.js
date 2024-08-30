@@ -16,6 +16,8 @@ carros.push(new Carro("GHI-9101", "Mustang", "2019-07-20"));
 carros.push(new Carro("zzz-1212", "Cadilac", "1950-07-20"));
 carros.push(new Carro("www-0987", "BMW z6", "2023-07-20"));
 
+//console.log(carros[2].placa);
+
 // Exibindo o vetor de carros
 //console.log(carros[1].nome+" -- "+carros[1].placa);
 for (let i = 0; i < carros.length; i++) {
