@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de animais</title>
+</head>
+
+<body>
+    <label for="inputId">Id</label>
+    <input type="text" name="inputId" id="inputId">
+
+    <br>
+    <label for="inputNome">Nome</label>
+    <input type="text" name="inputNome" id="inputNome">
+    <br>
+    <label for="inputEspecie">Espécie</label>
+    <input type="text" name="inputEspecie" id="inputEspecie">
+
+    <br>
+    <label for="inputPeso">Peso</label>
+    <input type="number" name="inputPeso" id="inputPeso">
+    <br>
+    <label for="inputDataNascimento">Data de Nascimento</label>
+    <input type="date" name="inputDataNascimento" id="inputDataNascimento">
+    <br>
+    <input type="button" value="Inserir" onclick="inserirNaLista()">
+    <br>
+    <input type="button" value="Listar" onclick="listarAnimais()">
+
+
+    <div id="outputListaAnimais" style="background-color: yellow;">
+   ... </div>
+
+   <script src="./Animal.js"></script>
+   <script src="./animalControle.js"></script>
+
+</body>
+
+</html>
