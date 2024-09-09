@@ -1,22 +1,4 @@
 let listaFrutas = [];
-
-window.onload = inserirDadosIniciais();
-
-function inserirDadosIniciais(){
-    let fruta;
-    fruta = new Fruta(1, "Maçã", "Vermelha", 85); 
-    listaFrutas.push(fruta);
-    fruta = new Fruta(2, "Maçã", "Verde", 95); 
-    listaFrutas.push(fruta);
-    fruta = new Fruta(5, "Morango", "Vermelha", 15); 
-    listaFrutas.push(fruta);
-    fruta = new Fruta(7, "Jaca", "Verde", 5000); 
-    listaFrutas.push(fruta);
-    botaoListar();
-}
-
-
-
 function buscarPorId(idFrutaProcurada, listaFrutas) {
     for (let i = 0; i < listaFrutas.length; i++) {
         const f = listaFrutas[i];
@@ -44,7 +26,7 @@ function botaoInserir() {
         alert("já cadastrada com esse id");
     }
 }
-function botaoListar(){
+function BotaoListar(){
     let saida = document.getElementById("outputListaDeFrutas");
     saida.innerHTML = "";
     if (listaFrutas.length == 0) {
