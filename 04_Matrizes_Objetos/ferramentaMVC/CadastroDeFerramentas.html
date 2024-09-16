@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Ferramentas</title>
+</head>
+
+<body>
+    <label for="inputId">ID</label>
+    <input type="text" name="inputId" id="inputId">
+    <br>
+    <label for="inputNome">Nome</label>
+    <input type="text" name="inputNome" id="inputNome">
+    <br>
+    <label for="inputPrecoUnitario">Preço Unitário</label>
+    <input type="text" name="inputPrecoUnitario" id="inputPrecoUnitario">
+    <br>
+    <label for="inputPeso">Peso</label>
+    <input type="number" name="inputPeso" id="inputPeso">
+    <br>    
+    <label for="inputQuantidade">Quantidade</label>
+    <input type="number" name="inputQuantidade" id="inputQuantidade">
+    <br>
+    <label for="inputFabricante">Fabricante</label>
+    <input type="text" name="inputFabricante" id="inputFabricante">
+    <br>
+    
+    <input type="button" value="Inserir" onclick="botaoInserir()">
+    <input type="button" value="Listar" onclick="botaoListar()">
+    <div style="background-color: yellow;" id="outputListaDeFerramentas">.......</div>
+    <script src="./Ferramenta.js"></script>
+    <script src="./FerramentasControle.js"></script>
+
+</body>
+
+</html>
