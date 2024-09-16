@@ -8,5 +8,4 @@ constructor(id,nome,peso,fabricante,dataFabricacao) {
     }
 }
 
-//let r =
- //new Remedio(1,"Aspirina",10,"Bayer",'2024-01-13');
+//let r = new Remedio(1,"Aspirina",10,"Bayer",'2024-01-13');
