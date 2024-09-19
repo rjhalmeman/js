@@ -6,8 +6,8 @@ function converterDadosEmMatriz(dadosDeEntrada) {
     // Itera sobre cada linha
     for (let i = 0; i < linhas.length; i++) {
         // Separa os números por vírgula e converte-os para números
-        let numeros = linhas[i].split(",").map(Number);
-        matriz.push(numeros); //acrescenta os números na linha da variavel matriz
+        let linha = linhas[i].split(",").map(Number);
+        matriz.push(linha); //acrescenta os números na linha da variavel matriz
     }
     return matriz;
 }
@@ -40,7 +40,7 @@ function matrizFormatadaParaHTML(matriz) {
 }
 
 
-if (true) {
+if (false) {
 
     let matriz = [[2, 13, 4], [51, 6, 7]];
     console.log(matrizFormatadaParaHTML(matriz));
