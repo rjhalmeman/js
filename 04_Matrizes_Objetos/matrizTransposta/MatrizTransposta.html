@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz Transposta</title>
+</head>
+
+<body>
+    <label for="matriz">Insira uma Matriz</label>
+    <br>
+    <textarea id="textAreaDeEntrada" cols="20" rows="20"></textarea>
+    <br>
+    <input type="button" value="Calcular" onclick="executarProcessamento()">
+    <br>
+    <label for="outputMatriz">A transposta é</label>
+    <div id="outputMatriz" style="background-color: aquamarine;">...</div>
+
+
+    <script src="./funcoes.js"></script>
+   
+   <script>
+        function executarProcessamento() {            
+            let dadosDigitados = document.getElementById("textAreaDeEntrada").value;
+            let matriz = converterDadosEmMatriz(dadosDigitados);
+            let matrizTransposta = gerarTransposta(matriz);
+            let transpostaFormatada = matrizFormatadaParaHTML(matrizTransposta);
+            document.getElementById("outputMatriz").innerHTML = transpostaFormatada;
+        }        
+    </script>
+</body>
+
+</html>
