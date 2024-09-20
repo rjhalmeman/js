@@ -10,7 +10,7 @@
 <body>
     <label for="matriz">Insira uma Matriz</label>
     <br>
-    <textarea id="textAreaDeEntrada" cols="20" rows="20"></textarea>
+    <textarea id="textAreaDeEntrada" cols="40" rows="20"></textarea>
     <br>
     <input type="button" value="Calcular" onclick="executarProcessamento()">
     <br>
@@ -24,7 +24,7 @@
         function executarProcessamento() {            
             let dadosDigitados = document.getElementById("textAreaDeEntrada").value;
             let matriz = converterDadosEmMatriz(dadosDigitados);
-            let matrizTransposta = gerarTransposta(matriz);
+            let matrizTransposta = gerarTransposta(matriz);            
             let transpostaFormatada = matrizFormatadaParaHTML(matrizTransposta);
             document.getElementById("outputMatriz").innerHTML = transpostaFormatada;
         }        

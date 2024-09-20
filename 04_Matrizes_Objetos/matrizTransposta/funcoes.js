@@ -14,14 +14,14 @@ function converterDadosEmMatriz(dadosDeEntrada) {
 
 
 function gerarTransposta(matriz) {
-    let matrizTransporta = [];
+    let matrizTransposta = [];
     for (let i = 0; i < matriz[0].length; i++) {
-        matrizTransporta[i] = [];
+        matrizTransposta[i] = [];
         for (let j = 0; j < matriz.length; j++) {
-            matrizTransporta[i][j] = matriz[j][i];
+            matrizTransposta[i][j] = matriz[j][i];
         }
     }
-    return matrizTransporta
+    return matrizTransposta;
 }
 
 function matrizFormatadaParaHTML(matriz) {
@@ -29,7 +29,7 @@ function matrizFormatadaParaHTML(matriz) {
     let output = "";
     for (let i = 0; i < matriz.length; i++) {
         for (let j = 0; j < matriz[i].length; j++) {
-            output += matriz[i][j].toString().padStart(3, ' '); // Adiciona o elemento atual à string de saída
+            output += matriz[i][j].toString().padStart(4, ' '); // Adiciona o elemento atual à string de saída
             if (j < matriz[i].length - 1) {
                 output += " "; //
             }

@@ -36,7 +36,7 @@ function lerMatrizEmTextArea(dadosDeEntrada) {
 
   
 
-let matriz = [[8,1,3,7,4],[5,33,1,9,2],[4,6,777,5,4]];
+let matriz = [[8,1,3,7,4],[5,33,1,9,2],[4,6,777,8,4]];
 mostrarMatriz(matriz);
 let r = procureONumero(8,matriz);
 
