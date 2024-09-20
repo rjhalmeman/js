@@ -11,5 +11,5 @@ function mostrarMatriz(matriz) {
     }
 }
 
-// Exporta a função para que possa ser usada em outros arquivos
+// Exporta a função para que possa ser usada em outros arquivos js
 module.exports = { mostrarMatriz };
