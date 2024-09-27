@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Por Alunos</title>
+</head>
+
+<body>
+    <H1>Cadastro de Alunos</H1>
+    <label for="inputRa">Digite o Ra</label>
+    <input type="text" name="inputRa" id="inputRa">
+    <input type="button" value="Procure Por RA" onclick="procurePorRa()">
+    <br><br>
+
+    <label for="inputNome">Digite o nome </label>
+    <input type="text" name="inputNome" id="inputNome">
+    <input type="button" value="Procure Pelo Nome" onclick="procurePorNome()">
+    <br><br>
+
+    <label for="inputNota1">Digite a nota 1</label>
+    <input type="number" name="inputNota1" id="inputNota1" min="0" max="10">
+
+    <label for="inputNota2">Digite a nota 2 </label>
+    <input type="number" name="inputNota2" id="inputNota2">
+
+    <label for="inputNota3">Digite a nota 3</label>
+    <input type="number" name="inputNota3" id="inputNota3">
+
+    <label for="inputNota4">Digite a nota 4 </label>
+    <input type="number" name="inputNota4" id="inputNota4">
+    <br><br>
+
+    <label for="inputLetra">Digite uma letra</label>
+    <input type="text" name="inputLetra" id="inputLetra">
+    <input type="button" value="Procure Por Letra" onclick="ProcurePorLetra()">
+    <br><br>
+
+    <input type="button" value="Media da Turma" onclick="MediaDaTurma()">
+    <span id="spanMediaDaTurma">...</span>
+    <br><br>
+
+    <input type="button" value="Alunos com maiores medias" onclick="AlunosComMaioresMedias()">
+    <br><br>
+
+    <input type="button" value="Situação" onclick="AlunosESituacao()">
+    <br><br>
+
+    <input type="button" value="Adicionar Dados Inicias" onclick="AdicionarDadosIniciais()">
+    <br><br>
+
+    <input type="button" value="Adicionar" onclick="adicionarAluno()">
+    <br><br>
+    <input type="button" value="Listar" onclick="listarDados()">
+    <br><br>
+    <div id="outputSaida" style="background-color: aqua;">...</div>
+
+    <script src="./AlunoControl.js"></script>
+    <script src="./AlunoModel.js"></script>
+
+</body>
+
+</html>
