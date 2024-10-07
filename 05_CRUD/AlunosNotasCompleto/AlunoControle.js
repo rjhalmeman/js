@@ -66,12 +66,7 @@ function procurePorRa() {
 //backend->frontend
 function inserirAluno() {
     // Remove o readonly dos campos
-    document.getElementById("inputRa").readOnly = true;
-    document.getElementById("inputNome").readOnly = false;
-    document.getElementById("inputNota1").readOnly = false;
-    document.getElementById("inputNota2").readOnly = false;
-    document.getElementById("inputNota3").readOnly = false;
-    document.getElementById("inputNota4").readOnly = false;
+    liberarEdicaoDaChaveOuAtributos(true);
 
 
     habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
@@ -93,12 +88,7 @@ function alterar() {
 
     // console.log(aluno.nome + " - " + aluno.posicaoNaLista);
     // Remove o readonly dos campos
-    document.getElementById("inputRa").readOnly = true;
-    document.getElementById("inputNome").readOnly = false;
-    document.getElementById("inputNota1").readOnly = false;
-    document.getElementById("inputNota2").readOnly = false;
-    document.getElementById("inputNota3").readOnly = false;
-    document.getElementById("inputNota4").readOnly = false;
+    liberarEdicaoDaChaveOuAtributos(true);
 
     habilitarBotoes('none', 'none', 'none', 'none', 'inline');
 
@@ -108,13 +98,7 @@ function alterar() {
 
 // Função para excluir um aluno
 function excluir() {
-    // Remove o readonly dos campos
-    document.getElementById("inputRa").readOnly = true;
-    document.getElementById("inputNome").readOnly = true;
-    document.getElementById("inputNota1").readOnly = true;
-    document.getElementById("inputNota2").readOnly = true;
-    document.getElementById("inputNota3").readOnly = true;
-    document.getElementById("inputNota4").readOnly = true;
+    liberarEdicaoDaChaveOuAtributos(true);
     habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
 
     oQueEstaFazendo = 'excluindo';
@@ -192,11 +176,17 @@ function mostrarDadosAluno(aluno) {
     document.getElementById("inputNota4").value = aluno.nota4;
 
     // Define os campos como readonly
-    document.getElementById("inputNome").readOnly = true;
-    document.getElementById("inputNota1").readOnly = true;
-    document.getElementById("inputNota2").readOnly = true;
-    document.getElementById("inputNota3").readOnly = true;
-    document.getElementById("inputNota4").readOnly = true;
+    liberarEdicaoDaChaveOuAtributos(false);
+}
+
+function liberarEdicaoDaChaveOuAtributos(soLeitura) {
+    //quando a chave primaria possibilita edicao, tranca (readonly) os outros e vice-versa
+    document.getElementById("inputRa").readOnly = soLeitura;
+    document.getElementById("inputNome").readOnly = !soLeitura;
+    document.getElementById("inputNota1").readOnly = !soLeitura;
+    document.getElementById("inputNota2").readOnly = !soLeitura;
+    document.getElementById("inputNota3").readOnly = !soLeitura;
+    document.getElementById("inputNota4").readOnly = !soLeitura;
 }
 
 // Função para limpar os dados
