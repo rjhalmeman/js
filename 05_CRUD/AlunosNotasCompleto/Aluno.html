@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Aluno</title>
+</head>
+
+<body>
+
+    <label for="inputRa">Ra</label>
+    <input type="text" name="inputRa" id="inputRa">
+    <input type="button" value="Procure" onclick="procurePorRa()" style="display:inline;">
+    <input type="button" value="Inserir" onclick="inserirAluno()">
+    <input type="button" value="Alterar" onclick="alterar()" style="display:none;">
+    <input type="button" value="Excluir" onclick="excluir()" style="display:none;">
+    <br><br>
+    <label for="inputNome">Nome</label>
+    <input type="text" name="inputNome" id="inputNome">
+    <!-- <input type="button" value="Procure por nome" onclick="procurePorNome()"> -->
+    <br><br>
+    
+    <label for="inputNota1">Nota 1</label>
+    <input type="number" name="inputNota1" id="inputNota1" min="0" max="10">
+    
+    <label for="inputNota2">Nota 2</label>
+    <input type="number" name="inputNota2" id="inputNota2" min="0" max="10">
+    
+    <label for="inputNota3">Nota 3</label>
+    <input type="number" name="inputNota3" id="inputNota3" min="0" max="10">
+    
+    <label for="inputNota4">Nota 4</label>
+    <input type="number" name="inputNota4" id="inputNota4" min="0" max="10">
+   
+    <br><br>
+    <div id="divAviso" style="background-color: antiquewhite;"></div>
+    <br>
+    <input type="button" value="Salvar" onclick="salvarAluno()" style="display:none;">
+    <input type="button" value="Cancelar" onclick="cancelarOperacao()" style="display:none;">
+    <br><br>
+    <!-- <input type="button" value="Listar" onclick="listarDados()">
+    <br><br> -->
+
+
+    <div id="outputSaida" style="background-color: aqua;">...</div>
+    <script src="./Aluno.js"></script>
+    <script src="./AlunoControle.js"></script>
+</body>
+
+</html>
