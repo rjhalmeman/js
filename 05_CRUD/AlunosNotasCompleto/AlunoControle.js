@@ -109,12 +109,12 @@ function alterar() {
 // Função para excluir um aluno
 function excluir() {
     // Remove o readonly dos campos
-    document.getElementById("inputRa").readOnly = false;
-    document.getElementById("inputNome").readOnly = false;
-    document.getElementById("inputNota1").readOnly = false;
-    document.getElementById("inputNota2").readOnly = false;
-    document.getElementById("inputNota3").readOnly = false;
-    document.getElementById("inputNota4").readOnly = false;
+    document.getElementById("inputRa").readOnly = true;
+    document.getElementById("inputNome").readOnly = true;
+    document.getElementById("inputNota1").readOnly = true;
+    document.getElementById("inputNota2").readOnly = true;
+    document.getElementById("inputNota3").readOnly = true;
+    document.getElementById("inputNota4").readOnly = true;
     habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
 
     oQueEstaFazendo = 'excluindo';
@@ -223,12 +223,12 @@ function bloquearAtributos(valor) {
 // Função para habilitar ou desabilitar botões
 function habilitarBotoes(btProcure, btInserir, btAlterar, btExcluir, btSalvar) {
 
-    document.querySelector('input[value="Procure"]').style.display = btProcure;
-    document.querySelector('input[value="Inserir"]').style.display = btInserir;
-    document.querySelector('input[value="Alterar"]').style.display = btAlterar;
-    document.querySelector('input[value="Excluir"]').style.display = btExcluir;
-    document.querySelector('input[value="Salvar"]').style.display = btSalvar;
-    document.querySelector('input[value="Cancelar"]').style.display = btSalvar;
+    document.getElementById("btProcure").style.display = btProcure;
+    document.getElementById("btInserir").style.display = btInserir;
+    document.getElementById("btAlterar").style.display = btAlterar;
+    document.getElementById("btExcluir").style.display = btExcluir;
+    document.getElementById("btSalvar").style.display = btSalvar;
+    document.getElementById("btCancelar").style.display = btSalvar; // o cancelar sempre aparece junto com o salvar
     document.getElementById("inputRa").focus();
 }
 
