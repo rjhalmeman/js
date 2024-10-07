@@ -9,7 +9,7 @@ document.getElementById("inputRa").addEventListener("focus", function () {
     document.getElementById("divAviso").innerHTML = "Digite o RA e clic no botão procure";
 });
 
-//backend
+//backend (não interage com o html)
 function procurePorChavePrimaria(chave) {
     for (let i = 0; i < listaAlunos.length; i++) {
         const aluno = listaAlunos[i];
@@ -36,13 +36,13 @@ function listar(vetor) {
     return texto;
 }
 
-//backend->frontend
+//backend->frontend (interage com html)
 function listarDados() {
     document.getElementById("outputSaida").innerHTML = listar(listaAlunos);
 }
 
 // Função para procurar um aluno pelo RA -------------------------------------------------------------
-function procurePorRa() {
+function procure() {
 
     const ra = document.getElementById("inputRa").value;
     if (ra) { // se digitou um Ra
@@ -64,7 +64,7 @@ function procurePorRa() {
 }
 
 //backend->frontend
-function inserirAluno() {
+function inserir() {
     // Remove o readonly dos campos
     liberarEdicaoDaChaveOuAtributos(true);
 
