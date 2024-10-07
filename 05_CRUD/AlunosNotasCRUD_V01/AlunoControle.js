@@ -6,7 +6,7 @@ window.onload = inserirDadosIniciais();
 
 //metodo para mostrar mensagem quando estiver na chave primaria
 document.getElementById("inputRa").addEventListener("focus", function () {
-    document.getElementById("divAviso").innerHTML = "Digite o RA e clic no botão procure";
+    mostrarAviso("Digite o RA e clic no botão procure");
 });
 
 //backend (não interage com o html)
@@ -51,11 +51,11 @@ function procure() {
         if (aluno) { //achou na lista
             mostrarDadosAluno(aluno);
             habilitarBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
-            document.getElementById("divAviso").innerHTML = "Achou na lista, pode alterar ou excluir";
+            mostrarAviso("Achou na lista, pode alterar ou excluir");
         } else { //não achou na lista
             limparDados();
             habilitarBotoes('inline', 'inline', 'none', 'none', 'none');
-            document.getElementById("divAviso").innerHTML = "Não achou na lista, pode inserir";
+            mostrarAviso("Não achou na lista, pode inserir");
         }
     } else {
         document.getElementById("inputRa").focus();
@@ -73,7 +73,7 @@ function inserir() {
 
     oQueEstaFazendo = 'inserindo';
 
-    document.getElementById("divAviso").innerHTML = "INSERINDO - Digite os atributos e clic o botão salvar";
+    mostrarAviso("INSERINDO - Digite os atributos e clic o botão salvar");
     document.getElementById("inputRa").focus();
 
     //para facilitar os testes sem ter que digitar notas (vai sumir quando terminarem os testes)
@@ -93,7 +93,7 @@ function alterar() {
     habilitarBotoes('none', 'none', 'none', 'none', 'inline');
 
     oQueEstaFazendo = 'alterando';
-    document.getElementById("divAviso").innerHTML = "ALTERANDO - Digite os atributos e clic o botão salvar";
+   mostrarAviso("ALTERANDO - Digite os atributos e clic o botão salvar");
 }
 
 // Função para excluir um aluno
@@ -102,11 +102,11 @@ function excluir() {
     habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
 
     oQueEstaFazendo = 'excluindo';
-    document.getElementById("divAviso").innerHTML = "EXCLUINDO - clic o botão salvar para confirmar a exclusão";
+   mostrarAviso("EXCLUINDO - clic o botão salvar para confirmar a exclusão");
 }
 
 
-function salvarAluno() {
+function salvar() {
     //inserir na lista os dados que o usuário digitou
     const ra = document.getElementById("inputRa").value;
     const nome = document.getElementById("inputNome").value;
@@ -128,13 +128,13 @@ function salvarAluno() {
             case 'inserindo':
                 aluno = new Aluno(ra, nome, nota1, nota2, nota3, nota4);
                 listaAlunos.push(aluno);
-                document.getElementById("divAviso").innerHTML = "Inserido na lista";
+                mostrarAviso("Inserido na lista");
                 break;
 
             case 'alterando':
                 alunoAlterado = new Aluno(ra, nome, nota1, nota2, nota3, nota4);
                 listaAlunos[aluno.posicaoNaLista] = alunoAlterado;
-                document.getElementById("divAviso").innerHTML = "Alterado";
+                mostrarAviso("Alterado");
                 break;
             case 'excluindo':
                 let novaLista = [];
@@ -144,11 +144,11 @@ function salvarAluno() {
                     }
                 }
                 listaAlunos = novaLista;
-                document.getElementById("divAviso").innerHTML = "EXCLUIDO";
+                mostrarAviso("EXCLUIDO");
                 break;
             default:
                 // console.error('Ação não reconhecida: ' + oQueEstaFazendo);
-                document.getElementById("divAviso").innerHTML = "" + oQueEstaFazendo;
+                mostrarAviso("Erro aleatório");
         }
         habilitarBotoes('inline', 'none', 'none', 'none', 'none');
         limparDados();
@@ -164,7 +164,12 @@ function cancelarOperacao() {
     limparDados();
     bloquearAtributos(true);
     habilitarBotoes('inline', 'none', 'none', 'none', 'none');
-    document.getElementById("divAviso").innerHTML = "Cancelou a operação de edição";
+    mostrarAviso("Cancelou a operação de edição");
+}
+
+function mostrarAviso(mensagem){
+    //printa a mensagem na divAviso
+    document.getElementById("divAviso").innerHTML = mensagem;
 }
 
 // Função para mostrar os dados do aluno nos campos
