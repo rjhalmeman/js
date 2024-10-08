@@ -4,7 +4,7 @@ let aluno = null; //variavel global
 
 window.onload = inserirDadosIniciais();
 
-//metodo para mostrar mensagem quando estiver na chave primaria
+//metodo para mostrar mensagem quando o foco for para a chave primaria 
 document.getElementById("inputRa").addEventListener("focus", function () {
     mostrarAviso("Digite o RA e clic no botão procure");
 });
@@ -21,40 +21,18 @@ function procurePorChavePrimaria(chave) {
     return null;//não achou
 }
 
-//backend
-function listar(vetor) {
-    let texto = "";
-    for (let i = 0; i < vetor.length; i++) {
-        const linha = vetor[i];
-        texto += linha.ra + " - " +
-            linha.nome + " - " +
-            linha.nota1 + " - " +
-            linha.nota2 + " - " +
-            linha.nota3 + " - " +
-            linha.nota4 + "<br>";
-    }
-    return texto;
-}
-
-//backend->frontend (interage com html)
-function listarDados() {
-    document.getElementById("outputSaida").innerHTML = listar(listaAlunos);
-}
-
-// Função para procurar um aluno pelo RA -------------------------------------------------------------
+// Função para procurar um elemento pela chave primária   -------------------------------------------------------------
 function procure() {
-
     const ra = document.getElementById("inputRa").value;
     if (ra) { // se digitou um Ra
         aluno = procurePorChavePrimaria(ra);
-
         if (aluno) { //achou na lista
             mostrarDadosAluno(aluno);
-            habilitarBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
+            visibilidadeDosBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
             mostrarAviso("Achou na lista, pode alterar ou excluir");
         } else { //não achou na lista
-            limparDados();
-            habilitarBotoes('inline', 'inline', 'none', 'none', 'none');
+            limparAtributos();
+            visibilidadeDosBotoes('inline', 'inline', 'none', 'none', 'none');
             mostrarAviso("Não achou na lista, pode inserir");
         }
     } else {
@@ -65,14 +43,9 @@ function procure() {
 
 //backend->frontend
 function inserir() {
-    // Remove o readonly dos campos
     liberarEdicaoDaChaveOuAtributos(true);
-
-
-    habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
-
+    visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); //visibilidadeDosBotoes(procure,inserir,alterar,excluir,salvar)
     oQueEstaFazendo = 'inserindo';
-
     mostrarAviso("INSERINDO - Digite os atributos e clic o botão salvar");
     document.getElementById("inputRa").focus();
 
@@ -83,31 +56,29 @@ function inserir() {
     document.getElementById("inputNota4").value = 7;
 }
 
-// Função para alterar os dados de um aluno
+// Função para alterar um elemento da lista
 function alterar() {
 
-    // console.log(aluno.nome + " - " + aluno.posicaoNaLista);
     // Remove o readonly dos campos
     liberarEdicaoDaChaveOuAtributos(true);
 
-    habilitarBotoes('none', 'none', 'none', 'none', 'inline');
+    visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline');
 
     oQueEstaFazendo = 'alterando';
-   mostrarAviso("ALTERANDO - Digite os atributos e clic o botão salvar");
+    mostrarAviso("ALTERANDO - Digite os atributos e clic o botão salvar");
 }
 
-// Função para excluir um aluno
+// Função para excluir um elemento da lista
 function excluir() {
     liberarEdicaoDaChaveOuAtributos(true);
-    habilitarBotoes('none', 'none', 'none', 'none', 'inline'); //habilitarBotoes(procure,inserir,alterar,excluir,salvar)
+    visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); //visibilidadeDosBotoes(procure,inserir,alterar,excluir,salvar)
 
     oQueEstaFazendo = 'excluindo';
-   mostrarAviso("EXCLUINDO - clic o botão salvar para confirmar a exclusão");
+    mostrarAviso("EXCLUINDO - clic o botão salvar para confirmar a exclusão");
 }
 
-
 function salvar() {
-    //inserir na lista os dados que o usuário digitou
+    //gerencia operações inserir, alterar e excluir na lista
     const ra = document.getElementById("inputRa").value;
     const nome = document.getElementById("inputNome").value;
 
@@ -116,7 +87,7 @@ function salvar() {
     let nota3 = parseFloat(document.getElementById("inputNota3").value);
     let nota4 = parseFloat(document.getElementById("inputNota4").value);
 
-    //verificar o que foi digitado pelo USUÁRIO
+    //verificar se o que foi digitado pelo USUÁRIO está correto
     if (ra &&
         nome &&
         !isNaN(parseFloat(nota1)) && nota1 >= 0 && nota1 <= 10 &&
@@ -130,7 +101,6 @@ function salvar() {
                 listaAlunos.push(aluno);
                 mostrarAviso("Inserido na lista");
                 break;
-
             case 'alterando':
                 alunoAlterado = new Aluno(ra, nome, nota1, nota2, nota3, nota4);
                 listaAlunos[aluno.posicaoNaLista] = alunoAlterado;
@@ -150,9 +120,9 @@ function salvar() {
                 // console.error('Ação não reconhecida: ' + oQueEstaFazendo);
                 mostrarAviso("Erro aleatório");
         }
-        habilitarBotoes('inline', 'none', 'none', 'none', 'none');
-        limparDados();
-        listarDados();
+        visibilidadeDosBotoes('inline', 'none', 'none', 'none', 'none');
+        limparAtributos();
+        listar();
         document.getElementById("inputRa").focus();
     } else {
         alert("Erro nos dados digitados");
@@ -160,14 +130,34 @@ function salvar() {
     }
 }
 
+//backend
+function preparaListagem(vetor) {
+    let texto = "";
+    for (let i = 0; i < vetor.length; i++) {
+        const linha = vetor[i];
+        texto += linha.ra + " - " +
+            linha.nome + " - " +
+            linha.nota1 + " - " +
+            linha.nota2 + " - " +
+            linha.nota3 + " - " +
+            linha.nota4 + "<br>";
+    }
+    return texto;
+}
+
+//backend->frontend (interage com html)
+function listar() {
+    document.getElementById("outputSaida").innerHTML = preparaListagem(listaAlunos);
+}
+
 function cancelarOperacao() {
-    limparDados();
+    limparAtributos();
     bloquearAtributos(true);
-    habilitarBotoes('inline', 'none', 'none', 'none', 'none');
+    visibilidadeDosBotoes('inline', 'none', 'none', 'none', 'none');
     mostrarAviso("Cancelou a operação de edição");
 }
 
-function mostrarAviso(mensagem){
+function mostrarAviso(mensagem) {
     //printa a mensagem na divAviso
     document.getElementById("divAviso").innerHTML = mensagem;
 }
@@ -195,7 +185,7 @@ function liberarEdicaoDaChaveOuAtributos(soLeitura) {
 }
 
 // Função para limpar os dados
-function limparDados() {
+function limparAtributos() {
     document.getElementById("inputNome").value = "";
     document.getElementById("inputNota1").value = "";
     document.getElementById("inputNota2").value = "";
@@ -206,7 +196,7 @@ function limparDados() {
 }
 
 function bloquearAtributos(valor) {
-    // Remove o readonly dos campos
+    //quando recebe valor == true no parâmetro, libera a chave e bloqueia a edição dos outros atributos. Se receber false, faz o contrário.
     document.getElementById("inputRa").readOnly = !valor; // sempre ao contrário dos outros atributos
     document.getElementById("inputNome").readOnly = valor;
     document.getElementById("inputNota1").readOnly = valor;
@@ -215,8 +205,11 @@ function bloquearAtributos(valor) {
     document.getElementById("inputNota4").readOnly = valor;
 }
 
-// Função para habilitar ou desabilitar botões
-function habilitarBotoes(btProcure, btInserir, btAlterar, btExcluir, btSalvar) {
+// Função para deixar visível ou invisível os botões
+function visibilidadeDosBotoes(btProcure, btInserir, btAlterar, btExcluir, btSalvar) {
+    //  visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); 
+    //none significa que o botão ficará invisível (visibilidade == none)
+    //inline significa que o botão ficará visível 
 
     document.getElementById("btProcure").style.display = btProcure;
     document.getElementById("btInserir").style.display = btInserir;
@@ -227,33 +220,27 @@ function habilitarBotoes(btProcure, btInserir, btAlterar, btExcluir, btSalvar) {
     document.getElementById("inputRa").focus();
 }
 
-
 //backend
 function inserirDadosIniciais() {
+    //esta função é para não ter que ficar digitando dados a cada vez que 
+    //recarrega a página. Facilita os testes. 
+
     listaAlunos = [];//se houver dados na lista, apaga todos
     let aluno = new Aluno('111', 'Ana Silva', 8.5, 7.2, 9.0, 8.0);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('222', 'Bruno Costa', 6.3, 5.8, 7.0, 6.5);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('333', 'Carla Oliveira', 9.1, 8.7, 9.3, 8.9);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('444', 'Daniel Souza', 7.5, 6.9, 8.0, 7.2);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('555', 'Eduardo Lima', 5.6, 7.4, 6.5, 6.8);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('666', 'Bruno Costa', 3.2, 5.1, 2.0, 1.5);
     listaAlunos.push(aluno);
-
     aluno = new Aluno('777', 'Bernadete Pereira da Costa Larga', 8, 8.1, 8.0, 9.5);
     listaAlunos.push(aluno);
-
-    listarDados();
-
-    habilitarBotoes('inline', 'none', 'none', 'none', 'none');
+    listar();
+    visibilidadeDosBotoes('inline', 'none', 'none', 'none', 'none');
     bloquearAtributos(true);
 }
