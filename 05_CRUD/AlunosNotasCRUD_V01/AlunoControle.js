@@ -28,7 +28,8 @@ function procure() {
         aluno = procurePorChavePrimaria(ra);
         if (aluno) { //achou na lista
             mostrarDadosAluno(aluno);
-            visibilidadeDosBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
+            visibilidadeDosBotoes('inline', 'none', 
+                'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
             mostrarAviso("Achou na lista, pode alterar ou excluir");
         } else { //não achou na lista
             limparAtributos();
