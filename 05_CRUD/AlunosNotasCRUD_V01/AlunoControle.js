@@ -14,14 +14,14 @@ function procurePorChavePrimaria(chave) {
     for (let i = 0; i < listaAlunos.length; i++) {
         const aluno = listaAlunos[i];
         if (aluno.ra == chave) {
-            aluno.posicaoNaLista = i;
-            return listaAlunos[i];
+            aluno.posicaoNaLista = i; // se achou, guarda nesse atributo a posição na lista (índice)
+            return listaAlunos[i];//se achou, interrompe o laço de repetição e devolve a linha inteira
         }
     }
     return null;//não achou
 }
 
-// Função para procurar um elemento pela chave primária   -------------------------------------------------------------
+// Função para procurar um elemento pela chave primária   ---------------------------------------------------------
 function procure() {
     const ra = document.getElementById("inputRa").value;
     if (ra) { // se digitou um Ra
@@ -35,7 +35,7 @@ function procure() {
             visibilidadeDosBotoes('inline', 'inline', 'none', 'none', 'none');
             mostrarAviso("Não achou na lista, pode inserir");
         }
-    } else {
+    } else { // se deixou o Ra em branco e tentou procurar
         document.getElementById("inputRa").focus();
         return;
     }
@@ -58,7 +58,6 @@ function inserir() {
 
 // Função para alterar um elemento da lista
 function alterar() {
-
     // Remove o readonly dos campos
     liberarEdicaoDaChaveOuAtributos(true);
 
@@ -175,6 +174,7 @@ function mostrarDadosAluno(aluno) {
 }
 
 function liberarEdicaoDaChaveOuAtributos(soLeitura) {
+    //quando chamado com true, tranca a chave e libera os outros atributos. False, faz o contrário..
     //quando a chave primaria possibilita edicao, tranca (readonly) os outros e vice-versa
     document.getElementById("inputRa").readOnly = soLeitura;
     document.getElementById("inputNome").readOnly = !soLeitura;
