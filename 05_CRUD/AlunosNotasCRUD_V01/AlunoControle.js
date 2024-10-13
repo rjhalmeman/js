@@ -44,7 +44,7 @@ function procure() {
 
 //backend->frontend
 function inserir() {
-    liberarEdicaoDaChaveOuAtributos(true);
+    bloquearAtributos(false);
     visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); //visibilidadeDosBotoes(procure,inserir,alterar,excluir,salvar)
     oQueEstaFazendo = 'inserindo';
     mostrarAviso("INSERINDO - Digite os atributos e clic o botão salvar");
@@ -60,7 +60,7 @@ function inserir() {
 // Função para alterar um elemento da lista
 function alterar() {
     // Remove o readonly dos campos
-    liberarEdicaoDaChaveOuAtributos(true);
+    bloquearAtributos(false);
 
     visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline');
 
@@ -70,7 +70,8 @@ function alterar() {
 
 // Função para excluir um elemento da lista
 function excluir() {
-    liberarEdicaoDaChaveOuAtributos(true);
+    bloquearAtributos(true);
+    document.getElementById("inputRa").readOnly = true; // bloqueia a chave
     visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); //visibilidadeDosBotoes(procure,inserir,alterar,excluir,salvar)
 
     oQueEstaFazendo = 'excluindo';
@@ -171,18 +172,7 @@ function mostrarDadosAluno(aluno) {
     document.getElementById("inputNota4").value = aluno.nota4;
 
     // Define os campos como readonly
-    liberarEdicaoDaChaveOuAtributos(false);
-}
-
-function liberarEdicaoDaChaveOuAtributos(soLeitura) {
-    //quando chamado com true, tranca a chave e libera os outros atributos. False, faz o contrário..
-    //quando a chave primaria possibilita edicao, tranca (readonly) os outros e vice-versa
-    document.getElementById("inputRa").readOnly = soLeitura;
-    document.getElementById("inputNome").readOnly = !soLeitura;
-    document.getElementById("inputNota1").readOnly = !soLeitura;
-    document.getElementById("inputNota2").readOnly = !soLeitura;
-    document.getElementById("inputNota3").readOnly = !soLeitura;
-    document.getElementById("inputNota4").readOnly = !soLeitura;
+    bloquearAtributos(true);
 }
 
 // Função para limpar os dados
@@ -196,14 +186,14 @@ function limparAtributos() {
     bloquearAtributos(true);
 }
 
-function bloquearAtributos(valor) {
+function bloquearAtributos(soLeitura) {
     //quando recebe valor == true no parâmetro, libera a chave e bloqueia a edição dos outros atributos. Se receber false, faz o contrário.
-    document.getElementById("inputRa").readOnly = !valor; // sempre ao contrário dos outros atributos
-    document.getElementById("inputNome").readOnly = valor;
-    document.getElementById("inputNota1").readOnly = valor;
-    document.getElementById("inputNota2").readOnly = valor;
-    document.getElementById("inputNota3").readOnly = valor;
-    document.getElementById("inputNota4").readOnly = valor;
+    document.getElementById("inputRa").readOnly = !soLeitura; // sempre ao contrário dos outros atributos
+    document.getElementById("inputNome").readOnly = soLeitura;
+    document.getElementById("inputNota1").readOnly = soLeitura;
+    document.getElementById("inputNota2").readOnly = soLeitura;
+    document.getElementById("inputNota3").readOnly = soLeitura;
+    document.getElementById("inputNota4").readOnly = soLeitura;
 }
 
 // Função para deixar visível ou invisível os botões
