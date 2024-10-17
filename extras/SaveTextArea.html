@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download de Conteúdo do TextArea</title>
+</head>
+
+<body>
+    <h1>Baixar Conteúdo do TextArea</h1>
+    <label for="inputNomeArquivo">Nome do arquivo</label>
+    <input type="text" name="inputNomeArquivo" id="inputNomeArquivo"> <br>
+    <textarea id="texto" rows="10" cols="50" placeholder="Digite algo aqui..."></textarea>
+    <br><br>
+    <button onclick="downloadArquivo()">Baixar Conteúdo</button>
+
+    <script>
+        function downloadArquivo() {
+            // Obtém o conteúdo do textarea
+            const conteudo = document.getElementById('texto').value;
+
+            // Cria um blob com o conteúdo em formato de texto
+            const blob = new Blob([conteudo], { type: 'text/plain' });
+
+            // Cria um link temporário para o download
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = document.getElementById("inputNomeArquivo").value; // Nome do arquivo de download
+
+            // Simula o clique no link para iniciar o download
+            link.click();
+
+            // Libera o objeto URL
+            URL.revokeObjectURL(link.href);
+        }
+    </script>
+</body>
+
+</html>
