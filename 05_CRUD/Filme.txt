@@ -1,0 +1,7 @@
+int;id
+String;nome
+String;genero
+Date;dataLancamento
+int;duracao
+String;estudio
+String;diretor
