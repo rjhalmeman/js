@@ -1,0 +1,5 @@
+String;numero
+String;agencia
+float;saldo
+int;tipo
+String;titular

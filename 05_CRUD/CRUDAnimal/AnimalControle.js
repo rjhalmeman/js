@@ -1,14 +1,14 @@
-let listaCarro = []; //conjunto de dados
+let listaAnimal = []; //conjunto de dados
 let oQueEstaFazendo = ''; //variável global de controle
-let carro = null; //variavel global 
+let animal = null; //variavel global 
 bloquearAtributos(true);
 //backend (não interage com o html)
 function procurePorChavePrimaria(chave) {
-    for (let i = 0; i < listaCarro.length; i++) {
-        const carro = listaCarro[i];
-        if (carro.placa == chave) {
-            carro.posicaoNaLista = i;
-            return listaCarro[i];
+    for (let i = 0; i < listaAnimal.length; i++) {
+        const animal = listaAnimal[i];
+        if (animal.id == chave) {
+            animal.posicaoNaLista = i;
+            return listaAnimal[i];
         }
     }
     return null;//não achou
@@ -16,11 +16,17 @@ function procurePorChavePrimaria(chave) {
 
 // Função para procurar um elemento pela chave primária   -------------------------------------------------------------
 function procure() {
-    const placa = document.getElementById("inputPlaca").value;
-    if (placa) { // se digitou um Placa
-        carro = procurePorChavePrimaria(placa);
-        if (carro) { //achou na lista
-            mostrarDadosCarro(carro);
+    const id = document.getElementById("inputId").value;
+    if (isNaN(id) || !Number.isInteger(Number(id))) {
+        mostrarAviso("Precisa ser um número inteiro");
+        document.getElementById("inputId").focus();
+        return;
+    }
+
+    if (id) { // se digitou um Id
+        animal = procurePorChavePrimaria(id);
+        if (animal) { //achou na lista
+            mostrarDadosAnimal(animal);
             visibilidadeDosBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
             mostrarAviso("Achou na lista, pode alterar ou excluir");
         } else { //não achou na lista
@@ -29,7 +35,7 @@ function procure() {
             mostrarAviso("Não achou na lista, pode inserir");
         }
     } else {
-        document.getElementById("inputPlaca").focus();
+        document.getElementById("inputId").focus();
         return;
     }
 }
@@ -40,7 +46,7 @@ function inserir() {
     visibilidadeDosBotoes('none', 'none', 'none', 'none', 'inline'); //visibilidadeDosBotoes(procure,inserir,alterar,excluir,salvar)
     oQueEstaFazendo = 'inserindo';
     mostrarAviso("INSERINDO - Digite os atributos e clic o botão salvar");
-    document.getElementById("inputPlaca").focus();
+    document.getElementById("inputId").focus();
 
 }
 
@@ -70,44 +76,38 @@ function salvar() {
 
     // obter os dados a partir do html
 
-    let placa;
-    if (carro == null) {
-        placa = document.getElementById("inputPlaca").value;
+    let id;
+    if (animal == null) {
+        id = parseInt(document.getElementById("inputId").value);
     } else {
-        placa = carro.placa;
+        id = animal.id;
     }
 
     const nome = document.getElementById("inputNome").value;
-    const dataLancamento = document.getElementById("inputDataLancamento").value;
-    const peso = parseInt(document.getElementById("inputPeso").value);
-    const cor = document.getElementById("inputCor").value;
-
-    if (peso<0) {
-        mostrarAviso("O peso não pode ser menor que zero");
-        return;
-    }
-
+    const dataNascimento = document.getElementById("inputDataNascimento").value;
+    const peso = parseFloat(document.getElementById("inputPeso").value);
+    const raca = document.getElementById("inputRaca").value;
     //verificar se o que foi digitado pelo USUÁRIO está correto
-    if (placa && nome && dataLancamento && peso && cor) {// se tudo certo 
+    if (id && nome && dataNascimento && peso && raca) {// se tudo certo 
         switch (oQueEstaFazendo) {
             case 'inserindo':
-                carro = new Carro(placa, nome, dataLancamento, peso, cor);
-                listaCarro.push(carro);
+                animal = new Animal(id, nome, dataNascimento, peso, raca);
+                listaAnimal.push(animal);
                 mostrarAviso("Inserido na lista");
                 break;
             case 'alterando':
-                carroAlterado = new Carro(placa, nome, dataLancamento, peso, cor);
-                listaCarro[carro.posicaoNaLista] = carroAlterado;
+                animalAlterado = new Animal(id, nome, dataNascimento, peso, raca);
+                listaAnimal[animal.posicaoNaLista] = animalAlterado;
                 mostrarAviso("Alterado");
                 break;
             case 'excluindo':
                 let novaLista = [];
-                for (let i = 0; i < listaCarro.length; i++) {
-                    if (carro.posicaoNaLista != i) {
-                        novaLista.push(listaCarro[i]);
+                for (let i = 0; i < listaAnimal.length; i++) {
+                    if (animal.posicaoNaLista != i) {
+                        novaLista.push(listaAnimal[i]);
                     }
                 }
-                listaCarro = novaLista;
+                listaAnimal = novaLista;
                 mostrarAviso("EXCLUIDO");
                 break;
             default:
@@ -117,7 +117,7 @@ function salvar() {
         visibilidadeDosBotoes('inline', 'none', 'none', 'none', 'none');
         limparAtributos();
         listar();
-        document.getElementById("inputPlaca").focus();
+        document.getElementById("inputId").focus();
     } else {
         alert("Erro nos dados digitados");
         return;
@@ -130,18 +130,18 @@ function preparaListagem(vetor) {
     for (let i = 0; i < vetor.length; i++) {
         const linha = vetor[i];
         texto +=
-            linha.placa + " - " +
+            linha.id + " - " +
             linha.nome + " - " +
-            linha.dataLancamento + " - " +
+            linha.dataNascimento + " - " +
             linha.peso + " - " +
-            linha.cor + "<br>";
+            linha.raca + "<br>";
     }
     return texto;
 }
 
 //backend->frontend (interage com html)
 function listar() {
-    document.getElementById("outputSaida").innerHTML = preparaListagem(listaCarro);
+    document.getElementById("outputSaida").innerHTML = preparaListagem(listaAnimal);
 }
 
 function cancelarOperacao() {
@@ -156,13 +156,13 @@ function mostrarAviso(mensagem) {
     document.getElementById("divAviso").innerHTML = mensagem;
 }
 
-// Função para mostrar os dados do Carro nos campos
-function mostrarDadosCarro(carro) {
-    document.getElementById("inputPlaca").value = carro.placa;
-    document.getElementById("inputNome").value = carro.nome;
-    document.getElementById("inputDataLancamento").value = carro.dataLancamento;
-    document.getElementById("inputPeso").value = carro.peso;
-    document.getElementById("inputCor").value = carro.cor;
+// Função para mostrar os dados do Animal nos campos
+function mostrarDadosAnimal(animal) {
+    document.getElementById("inputId").value = animal.id;
+    document.getElementById("inputNome").value = animal.nome;
+    document.getElementById("inputDataNascimento").value = animal.dataNascimento;
+    document.getElementById("inputPeso").value = animal.peso;
+    document.getElementById("inputRaca").value = animal.raca;
 
     // Define os campos como readonly
     bloquearAtributos(true);
@@ -171,20 +171,20 @@ function mostrarDadosCarro(carro) {
 // Função para limpar os dados dos campos
 function limparAtributos() {
     document.getElementById("inputNome").value = "";
-    document.getElementById("inputDataLancamento").value = "";
+    document.getElementById("inputDataNascimento").value = "";
     document.getElementById("inputPeso").value = "";
-    document.getElementById("inputCor").value = "";
+    document.getElementById("inputRaca").value = "";
 
     bloquearAtributos(true);
 }
 
 function bloquearAtributos(soLeitura) {
     //quando a chave primaria possibilita edicao, tranca (readonly) os outros e vice-versa
-    document.getElementById("inputPlaca").readOnly = !soLeitura;
+    document.getElementById("inputId").readOnly = !soLeitura;
     document.getElementById("inputNome").readOnly = soLeitura;
-    document.getElementById("inputDataLancamento").readOnly = soLeitura;
+    document.getElementById("inputDataNascimento").readOnly = soLeitura;
     document.getElementById("inputPeso").readOnly = soLeitura;
-    document.getElementById("inputCor").readOnly = soLeitura;
+    document.getElementById("inputRaca").readOnly = soLeitura;
 }
 
 // Função para deixar visível ou invisível os botões
@@ -199,6 +199,6 @@ function visibilidadeDosBotoes(btProcure, btInserir, btAlterar, btExcluir, btSal
     document.getElementById("btExcluir").style.display = btExcluir;
     document.getElementById("btSalvar").style.display = btSalvar;
     document.getElementById("btCancelar").style.display = btSalvar; // o cancelar sempre aparece junto com o salvar
-    document.getElementById("inputPlaca").focus();
+    document.getElementById("inputId").focus();
 }
 

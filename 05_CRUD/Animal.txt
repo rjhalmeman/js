@@ -1,0 +1,5 @@
+int;id
+String;nome
+Date;dataNascimento
+float;peso
+String;raca
