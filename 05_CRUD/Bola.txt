@@ -1,0 +1,5 @@
+int;id;10
+int;peso;10
+String;modelo
+String;marca
+Date;dataFabricacao

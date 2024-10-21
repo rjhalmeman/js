@@ -1,0 +1,4 @@
+int;id;10
+String;nome;50
+float;peso;10
+String;distribuidor;10

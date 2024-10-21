@@ -1,14 +1,14 @@
-let listaFilme = []; //conjunto de dados
+let listaComida = []; //conjunto de dados
 let oQueEstaFazendo = ''; //variável global de controle
-let filme = null; //variavel global 
+let comida = null; //variavel global 
 bloquearAtributos(true);
 //backend (não interage com o html)
 function procurePorChavePrimaria(chave) {
-    for (let i = 0; i < listaFilme.length; i++) {
-        const filme = listaFilme[i];
-        if (filme.id == chave) {
-            filme.posicaoNaLista = i;
-            return listaFilme[i];
+    for (let i = 0; i < listaComida.length; i++) {
+        const comida = listaComida[i];
+        if (comida.id == chave) {
+            comida.posicaoNaLista = i;
+            return listaComida[i];
         }
     }
     return null;//não achou
@@ -24,9 +24,9 @@ function procure() {
     }
 
     if (id) { // se digitou um Id
-        filme = procurePorChavePrimaria(id);
-        if (filme) { //achou na lista
-            mostrarDadosFilme(filme);
+        comida = procurePorChavePrimaria(id);
+        if (comida) { //achou na lista
+            mostrarDadosComida(comida);
             visibilidadeDosBotoes('inline', 'none', 'inline', 'inline', 'none'); // Habilita botões de alterar e excluir
             mostrarAviso("Achou na lista, pode alterar ou excluir");
         } else { //não achou na lista
@@ -74,42 +74,39 @@ function excluir() {
 function salvar() {
     //gerencia operações inserir, alterar e excluir na lista
 
-    // obter os dados a partir do html
+// obter os dados a partir do html
 
     let id;
-    if (filme == null) {
-        id = parseInt(document.getElementById("inputId").value);
+    if (comida == null) {
+         id = parseInt(document.getElementById("inputId").value);
     } else {
-        id = filme.id;
+        id = comida.id;
     }
 
-    const nomeDoFilme = document.getElementById("inputNome").value;
-    const genero = document.getElementById("inputGenero").value;
-    const dataLancamento = document.getElementById("inputDataLancamento").value;
-    const duracao = parseInt(document.getElementById("inputDuracao").value);
-    const estudio = document.getElementById("inputEstudio").value;
-    const diretor = document.getElementById("inputDiretor").value;
+    const nome = document.getElementById("inputNome").value;
+    const peso = parseFloat(document.getElementById("inputPeso").value);
+    const distribuidor = document.getElementById("inputDistribuidor").value;
     //verificar se o que foi digitado pelo USUÁRIO está correto
-    if (id && nomeDoFilme && genero && dataLancamento && duracao && estudio && diretor) {// se tudo certo 
+if(id && nome && peso && distribuidor ){// se tudo certo 
         switch (oQueEstaFazendo) {
             case 'inserindo':
-                filme = new Filme(id, nomeDoFilme, genero, dataLancamento, duracao, estudio, diretor);
-                listaFilme.push(filme);
+                comida = new Comida(id,nome,peso,distribuidor);
+                listaComida.push(comida);
                 mostrarAviso("Inserido na lista");
                 break;
             case 'alterando':
-                filmeAlterado = new Filme(id, nomeDoFilme, genero, dataLancamento, duracao, estudio, diretor);
-                listaFilme[filme.posicaoNaLista] = filmeAlterado;
+                comidaAlterado = new Comida(id,nome,peso,distribuidor);
+                listaComida[comida.posicaoNaLista] = comidaAlterado;
                 mostrarAviso("Alterado");
                 break;
             case 'excluindo':
                 let novaLista = [];
-                for (let i = 0; i < listaFilme.length; i++) {
-                    if (filme.posicaoNaLista != i) {
-                        novaLista.push(listaFilme[i]);
+                for (let i = 0; i < listaComida.length; i++) {
+                    if (comida.posicaoNaLista != i) {
+                        novaLista.push(listaComida[i]);
                     }
                 }
-                listaFilme = novaLista;
+                listaComida = novaLista;
                 mostrarAviso("EXCLUIDO");
                 break;
             default:
@@ -131,21 +128,18 @@ function preparaListagem(vetor) {
     let texto = "";
     for (let i = 0; i < vetor.length; i++) {
         const linha = vetor[i];
-        texto +=
-            linha.id + " - " +
-            linha.nome + " - " +
-            linha.genero + " - " +
-            linha.dataLancamento + " - " +
-            linha.duracao + " - " +
-            linha.estudio + " - " +
-            linha.diretor + "<br>";
+        texto += 
+            linha.id+" - " +
+            linha.nome+" - " +
+            linha.peso+" - " +
+            linha.distribuidor+"<br>";
     }
     return texto;
 }
 
 //backend->frontend (interage com html)
 function listar() {
-    document.getElementById("outputSaida").innerHTML = preparaListagem(listaFilme);
+    document.getElementById("outputSaida").innerHTML = preparaListagem(listaComida);
 }
 
 function cancelarOperacao() {
@@ -160,15 +154,12 @@ function mostrarAviso(mensagem) {
     document.getElementById("divAviso").innerHTML = mensagem;
 }
 
-// Função para mostrar os dados do Filme nos campos
-function mostrarDadosFilme(filme) {
-    document.getElementById("inputId").value = filme.id;
-    document.getElementById("inputNome").value = filme.nome;
-    document.getElementById("inputGenero").value = filme.genero;
-    document.getElementById("inputDataLancamento").value = filme.dataLancamento;
-    document.getElementById("inputDuracao").value = filme.duracao;
-    document.getElementById("inputEstudio").value = filme.estudio;
-    document.getElementById("inputDiretor").value = filme.diretor;
+// Função para mostrar os dados do Comida nos campos
+function mostrarDadosComida(comida) {
+    document.getElementById("inputId").value = comida.id;
+    document.getElementById("inputNome").value = comida.nome;
+    document.getElementById("inputPeso").value = comida.peso;
+    document.getElementById("inputDistribuidor").value = comida.distribuidor;
 
     // Define os campos como readonly
     bloquearAtributos(true);
@@ -177,11 +168,8 @@ function mostrarDadosFilme(filme) {
 // Função para limpar os dados dos campos
 function limparAtributos() {
     document.getElementById("inputNome").value = "";
-    document.getElementById("inputGenero").value = "";
-    document.getElementById("inputDataLancamento").value = "";
-    document.getElementById("inputDuracao").value = "";
-    document.getElementById("inputEstudio").value = "";
-    document.getElementById("inputDiretor").value = "";
+    document.getElementById("inputPeso").value = "";
+    document.getElementById("inputDistribuidor").value = "";
 
     bloquearAtributos(true);
 }
@@ -190,11 +178,8 @@ function bloquearAtributos(soLeitura) {
     //quando a chave primaria possibilita edicao, tranca (readonly) os outros e vice-versa
     document.getElementById("inputId").readOnly = !soLeitura;
     document.getElementById("inputNome").readOnly = soLeitura;
-    document.getElementById("inputGenero").readOnly = soLeitura;
-    document.getElementById("inputDataLancamento").readOnly = soLeitura;
-    document.getElementById("inputDuracao").readOnly = soLeitura;
-    document.getElementById("inputEstudio").readOnly = soLeitura;
-    document.getElementById("inputDiretor").readOnly = soLeitura;
+    document.getElementById("inputPeso").readOnly = soLeitura;
+    document.getElementById("inputDistribuidor").readOnly = soLeitura;
 }
 
 // Função para deixar visível ou invisível os botões
