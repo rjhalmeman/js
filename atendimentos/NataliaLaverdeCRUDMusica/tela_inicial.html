@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 20px 0;
+            color: white;
+            font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+        }
+
+        .container {
+            text-align: center;
+            font-size: 24px;
+            color: #1DB954;
+            font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 600;
+            background-color: rgba(40, 40, 40, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        input {
+            border: 2px solid #1DB954;
+            border-radius: 20px;
+            outline: none;
+            font-size: 24px;
+            width: 250px;
+            padding: 10px;
+            margin-left: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #282828;
+            color: white;
+        }
+
+        input:focus {
+            border-color: #1ed760;
+        }
+    </style>
+</head>
+<body>
+    <h1>Novo Usuário</h1>
+    <div class="container">
+        <span>Playlist de:</span>
+        <input type="text" id="playlistInput" />
+    </div>
+
+    <script>
+        document.getElementById('playlistInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const inputValue = this.value.trim();
+                if (inputValue === '') {
+                    alert('Insira seu nome de usuário');
+                } else {
+
+                    window.location.href = 'nova_pagina.html?username=' + encodeURIComponent(inputValue);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
