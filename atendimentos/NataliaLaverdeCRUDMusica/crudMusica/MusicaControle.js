@@ -1,4 +1,7 @@
 
+
+
+
 let listaMusica = [];
 let oQueEstaFazendo = '';
 let musica = null;
@@ -20,7 +23,7 @@ function dadosIniciais() {
 }
 
 
-function fazerDownload() {
+function salvarNoComputador() {
     nomeParaSalvar = "./Musica.csv";
     let textoCSV = "";
     for (let i = 0; i < listaMusica.length; i++) {
@@ -52,9 +55,10 @@ function salvarEmArquivo(nomeArq, conteudo) {
 }
 
 
+
+
 // Função para abrir o seletor de arquivos para upload
-function fazerUpload() {
-    
+function buscarDadosSalvosNoComputador() {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.csv'; // Aceita apenas arquivos CSV
@@ -66,7 +70,7 @@ function fazerUpload() {
         }
     };
     input.click(); // Simula o clique para abrir o seletor de arquivos
-    
+
 }
 
 // Função para processar o arquivo CSV e transferir os dados para a listaMusica
@@ -93,12 +97,11 @@ function processarArquivo(arquivo) {
                 }
             }
         }
-       // console.log("Upload concluído!", listaMusica); // Exibe no console a lista atualizada
+        // console.log("Upload concluído!", listaMusica); // Exibe no console a lista atualizada
         listar();
     };
     leitor.readAsText(arquivo); // Lê o arquivo como texto
 }
-
 
 
 function procurePorChavePrimaria(chave) {
@@ -143,7 +146,6 @@ function inserir() {
     oQueEstaFazendo = 'inserindo';
     mostrarAviso("INSERINDO - Digite os atributos e clic o botão salvar");
     document.getElementById("id").focus();
-
 }
 
 function alterar() {
@@ -274,7 +276,6 @@ function bloquearAtributos(soLeitura) {
 }
 
 function visibilidadeDosBotoes(btProcure, btInserir, btAlterar, btExcluir, btSalvar) {
-
     document.getElementById("btProcure").style.display = btProcure;
     document.getElementById("btInserir").style.display = btInserir;
     document.getElementById("btAlterar").style.display = btAlterar;
