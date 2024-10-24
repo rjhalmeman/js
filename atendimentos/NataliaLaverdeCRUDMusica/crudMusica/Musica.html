@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Playlist</title>
+    <title>Cadastro de Músicas</title>
     <link rel="stylesheet" href="./Musica.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Editar Playlist</h1>
+        <h2>Cadastro de músicas</h2>
 
         <label for="id">ID:</label>
         <input type="text" name="id" id="id">
@@ -40,6 +40,10 @@
 
         <div id="divAviso"></div>
         <div id="outputSaida">...</div>
+
+
+        <input type="button" value="Salvar os dados no computador" onclick="fazerDownload()">
+        <input type="button" value="Buscar os dados salvos" onclick="fazerUpload()">
     </div>
 
     <script src="./Musica.js"></script>

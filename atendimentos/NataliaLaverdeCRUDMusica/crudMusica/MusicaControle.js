@@ -1,11 +1,11 @@
 
-let listaMusica =[] ;
+let listaMusica = [];
 let oQueEstaFazendo = '';
 let musica = null;
 bloquearAtributos(true);
 
 
-dadosIniciais();
+//dadosIniciais();
 
 function dadosIniciais() {
     listaMusica.push(new Musica('0', 'Rein raus', 'Rammstein', 'Mutter', '2001-02-04', 'Industrial Metal'));
@@ -16,8 +16,89 @@ function dadosIniciais() {
     listaMusica.push(new Musica('5', 'Wind Of Change', 'Scorpions', 'Crazy World', '1990-01-01', 'Rock'));
     listaMusica.push(new Musica('6', 'Fazer Falta', 'Mc Livinho', 'Fazer Falta', '2017-05-25', 'Funk Paulista'));
 
-    listar();    
+    listar();
 }
+
+
+function fazerDownload() {
+    nomeParaSalvar = "./Musica.csv";
+    let textoCSV = "";
+    for (let i = 0; i < listaMusica.length; i++) {
+        const linha = listaMusica[i];
+        textoCSV += linha.id + ";" +
+            linha.nome + ";" +
+            linha.banda + ";" +
+            linha.album + ";" +
+            linha.lancamento + ";" +
+            linha.genero + "\n";
+    }
+
+
+    salvarEmArquivo(nomeParaSalvar, textoCSV);
+}
+
+
+function salvarEmArquivo(nomeArq, conteudo) {
+    // Cria um blob com o conteúdo em formato de texto
+    const blob = new Blob([conteudo], { type: 'text/plain' });
+    // Cria um link temporário para o download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = nomeArq; // Nome do arquivo de download
+    // Simula o clique no link para iniciar o download
+    link.click();
+    // Libera o objeto URL
+    URL.revokeObjectURL(link.href);
+}
+
+
+// Função para abrir o seletor de arquivos para upload
+function fazerUpload() {
+    
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.csv'; // Aceita apenas arquivos CSV
+    input.onchange = function (event) {
+        const arquivo = event.target.files[0];
+        console.log(arquivo.name);
+        if (arquivo) {
+            processarArquivo(arquivo);
+        }
+    };
+    input.click(); // Simula o clique para abrir o seletor de arquivos
+    
+}
+
+// Função para processar o arquivo CSV e transferir os dados para a listaMusica
+function processarArquivo(arquivo) {
+    const leitor = new FileReader();
+    leitor.onload = function (e) {
+        const conteudo = e.target.result; // Conteúdo do arquivo CSV
+        const linhas = conteudo.split('\n'); // Separa o conteúdo por linha
+        listaMusica = []; // Limpa a lista atual (se necessário)
+        for (let i = 0; i < linhas.length; i++) {
+            const linha = linhas[i].trim();
+            if (linha) {
+                const dados = linha.split(';'); // Separa os dados por ';'
+                if (dados.length === 6) {
+                    // Adiciona os dados à listaMusica como um objeto
+                    listaMusica.push({
+                        id: dados[0],
+                        nome: dados[1],
+                        banda: dados[2],
+                        album: dados[3],
+                        lancamento: dados[4],
+                        genero: dados[5]
+                    });
+                }
+            }
+        }
+       // console.log("Upload concluído!", listaMusica); // Exibe no console a lista atualizada
+        listar();
+    };
+    leitor.readAsText(arquivo); // Lê o arquivo como texto
+}
+
 
 
 function procurePorChavePrimaria(chave) {
