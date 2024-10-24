@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player de Música</title>
+    <link rel="stylesheet" href="./Player.css">
+
+</head>
+
+<body>
+
+    <div class="player-container">
+        <div class="musica-nome" id="currentMusic">Selecione uma música</div>
+        <button id="playPauseBtn" class="play-btn">Play</button>
+
+        <div class="playlist-container">
+            <!-- Música 1 -->
+            <div class="musica-container"
+                onclick="selectMusic('Rein Raus', 'Rammstein', 'Rein raus Rammstein (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.3fj4wau7LD3n-WntzcfihAHaII?w=185&h=204&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                    alt="Rein Raus" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">Rein Raus</div>
+                    <div class="musica-atributos">Rammstein - Mutter (2001)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 2 -->
+            <div class="musica-container"
+                onclick="selectMusic('I-E-A-I-A-I-O', 'System Of A Down', 'I-E-A-I-A-I-O System Of A Down (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.BxThRpyZ4fJw73_lT3aNVAAAAA?w=178&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                    alt="I-E-A-I-A-I-O" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">I-E-A-I-A-I-O</div>
+                    <div class="musica-atributos">System Of A Down - Steal This Album! (2002)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 3 -->
+            <div class="musica-container"
+                onclick="selectMusic('Diamond Eyes', 'Deftones', 'Diamond Eyes Deftones (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.XywHl6Dxe8Jv1UP4Oy3osQHaHa?w=176&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                    alt="Diamond Eyes" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">Diamond Eyes</div>
+                    <div class="musica-atributos">Deftones - Diamond Eyes (2010)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 4 -->
+            <div class="musica-container"
+                onclick="selectMusic('The Unforgiven II', 'Metallica', 'The Unforgiven II Metallica (320K).mp3')">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAs
+                JCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU
+                2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCADGAPoDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAAEDBAUCBwYI/8QARRAAAQMCBAMEBwMHCwUAAAAAAQACAwQRBRIhMQZBURMiYXEUFTKBkaGxI1LRFkJDcrKzwQckJjM2U2LC4fDxY3OCkqT/xAAbAQEAAgMBAQAAAAAAAAAAAAAABAUBAgMGB//EADIRAAICAQMDAQYEBgMAAAAAAAABAgMRBBIhBTFBUQYTFTKRoSJSwdEUQmGBseEzcXL/2gAMAwEAAhEDEQA/API0ITQCQhCAFahw7FJ4JaqChrJaaFr3zTxQSvhjay2Zz5GjKAOdyqq9O4egvwm4BoBqMH4l77i0E5mzWbG0m5J7PkPegPO3YdijKcVj6KrZSERkVD4JGwkSewQ8jLry1U1PgmP1cUU1LhWIzwzB5ikgpZpGSBhs4tc1tiBzXoeKR5eBpYmgfZYRgL3hgb3HMdSPJcSSbkvPT4Fd4HUtoOEqXEewZO6iwipqRDK5zWuDcRlhGrDm1LjfbQDc2MYHnceA8SS3EWD4pJZ8kZ7OjqHWfG8xPabN3BBB8Qei4mwbHqd1KyowvEIX1UpgpmzUs0bppRYZIw5oJOo08V97wvxDJic2JRS0VO10DKiriImlLpHVeIOk7F4kdZzQZXb9OZOqqcVFbxfh2EOp2xUuC4pXyRyMkmfJI2npibntDYXyXJAGrieegHwFXhmLUDIn1tDV0zJSWxuqYZIw4gBxAzAciD70VGF4vSRNnqqCsghc5jGyTwSRsLntztbmcALkahegce04hwaha3K1kWIwyiIRNjyGsoRKe8AM224FuW6ONzbAI+9334jhTJGhrQCYcPlAc4gam2UbnbfoB8BLhWMQUwrJsPrI6UtjcJ5IJGxES6s75FteSBhWMGldWigrPQ2xiZ1R2EnYiMuyB5fa1idAV6DxD/Y8Oa5xzs4ZzNItltTEAWta53P4HVuIPAk5yi7eHaVlwBucQjJ19rYD3nx1A87o8PxHEHujo6eSZzGhz8lg1jer3uIaB5kIdh2JsrPV5pKj04ua1tM2NzpnFzc7crGgk3GotuNV6DRQ0+BcKmslY2YCmpq2amOkdTW19hA2VzbSgMY7UB2wcBbtDfEwbEJsa4sbicsMcbosOqnujjc8gejYa6nY5hc4OvexAzfRAfNVeGYtQNhfXUNXTMmL2xOqYZImyOZbMGl4AJFxfzVNej8eULKXDaYAxZ4sUaXCN7nE+lULZMzi7mSw8z+HnCAEIQgBCaEAkJoQCQhCAEIQgBCE0Ak0k0AkIQgBCEIAXsuB0sowDCIWsZ2cmExxSF0ZbrXRVTmku3/SW6HNflr41+C9spHHDY8JgExBlnZBd7r5W0eHGoDN7AB0end/1AMfpgzBcaikY8ZMGqI44258sZpYYrFzXiwd3bmzue1mkrLwekfWcD0tMZuybWYZWU0ckjLxRu9ZSPJvobusG6X2HLU69TmnpeI6SRsTHR+nUJysJAndg0MuVr3G/tOI23P/AK4VBUvouAY5oJjDVDB610D43vbPG44o4FzC3a431H4gZfBtJLQY7xRQ5+0mo6d9KC0ujZK6OuiaSbkEA259VJhsYqP5QOI5C3K6KbGHhl2kF0rvRct7WIOc7D66VeA5ZZsTx6eZ8s0klC2Soe8lxeX1sBfJK869ST4+K18Di/pjxvUnNkhrHRyOiJDgx1aJiI3WdqRGQL3vzOt0BY4xy1XDeKSnKHU1dTnLZhf9jW1dEQXtGbTSwOmpttpT40cPyao2jf1hhObQtJc3D52m9x7/ACI01WpxBSSxcJ43SvMj3MhkrcxgETWmTFvSzG1riXWbnt872FhmcaD+jVOCCD6zwx1rtDQ91BNnOUG+tgb7G/uAHXEBP5FsZpZh4Yt7eh9DdcXcAOdxbx6LtxJ4AlsAbcP04c64LgPWMdhY6geGbnexvpHxG23BsQ7O39m3tJbqc1Hc3cAB7knW/IQ3ZGCcBYWuy3eT6yaCb2sNvvE6bW1ID417SHABDnuz1lhcGQsyZWQ0c3Zgaa6WubnXoTlbhcAQmXFMS6eqpIiRfMO3qIIiW26Alb3FD/WPCpqchzMfgGJhxLi3s6imdA8C/MOIG5FtNxZubwAyMMxqofmvHV4IwBuYZmiaWZw7v6rbC+9uiA1uMgKvht1SHlzo62jkLg0ZTGyWrpLhwA0JItvzXlq9ax2lfDwti1C9sz5aOiiL55oY4HOmhxJs7g1md0tmiS29ueh0HkyASEIQAhNCASEJoBIR8EwCbAC58BdAJCsMo6+T+rpKl97exDI7fyCsx4JxBL7GFYgdzf0aUDTU6kWXN2Qj3aNlCT7IzkIQuhqCaSaASaSEAITX0+G8Iz4jR0tZ6dFEyoY57W9k97mgPcyx1A5LhfqKtNHfa8I61U2XS21rLPnaaE1FRTQDeeaGEeb3hq9Y4gxSmwyt4bfVTsjazHKmpNo/5wMPdG+n7Z0TWl4aMzg0lvesSBpZYGHcHMo62iq5K8zeiVMFT2Qp8jZDE8PDXO7W9jbW3+omreF4K6qqKyuxCvqKuoeZJn/YtubWsAWmwGgA5AW8q99a0S7Tz/Z/sTo9L1T/AJfui1hXFWAGXH5a3E20orMfxGtjHolZLI+jmhZA3K6FthcC1jzA2trBgnEHC8GBYXQ1tbTdoyndBV0tZh9VUQkiskmBf2bC0ggjmbEDTTSt+SeCM3NW+335mgfBjAmzhzAhb+aOdy78838HBafGtN4z9CTHoeplzx9Slw9i2AYfjvEtRLP6Nh9YJ4qIsppXNbE+ujmblhjaSLNBsCLcvEamE8Q8N02M8Q18tcI4aviGOvhE1NUPdLTwmVzHd1jrav8APyuu4sAwJtiKCC2/f7Vw8+84q0cMwSJoLcOogRz9HjOnvBXCXXqU8KLf0Oi6DdnDkvuZlNxLg8nDeLUFdiUxrJabGGxMfHUyPmlnkdJCDJlLQCbXu76a6j+IeC62CGGpq4J4uzge+CfD62YtnZSiK8f2ZFwS4AZrDlYOsIHMhbpFT07APZEcMTdx/hCGMc06nW+ltALeS2+NRxnZ9/8ARLj7OSx+Kz7f7LVBinCtTSYTTYjmnh9DweOthlw3EZWslpKeNjiBHGWl1wW310PPZUJamkPC9VhsDav0uXDI6NlM7D6hgzMxB1QC6VzLGzbW7wt4/m3mgkBoJv5nlzR2Dbkm3j71FfXn+Q6L2frXzWP6FHh+pngwz1di0McAjimp2uxAOfR1lFITKKefs8zgWOJLTl2sAWlve0qDEOF8PrMS9GkhpaQ4lQ1FPHFDUOjfDBQNgNmsZYnOXm5AP51/vYuLEARt5g6HnoFinUq102snfBSawS4+zem27nKX2/Y+tw6Ceq4XZBUTiSomwjFqW73ySObI2SpmYHucSPEga2y6EbfANweQkB07G36McfwX0eGYlLhsrntaJIZWuZUQP9iVjmOjuOjhc5T7tiQaV9vBdZaieFg66b2dojOat5j/AC8/VMpt4fba7qtxFz7MI297lO3hynOS885vvYMb8L3WpEWlrbkkEa/DVW4RfS2tjZVNuvvj5JvwXQwX/H93+5mRcM4XoXuq3XH94xt/gxW4+GsFJF6eR176Omk/ykLagjvYW0Dfmr0MBtmI36fQKlu6res/jZwei0cO1aMWHhrAgWj0GM3t7b5nfVy0I8CwNlgMOof/ACgY46frXWqyL2XAHTnzUuUG21/LkqmzqN8u839Tg66F2gl/Yox4bh8YBZR0jBf8ynhH+VWmxNZ7IDRsA0Bo+QUuUC/QaeCYF7fLyUGV85d5GuY+EADnaXdYeJ2XbY8ok8Y5Tr+o5dtZa/vXZHdkH/Sl/YcuEbPxo42WcNHgB5eQQkhfajxIJpJoBIQhANescMsHqHB3bnsJP30i8nXr3CsTnYBgpvp2Eug5/byLzPtLLGlj/wCv0Zb9Jltuf/X6l1wNzbT4brgMzHUmwWhJGCLAAG2q4FOANl4FXLB6hXLBR7NrScoJv1Oq4FNZwc7XwV4RkE2G17JiMvHeFvBdPfNG/vsFGSMNF97HQNVGZsrje9r8tLBbT4WAa78r/VZ1QBq3x3HPwUii3LJFVmSiCAL/AE+C5z3cNNhobaKYxN3NraH4rhkN3G3s3239ysVKPcmJoki6X5WVhsZs/M7kfAIZGxtjroB71O4EscL73uRyUKc+eCPKWXwfI4o4uqDYHK0Wb467rOG61cSZZ+2xO/TyWY4fivaaOS90kW6WYJo4J5LpvRcc1YgjL3gchqVLsajE1g3nJfo4szG3G7ra9BrdakEd3OGXf6XXFJCGiPyJOmq2aeBoLTa5AJJHj5ryGs1KUmRNRdjJ3HAAW5R+aFcZHoG8l3HHYt8G3KnDBbzBXm7Lm2UVl2SIjQaea5a0325KXLcAJ5LXXHcct5y1ot+PipGxjTTXkuw0Ae9Mgggj3grk55OTmwa0Donlblkv/dy/sOSJ1OqROkmv6KX9hyQzuRylnDPz2mkmvuZ5MSaSaASEIQDC9o4SDTw3gev6CUf/AESrxccl61wrUBuB4OxztGwvFhv/AF0hXlvaiDnpIpfmX+GWnTIOdrx6H1TY2gFGS/KwXDJ2usB7/BTHkvmTynyW7zF8kfYNtfqo+ztdWXODQoJHHUDdZjKTEJSZWdHmt4XVGWDvOJ5EgBartGd7Q2Gn8VWcA69hZvPqVMqsa7E6qxoyJY3aC2gG2g+q5aGMGp1tb/hXZmts7wtuqDmF8lhfmbdNFaVy3rks4S3Lkma5rt3C3Pp8UjUsAkt7IHd/FVnlzCQALjU25DZVJ5gGOAJA9+2osF3hQps6xq3MpVV5pC42yXNh89lRqMmVmXnc26K8XMEZNxqTz1FgsyR2Y+GwtsvTaWL7eEWse2CIBbGH092Z8ty52nI2boFn08JlPQa6+Wq+mw2nBiphrYNvpz5rTqWoUIYTOV01XAsU8DwQLdL38Fuwwta0G2pAVWKI3jFtySfitQN0A2XhNVe5M81qrs8IQbby2KCNrLvl8VzrdV+SBk4tqEy2xv4pkEJuOizkzk5Lhr8VGZQBqUOe3XbZUZprE26rvCvcdq6tzLBlcTe+l9EdppJf+7l/YcqBlcToR87KVhLg8m4+zk/YOqlxpxJEmdK2s8QQhNfYzwQk0k0AkIQgGF6dw41/qTCyOcUn7568xC9Y4VaDgmEXF/spP38i857Ry26WL/qv8Mu+jPbdJ/0/U2acuZlvtotASaXuPeoWxXt4LssNrA2P0XzSxqbLm1qbyN8uawG/JL2djqTa55lQP+zI39kn3rhk19zyv1ssqvjgKvjgtFrza+9+qb2NyjbS6jgLnm9zlB5qWcDLe/vC0fEkjTtLBnPic/MQNALWUDIjEJJHWuRoLH5q2ZWNFrgAcyoJpWOBse6BfUaXU+EpdvBYQlJ8GTL7TnPOnIcxzOiwq2oLnuDbWdtblyVrEqv7V4Y6wFra72NiNFjEkm5PivYaDTcb5F/p68JSZK4u7PU3JNgD/BcFha3M642sFdpqcPawvIHaaRg31HWxXdZlvFTxtBcbNNhd3++amfxCU9iO+9ZwWcNoJXwPlYASYi83J7odsLL6ejhDY2nXRjRci2wtso6CB1PRQtLQHObGw28Od1oAAZW7X1/0Xjddq5XTfpkoNVqHOTXgmp4+8SRoBYKydAuIGhrTvrqpCL6ePNUE5ZkUU5ZkccvJdBumyYaE9h4LTJpuOCOV1WlcW3v7lLJJYnXyVKZ5dz57lSKoNvkk1Qb7kUkjuW30VdwLzsrjYw8eK7FPZTFZGBOVkYFSOFxPNXGQkNfp+jl/YcpWRgW00HzVgWDZP+1N+7cuTubmiJde2ng/PKEIX2o8WCaSEAIQhANekcLYlBHh9BTPfZzI3DXTeRzv4rzdbtG4tpqYg2OTlvuVW9S0kdXT7uXqeg6DCM75KXp+qPX4JGPaC0ixCnJbcHS2q84w/HKqlIa9znx+J1C+ii4ggqGiNp7x3vofIc1861fRdRTLhZXqegs6fNPMeUa+ISsYy7dXXLeazY5czA9p8COfvUFRUteyNma5IJ1P1UFO8xvLXG9zffRKtM4189yTVRtrwfQ0cgyDXdFRKO+b90NVFkuW5zWvfS6gmnyxyFzvaP8Au4UWOnzPJHVGZ5IxK58zgblrb2vsfguJ53OBYbtFutgRyKihcTfXXchV6me9287HXl5K2rpzNJFlGvMsGHVvzSPb00v1UMLM72tPM6ldzXL3Ei111RtDp2NuRe+3gLr1q/BTx6FpjCNukp2l3aFo7kWRh+6PJcUdI6Svc9zj7QB8lZhIYA0nvOadvgrML4o5WPDbFxAJAuF5my+a3Y8or5WSW5o1pZA0wMHI6A9ALBWmuaXAHawtzWa5zZJWO5iwHRX4jZ1zbRedtjhIpbY4iaLALJpNOg8l0qp9yofcVknLrQpH5ogilMDry6KuW/8AKvPaCqrxrYe9Ta5cE+qXGBsFiNFOHAAX/wCVXbe2q6zdToklliUdz4J3PAHvVd9S1vaXP6Kbb9RyiknAuOfRYtXWtGcXtdslr6fmkKXpNK7Jo7VaV2Lk8kQmeaS+xnhATSTQCQhCAa2qNw9HgHRv8SsVa1L/AFEJ/wAJ+pWk1lF10a5VXtvyv2Lq6a9zCHNJBGosomuBC6UVxXZnu4zzymaVNiMjJWvlOcCwsdgB4BXJcWhfIC1hy3aLjQ+JCwU7qDZ0+myW5o6bk3lo3ziwLQAXHXUkam/VcyV7XuazObG2Y7geF1hhyeYrj8NqTyjrH3a8H0QromtcS9ttbXWXNWSukcWPOW5t0IPmqOZ3VK62q0EK22ZUoxeUTveXm5tcADopqQHtmnW40AGpuTZVAVZp5jEWOsLA6nY2811trag4xOyluR9Fks6MOOthumyR0bxfUH5KNs9O8wudyAO/+wuJiXF7onWBI8PJeV2NvbJELa84ZrRuHdN77FXmOcS06WWRBNGwMva+UZ7dbK/BKxx9ry8VV31tZ4IFtfc2WSm7QegUxddZ4cQ0EHa2i7bPfnrdU8qs8oqJU+hdDrWSL1UM4AvmULqto5rEaGxGiTLUkgA3VYyC+v1WbU4hGy5zfOyyZ8aibcB5c4D83X4K10/TrbPlRY06KTXY+kdUMaNTtsqVRiDGjU28fcvlJ8YnkuG6DlmJJHks+SonlJL3udfU3P8ABX2n6DJvNnBNhpIReZG9U41YWjcXO1BsTb4rFnq5p75jpY2FyQNFVJKVxrc8j9F6PT6Cqj5Vyd3KME9qwfOnmkmUK7PlDEmkmgEhCEA1pU0gEUQ6Nt8ysxTxvLQ1ZSybQm4PKNUEciug8jxWe2bxU7ZxpqtHAutP1adfDLge1O4VYSsPJdBwOxXN1l3V1muXzFhNQZj1TzuG+q0dbLCvX0z8kyFGJBzumHt6rXa0So3Ql2Z2mHEaXXFx1T0WrWe52U8diVsr2+y4jy0VhtdMANb9b8/NUk1xnTCfdHRWs0mYg9rrkAiwBFz8laixSNpB1B5np8FhouVGnoKp90ZdifdH0wx8NFru16i4THEDGjS5vuLfxK+YulfxUf4Pp/Q44r/KfSO4idrljJ5d4hUZ8ZqpSbWZ4g3Px2+Sybt6rkvbyK719L08HmMTXfXDwkWJKiaU3e4nz2+CiJJUXaHkFyXnmbeSsYUqPEVgjW9Rqj3kS3HNLOPEqBz2i97nzUbpgNrBd1X6lPd1uMfkRYc8+SjdI0A89D9FWdPvZQOlJXRQwUWo6rbb5KqEIWSpBNJNAJNJCAFI3YKNSt2CyjDGmDZCS2NToPcF22Zw5KJCGU2i0JyuxUeKpI1WMG6tkvJoCduy6ErCs65TzuWNp2jq7I9maQexMPb95Zoe7qn2r+qxtRJj1O6PZmmHn7yed3ULNEz+qfbuWNhJj1m5eTRzv8EZ3dVndu5HbvWNhs+tXepoZj95clw+8qHbPS7ZyzsRyl1a5+S/nauTM0KiZXarguceayokSeusn3ZcdUW5qJ07j1VfVC2wRXbKXk7dK5265LiVymsnMEIQjBCmkhaG4JpJoBJpIQApG7BRqVuwWUYY+iEIWxqCEIQAgoQgBCEIYBCEIZBCEIAQhFx1A8yFgAkrkmG4rFJTxPoqoS1FNDWQxtjc+R8EoJY/LGCbG2l1WljlgeY545IpAASyZjo3i/VrwCmQcIWhRYLjmIxuno8PqpaZgc59SWdnSsDdDnqJcsQt+t9FDV0T6MRdpU0Mrn5rsoqqKpMdvvuhJZrys4rORhlVCWcdCln8PmsZGDpNcZ/AIznwTJnB2g7FR53eCMzuqZGDlNJC1NgTSTQC1RqhCAFI0gAaqNCyjDJczeqMzeqiQmRgkzjxRnHQqNCZGDvOOnzRnPQLhCZGDvOegSzuXKEyZwdZndUru6lJCwB3PUouUkIBr0r+TWhoMQNbDLBgPbgHs5ayMVWKGRpa9r6ennJiEbRmDiG3uRcmwC80X2fDVdS4VwzxpXU+IQU2OTNoqGjDpDHVNpnSB0jqbL3yXc7bZASQgPt+K8boIYqPFG45xJLhtcSKCDAXQ0dE10PcfBNUtDZs2hJBN99gLChh1XR4xh7eKOIGxQYJgBnosGpqtk2IvnrJyy9RUvld2stiQA24Gh1GQl3wuB8SOw5mI0GIUzcQwbFXA4hSSOLXB97iopnbNkG97a2G1gW/V4hjeC4bw5gFDFh1FjWCyVFRV4T6dUOpqyleyR+aOvpaYWc4F7gHBwDgdubwMqevoOIcS4fpDV4jilZ6zgbNPVUsNDTPomHMYW0cEsjSeju7poQd21sbwuKo4koMMhp20sZjoaeqdT07I2te8GaV9o+4XAHryty0rnjLGIqjtqClwjDYsrmupsNw+nhika5pYRK+xmdvzk31touKnjHiKpp/RzJTRMEsEzXU1OyJ7XwPbIwtLdNCBy5fED6qnocD9PjwcYJSOjFBTVD5ix0j+0qpQyKF0hGckg3zB7ddrAWMGC8OULWVsjaSOtbVV8sdE6fsX9jQiSSOGa07LXd7empAbbRxB+dn4z4jnp5KcSU0PasdHJLTU7I5nNe0scGv1y3BIOUDfxVeo4oxqolw2Rpp6cUD2SQxUcZihc9gY0GVgcQbBrWgHQAWsEB9ZSYThcGI8X1NTh9EaendTTRU8kbZGwRGkfiErYWluXSzWmwFr8tjRx+hw13DsGJ+rqagq3mgLI4GtjOaoEjnRkNAuC0B2tyLD73eyWcY46zPlZh4zvikdakZcmKNsTbm99gBus3FMaxbFzD6dPnZDm7GNjWxxsLvadlaNXHmTc+OiAzdUaoQgDVGqEIA1T1STQCQhCAEIQgBCEIAQhCAE0IQAkhCAEIQgGkhCAaSEIAQhCAEIQgBCEIAQhCAEIQgBCEIATQhAf/Z"
+                    alt="The Unforgiven II" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">The Unforgiven II</div>
+                    <div class="musica-atributos">Metallica - Reload (1997)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 5 -->
+            <div class="musica-container"
+                onclick="selectMusic('Otherside', 'RHCP', 'Otherside Red Hot Chili Peppers (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.QJc9nC_OzwG1zopD6l2g7QHaHT?w=211&h=208&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                    alt="Otherside" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">Otherside</div>
+                    <div class="musica-atributos">RHCP - Californication (1999)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 6 -->
+            <div class="musica-container"
+                onclick="selectMusic('Wind Of Change', 'Scorpions', 'Wind Of Change Scorpions (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.JZhZeP0ruqYIoG5W7RzG8wHaHS?w=177&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                    alt="Wind Of Change" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">Wind Of Change</div>
+                    <div class="musica-atributos">Scorpions - Crazy World (1990)</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+
+            <!-- Música 7 -->
+            <div class="musica-container"
+                onclick="selectMusic('Fazer Falta', 'Mc Livinho', 'I Kissed A Girl Katy Perry (320K).mp3')">
+                <img src="https://th.bing.com/th/id/OIP.H30ob6V6zqHOm2L2g0BmzQHaHa?rs=1&pid=ImgDetMain"
+                    alt="Fazer Falta" class="musica-imagem">
+                <div class="musica-info">
+                    <div class="musica-nome">Fazer Falta</div>
+                    <div class="musica-atributos">Mc Livinho - Fazer Falta (2017)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="musica" src=""></audio>
+
+    <script>
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const musica = document.getElementById('musica');
+        const currentMusic = document.getElementById('currentMusic');
+        let isPlaying = false;
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                musica.pause();
+                playPauseBtn.textContent = 'Play';
+            } else {
+                musica.play();
+                playPauseBtn.textContent = 'Pause';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function selectMusic(nomeMusica, nomeArtista, caminhoMusica) {
+            currentMusic.textContent = nomeMusica + "-" + nomeArtista;
+            musica.src = "./mp3/" + caminhoMusica;
+            togglePlayPause(); //toca a musica:D
+        }
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+    </script>
+</body>
+
+</html>

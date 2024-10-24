@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Playlist</title>
+    <link rel="stylesheet" href="./Musica.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Playlist</h1>
+
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id">
+        <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+        <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+        <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+        <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+        <br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="banda">Banda:</label>
+        <input type="text" name="banda" id="banda">
+
+        <label for="album">Álbum:</label>
+        <input type="text" name="album" id="album">
+
+        <label for="lancamento">Data de Lançamento:</label>
+        <input type="date" name="lancamento" id="lancamento">
+
+        <label for="genero">Gênero:</label>
+        <input type="text" name="genero" id="genero">
+
+        <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display: none;">
+        <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display: none;">
+
+        <div id="divAviso"></div>
+        <div id="outputSaida">...</div>
+    </div>
+
+    <script src="./Musica.js"></script>
+    <script src="./MusicaControle.js"></script>
+</body>
+
+</html>
