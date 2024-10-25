@@ -17,7 +17,7 @@
 
     <input type="button" value="Model" onclick="gerarModel()">
     <input type="button" value="View" onclick="gerarView()">
-    <input type="button" value="Controll" onclick="gerarController()">
+    <input type="button" value="Controller" onclick="gerarController()">
 
     <br><br>
     <textarea name="taCodigoFonte" id="taCodigoFonte" cols="200" rows="40"></textarea>
@@ -47,12 +47,12 @@
         }
 
         function gerarView(){
-            codigoFonte = ".... basta programar como aprendeu em algoritmos no segundo e terceiro bimestres... "
+            codigoFonte = "você não achou que seria tão fácil...\n\nBasta programar para gerar o HTML como aprendeu em algoritmos no segundo e terceiro bimestres... "
             document.getElementById("taCodigoFonte").textContent = codigoFonte;
         }
 
         function gerarController(){
-            codigoFonte = ".... basta programar como aprendeu em algoritmos no segundo e terceiro bimestres...\n ";
+            codigoFonte = ".... basta programar para gerar o Controller como aprendeu em algoritmos no segundo e terceiro bimestres...\n ";
             codigoFonte += "dá trabalho (uma vez) mas depois fica muito mais fácil\n ";
             document.getElementById("taCodigoFonte").textContent = codigoFonte;
         }

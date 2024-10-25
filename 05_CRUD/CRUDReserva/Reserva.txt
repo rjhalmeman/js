@@ -1,0 +1,5 @@
+String;codigoReserva
+Date;dataCheckin
+Date;dataCheckout
+String;cliente
+String;quarto
