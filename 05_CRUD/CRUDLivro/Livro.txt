@@ -1,0 +1,6 @@
+String;issn;10
+String;nome;50
+Date;dataDeLancamento;10
+float;preco;5
+String;autor;10
+String;editora;10
