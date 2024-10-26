@@ -79,7 +79,7 @@ function salvar() {
 
     const nome = document.getElementById("inputNome").value;
     const dataNascimento = document.getElementById("inputDataNascimento").value;
-    const categoria = "";
+    
     //verificar se o que foi digitado pelo USUÁRIO está correto
     if (id && nome && dataNascimento) {// se tudo certo 
         switch (oQueEstaFazendo) {
