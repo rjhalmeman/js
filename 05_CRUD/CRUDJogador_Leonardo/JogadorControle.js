@@ -125,7 +125,7 @@ function preparaListagem(vetor) {
     for (let i = 0; i < vetor.length; i++) {
         const linha = vetor[i];
         const dataNascimento = new Date(linha.dataNascimento);
-        const idade = Math.ceil((dataAtual-dataNascimento)/(1000*60*60*24*365));
+        const idade = Math.ceil((dataAtual-dataNascimento)/(1000*60*60*24*365)); //1000 milisegundos, 60 segundos, 60 minutos, 24 horas em 365 dias)
 
         if (idade <= 8) {
             categoriaa = "sub-8"
