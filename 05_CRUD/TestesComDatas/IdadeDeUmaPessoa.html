@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+</head>
+
+<body>
+    <h1>Calculadora de Idade</h1>
+    <div id="dataAtual"></div>
+
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" id="dataNascimento">
+    <button onclick="calcularIdade()">Calcular Idade</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        window.onload = dataAtual();
+        function dataAtual() {
+            const data = new Date();
+
+            const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+            const meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+            const diaSemana = diasSemana[data.getDay()];
+            const dia = data.getDate();
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+
+            const horas = data.getHours().toString().padStart(2, '0');
+            const minutos = data.getMinutes().toString().padStart(2, '0');
+
+            const dataFormatada = `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}h${minutos}`;
+            document.getElementById("dataAtual").innerHTML = dataFormatada;
+        }
+
+        function idadeDeUmaPessoa(dataNascimento, dataAtual) {
+            const anoNascimento = dataNascimento.getFullYear();
+            const mesNascimento = dataNascimento.getMonth();
+            const diaNascimento = dataNascimento.getDate();
+
+            let idade = dataAtual.getFullYear() - anoNascimento;
+
+            // Ajuste caso o aniversário ainda não tenha ocorrido neste ano
+            if (
+                dataAtual.getMonth() < mesNascimento ||
+                (dataAtual.getMonth() === mesNascimento && dataAtual.getDate() <= diaNascimento)
+            ) {
+                idade--;
+            }
+
+            return idade;
+        }
+
+        function calcularIdade() {
+            const dataNascimentoInput = document.getElementById('dataNascimento').value;
+            if (dataNascimentoInput) {
+                const dataNascimento = new Date(dataNascimentoInput);
+                const dataAtual = new Date();
+                const idade = idadeDeUmaPessoa(dataNascimento, dataAtual);
+                document.getElementById('resultado').textContent = "Idade: " + idade + " anos";
+            } else {
+                document.getElementById('resultado').textContent = "Por favor, insira uma data de nascimento válida.";
+            }
+        }
+    </script>
+</body>
+
+</html>

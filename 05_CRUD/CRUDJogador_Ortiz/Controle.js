@@ -159,11 +159,15 @@ function mostrarDadosjogador(jogador) {
     document.getElementById("inputNome").value = jogador.nome;
     document.getElementById("dataDeNascimento").value = jogador.dataDenascimento;
     // Define os campos como readonly
-    const dataChecjin = new Date(jogador.dataDenascimento);
-    const dataChekout = new Date();
+    const dataDeNascimento = new Date(jogador.dataDenascimento);
+    const dataAtual = new Date(); //pega a data atual (data que está no computador)
 
-    let functionVerificarCategoria = VerificarCategoria(dataChecjin, dataChekout);
-    document.getElementById("categoria").value = functionVerificarCategoria
+    let resultadoDaFuncaoIdade = idadeDeUmaPessoa(dataDeNascimento, dataAtual);
+    let resultadoDaFuncaoVerificarCategoria = verificarCategoria(dataDeNascimento, dataAtual);
+
+
+    document.getElementById("categoria").innerHTML = "Sua idade é " + resultadoDaFuncaoIdade + " e está na categoria " + resultadoDaFuncaoVerificarCategoria;
+
     bloquearAtributos(true);
 }
 
@@ -195,9 +199,29 @@ function visibilidadeDosBotoes(btProcure, btInserir, btAlterar, btExcluir, btSal
     document.getElementById("btCancelar").style.display = btSalvar; // o cancelar sempre aparece junto com o salvar
     document.getElementById("inputId").focus();
 }
-function VerificarCategoria(dataMenor, dataMaior) {
-    const categoria = Math.ceil((dataMaior - dataMenor) / (1000 * 60 * 60 * 24) / 365);
-    console.log(categoria);
+
+function idadeDeUmaPessoa(dataNascimento, dataAtual) {
+    const anoNascimento = dataNascimento.getFullYear();
+    const mesNascimento = dataNascimento.getMonth();
+    const diaNascimento = dataNascimento.getDate();
+
+    let idade = dataAtual.getFullYear() - anoNascimento;
+
+    // Ajusta a idade se o aniversário ainda não tiver ocorrido este ano
+    if (
+        dataAtual.getMonth() < mesNascimento ||
+        (dataAtual.getMonth() === mesNascimento && dataAtual.getDate() < diaNascimento)
+    ) {
+        idade--;
+    }
+
+    return idade;
+}
+
+function verificarCategoria(dataMenor, dataMaior) {
+
+    const categoria = Math.ceil((dataMaior - dataMenor) / (1000 * 60 * 60 * 24) / 365) - 1; // a quantidade de dias entre a dataMaior e a dataMenor dividido por 365 (dias de um ano)
+    //console.log(categoria);
 
 
     let categoria2 = '';
