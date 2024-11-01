@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Função Personalizada f(x)</title>
+</head>
+<body>
+    <h1>Valores de y conforme a função personalizada f(x)</h1>
+
+    <label for="funcao">Função f(x):</label>
+    <input type="text" id="funcao" value="Math.pow(x, 2)">
+
+    <label for="xInicial">Valor inicial de x:</label>
+    <input type="number" id="xInicial" value="-10">
+
+    <label for="xFinal">Valor final de x:</label>
+    <input type="number" id="xFinal" value="10">
+
+    <button onclick="gerarValores()">Gerar Valores</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function gerarValores() {
+            const funcao = document.getElementById("funcao").value;
+            const xInicial = parseInt(document.getElementById("xInicial").value);
+            const xFinal = parseInt(document.getElementById("xFinal").value);
+            let resultados = document.getElementById("resultados");
+            resultados.innerHTML = "";  // Limpar resultados anteriores
+
+            let item = "";
+            for (let x = xInicial; x <= xFinal; x++) {
+                try {
+                    let y = eval(funcao.replace(/x/g, x)); // Substitui 'x' pela variável atual e avalia a função
+                    item += "f(" + x + ") = " + y + "<br>";
+                } catch (error) {
+                    item = "Erro na função fornecida. Verifique a sintaxe.";
+                    break;
+                }
+            }
+            resultados.innerHTML = item;
+        }
+    </script>
+</body>
+</html>

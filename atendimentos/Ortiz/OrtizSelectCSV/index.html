@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combobox de Produtos</title>
+</head>
+<body>
+    <h2>Selecione um Produto</h2>
+    <select id="produtoSelect">
+        <option value="">Escolha um produto</option>
+    </select>
+
+    <script>
+        // Função para carregar o arquivo CSV
+        async function carregarCSV() {
+            try {
+                const response = await fetch('produto.csv');
+                const data = await response.text();
+                preencherCombobox(data);
+            } catch (error) {
+                console.error("Erro ao carregar o CSV:", error);
+            }
+        }
+
+        // Função para processar e preencher o combobox
+        function preencherCombobox(csvData) {
+            const select = document.getElementById('produtoSelect');
+            const linhas = csvData.split('\n');
+
+            // Processar cada linha do CSV
+            linhas.forEach(linha => {
+                const [id, nome] = linha.split(';');
+                if (id && nome) {  // Verifica se a linha tem ambos os valores
+                    const option = document.createElement('option');
+                    option.value = id.trim();
+                    option.textContent = nome.trim();
+                    select.appendChild(option);
+                }
+            });
+        }
+
+        // Chamar a função para carregar o CSV ao carregar a página
+        carregarCSV();
+    </script>
+</body>
+</html>
