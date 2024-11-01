@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRUD Consumo de Água da Claudete</title>
+</head>
+
+<body>
+
+   <h1>Cadastro de Consumo de Água da Claudete</h1>
+
+   <label for="inputCpf">Cpf</label>
+   <input type="text" name="inputCpf" id="inputCpf">
+   <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+   <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+   <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+   <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+   <br><br>
+
+   <label for="inputNome">Nome</label>
+   <input type="text" name="inputNome" id="inputNome">
+   <br>
+   <label for="inputMes1">Mês 1</label>
+   <input type="number" name="inputMes1" id="inputMes1">
+   <br>
+   <label for="inputMes2">Mês 2</label>
+   <input type="number" name="inputMes2" id="inputMes2">
+   <br>
+   <label for="inputMes3">Mês 3</label>
+   <input type="number" name="inputMes3" id="inputMes3">
+   <br>
+   <label for="inputMes4">Mês 4</label>
+   <input type="number" name="inputMes4" id="inputMes4">
+   <br>
+   <label for="inputMes5">Mês 5</label>
+   <input type="number" name="inputMes5" id="inputMes5">
+   <br>
+   <label for="inputMes6">Mês 6</label>
+   <input type="number" name="inputMes6" id="inputMes6">
+   <br>
+
+   <br>
+   <div id="divAviso" style="background-color: antiquewhite;"></div>
+   <br>
+   <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+   <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+   <br>
+
+   <input type="button" value="Total de água consumida" onclick="totalDeAguaConsumida()">
+   <span id="consumoTotal">...</span>
+   <br> 
+
+    <input type="button" value="Média de consumo por pessoa" onclick="mediaDeConsumoPorPessoa()">    
+    <br>
+
+    <input type="button" value="Maior consumo registrado" onclick="maiorConsumoRegistrado()">    
+    <br><br> 
+
+    <label for="outputSaida">Lista de pessoas e respectivos consumos de água<br>CPF - Nome  - Mês 1 - Mês 2 - Mês 3 - Mês 4 - Mês 5 - Mês 6</label>
+   <div id="outputSaida" style="background-color: aqua;">...</div>
+
+   <script src="./ConsumoAgua.js"></script>
+   <script src="./ConsumoAguaControle.js"></script>
+</body>
+
+</html>

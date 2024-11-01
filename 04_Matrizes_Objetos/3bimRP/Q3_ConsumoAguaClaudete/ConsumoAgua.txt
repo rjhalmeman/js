@@ -1,0 +1,8 @@
+String;cpf
+String;nome
+float;mes1
+float;mes2
+float;mes3
+float;mes4
+float;mes5
+float;mes6
