@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idade</title>
+</head>
+
+<body>
+    <label for="inputNascimento">Nascimento</label>
+    <input type="date" name="inputNascimento" id="inputNascimento">
+    <br>
+    <input type="button" value="Calcular" onclick="idadeEmDias()">
+    <div id="outputIdade">...</div>
+
+    <script>
+        function idadeEmDias() {
+            let dataNascimento = document.getElementById("inputNascimento").value;
+            let dataDeHoje = new Date();
+
+            const dn = new Date(dataNascimento); //transforma em Date
+
+            const dias = Math.ceil((dataDeHoje - dn) / (1000 * 60 * 60 * 24)); // 1000 milisegundos * 60 segundos * 60 minutos * 24 horas
+
+            document.getElementById("outputIdade").innerHTML = dias;
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
