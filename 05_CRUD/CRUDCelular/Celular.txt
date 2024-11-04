@@ -1,0 +1,8 @@
+int;id
+String;marca
+String;modelo
+String;fabricante
+Date;dataLancamento
+int;memoriaRAM
+int;memoriaROM
+float;preco
