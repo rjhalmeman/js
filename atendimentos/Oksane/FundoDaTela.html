@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundo da tela</title>
+    <style>
+        /* Definindo altura e largura totais para a div */
+        .fundoDaTela {
+            background-color: rgb(212, 255, 143);
+            width: 100vw;
+            /* Largura total da tela */
+            height: 100vh;
+            /* Altura total da tela */
+            margin: 0;
+            /* Remove margens externas */
+            padding: 0;
+            /* Remove qualquer preenchimento */
+            color: white;
+            /* Define o texto da div como branco */
+            display: flex;
+            /* Habilita flexbox */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <input type="button" value="Mostrar" onclick="printUmValor()">
+    <div id="resposta"></div>
+
+
+
+
+    </div>
+
+    <script>
+        function printUmValor() {
+            let palavra = "nada haver";
+            //  document.getElementById("resposta").innerHTML = `Uma frase com ${palavra} no meio dela`;
+
+            document.getElementById("resposta").innerHTML = "Uma frase com " + palavra + " no meio dela";
+        }
+    </script>
+
+</body>
+
+</html>
