@@ -1,7 +1,3 @@
-
-
-
-
 let listaMusica = [];
 let oQueEstaFazendo = '';
 let musica = null;
@@ -36,7 +32,6 @@ function salvarNoComputador() {
             linha.genero + "\n";
     }
 
-
     salvarEmArquivo(nomeParaSalvar, textoCSV);
 }
 
@@ -53,8 +48,6 @@ function salvarEmArquivo(nomeArq, conteudo) {
     // Libera o objeto URL
     URL.revokeObjectURL(link.href);
 }
-
-
 
 
 // Função para abrir o seletor de arquivos para upload
