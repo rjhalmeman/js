@@ -1,0 +1,78 @@
+body {
+    display: flex; /*efine o layout do body*/
+    justify-content: center; /*centraliza o conteúdo horizontalmente*/
+    align-items: flex-start; /*alinha o conteúdo no topo verticalmente*/
+    height: 100vh; /*altura como 100% da altura da viewport*/
+    margin: 0; /*serve para remover qualquer margem padrão do body*/
+    background-color: #121212; /*cor de fundo do body*/
+    color: white; /*cor do texto*/
+    font-family: 'Arial', sans-serif; /*fonte do texto*/
+    padding-top: 40px; /*adiciona um espaçamento superior de 40 pixels*/
+}
+
+.player-container {
+    text-align: center; /*centraliza o texto dentro do contêiner*/
+    background-color: #282828; /*cor de fundo do contêiner*/
+    padding: 60px 40px; /*espaçamento interno de 60pixels em cima/embaixo e 40 pixels nos lados */
+    border-radius: 10px; /*cantos arredondados*/
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /*sombreamento*/
+    width: 400px; /*largura do contêiner*/
+}
+
+.musica-nome {
+    font-size: 22px; /*tamanho da fonte do título da música*/
+    font-weight: bold; /*fonte (negrito)*/
+    margin-bottom: 20px; /*espaçamento inferior*/
+}
+
+.play-btn { /*botão*/
+    background-color: #1DB954; /* cor de fundo do botão*/
+    color: white; /*cor do texto*/
+    border: none; /*remove a borda padrão*/
+    padding: 15px; /*espaçamento interno*/
+    font-size: 18px; /*tamanho da fonte*/
+    border-radius: 5px; /*cantos arredondados*/
+    cursor: pointer; /*muda o cursor para indicar que o botão é clicável*/
+    transition: background-color 0.3s ease; /*transição da cor suave de fundo ao passar o mouse*/
+}
+
+.play-btn:hover {
+    background-color: #17a04a; /*altera a cor de fundo do botão ao passar o mouse*/
+}
+
+.playlist-container {
+    margin-top: 20px;  /*adiciona um espaçamento superior de 20pixels*/
+}
+
+.musica-container {
+    display: flex; /*define o layout como flexbox*/
+    align-items: center; /*alinha o conteúdo verticalmente ao centro*/
+    margin-bottom: 15px; /*espaçamento inferior de 15 pixels */
+    cursor: pointer; /*define o cursor como clicável*/
+}
+
+.musica-imagem {
+    width: 60px; /*largura da imagem*/
+    height: 60px; /*altura*/
+    border-radius: 5px; /*arredonda os cantos*/
+    margin-right: 15px; /* espaçamento à direita da imagem*/
+    border: 2px solid #1DB954; /*borda verde*/
+}
+
+.musica-info {
+    flex: 1; /*permite que o conteúdo ocupe o espaço restante*/
+    text-align: left; /*alinha o texto a esquerda*/
+}
+
+
+.musica-atributos {
+    font-size: 14px; /*tamanho da fonte dos atributos da música*/
+    color: #ccc; /*cor do texto*/
+}
+
+.separator {
+    height: 1px; /*altura da linha de separação*/
+    background-color: #555; /*cor da linha de separação*/
+    margin: 10px 0; /*espaçamento superior e inferior de 10pixels */
+}
+

@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha a caixa ao topo */
+    height: 100vh;
+    margin: 0;
+    background-color: #121212; /* Fundo preto acinzentado */
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.vertical-box {
+    width: 400px; /* Largura da caixa */
+    height: auto; /* Altura ajustável */
+    background-color: #282828; /* Cor cinza */
+    border-radius: 10px; /* Bordas arredondadas */
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em coluna */
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    padding: 20px; /* Espaçamento interno */
+    margin-top: 20px; /* Espaço acima da caixa */
+}
+
+.musica-container {
+    display: flex; /* Alinha a imagem e os atributos horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 20px; /* Espaço abaixo de cada música */
+}
+
+.musica-imagem {
+    width: 80px; /* Tamanho da imagem */
+    height: 80px; /* Tamanho da imagem */
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    object-fit: cover; /* Para cobrir o espaço do contêiner */
+    margin-right: 20px; /* Espaço à direita da imagem */
+    border: 2px solid #1DB954; /* Borda verde ao redor da imagem */
+}
+
+.musica-info {
+    display: flex;
+    flex-direction: column; /* Organiza atributos em coluna */
+    justify-content: center; /* Centraliza verticalmente */
+}
+
+.musica-nome {
+    font-size: 18px; /* Tamanho maior para destaque */
+    font-weight: bold; /* Texto em negrito */
+    color: white; /* Cor do texto */
+}
+
+.musica-atributos {
+    font-size: 14px; /* Tamanho menor para os atributos */
+    color: white; /* Cor do texto */
+    opacity: 0.8; /* Menos destaque */
+}
+
+.separator {
+    height: 1px; /* Altura da linha */
+    background-color: #555; /* Cor cinza da linha */
+    margin: 10px 0; /* Espaço acima e abaixo da linha */
+}

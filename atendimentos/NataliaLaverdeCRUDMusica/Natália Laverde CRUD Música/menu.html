@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet"  href="./menu.css">
+
+</head>
+<body>
+    <div class="vertical-box">  <!--caixa vertical para organizar o conteudo-->
+        <div class="username-container">
+            <img src="https://th.bing.com/th/id/R.4bf044ca84d8348c11a515e6416b4a24?rik=RQeEUs5SDrLK2A&pid=ImgRaw&r=0" alt="Imagem do Usuário" class="profile-image" />
+            <div class="username" id="username">Nome do Usuário</div>
+        </div>
+
+        <div class="welcome-message" id="welcomeMessage">Bem-vindo(a)!</div>
+        
+        <button class="button" onclick="window.location.href='ver_playlist.html'">Ver Playlist</button>
+        <button class="button" onclick="window.location.href='CRUDmusicas/editar_playlist.html'">Editar Playlist</button>
+        <button class="button" onclick="window.location.href='player_musica.html'">Tocar Playlist</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        /*cria uma nova instância de URLSearchParams para acessar as informações do url*/
+        const username = params.get('username');
+        /*obtem o paramentro username da url*/
+
+        if (username) {
+            document.getElementById('username').textContent = username;
+        }
+        /*se username for preenchido (tiver um valor), será inserido no elemento id, personalizando 
+        o nome exibido para o usuário*/
+    </script>
+</body>
+</html>
+

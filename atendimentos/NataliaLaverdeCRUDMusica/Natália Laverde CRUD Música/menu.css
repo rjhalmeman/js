@@ -1,0 +1,72 @@
+body {
+    display: flex;   /*define o corpo da página (contêiner flexivel)*/
+    justify-content: center;  /*centraliza horizontalmente o conteúdo*/
+    align-items: center;  /*centraliza verticalmente*/
+    flex-direction: column;  /*organiza os elementos internos em uma coluna */
+    height: 100vh;  /*define a altura do corpo para 100% da altura da janela */
+    margin: 0;  /*Remove a margem padrão*/
+    background-color: #121212;   /*define a cor de fundo (cinza escuro)*/
+}
+
+.vertical-box {
+    width: 300px;   /*define a largura da caixa vertical */
+    height: 80%;   /*define a altura da caixa como 80% da altura do corpo */
+    background-color: #282828;   /*define a cor de fundo (cinza escuro) */
+    border-radius: 10px;   /*bordas arredondadas*/
+    display: flex;   /*define a caixa como um contêiner flexível */
+    flex-direction: column;   /*organiza os elementos internos na coluna*/
+    justify-content: flex-start;   /*alinha os elementos no topo da caixa */
+    padding: 20px;   /*adiciona um espaçamento interno de 20pixels ao redor do conteúdo*/
+    position: relative;   /*define a posição como "relativa" para posicionamento interno */
+}
+
+.username-container {
+    display: flex;   /*define o contêiner do nome de usuário como um contêiner flexível*/
+    align-items: center;   /* Alinha verticalmente o conteúdo no centro*/
+    justify-content: center;     /*alinha horizontalmente o conteúdo no centro */
+    margin-bottom: 20px;   /*espaçamento inferior de 20 pixels*/
+}
+
+.username {
+    color: white;      /*cor do texto (branco)*/
+    font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif; /* fonte principal*/
+    font-size: 24px;   /*tamanho da fonte*/
+    font-weight: 600;    /*peso da fonte (semi-negrito)*/
+    margin-left: 10px;   /*adiciona um espaçamento a esquerda*/
+    text-align: center;   /*centraliza o texto*/
+}
+
+.welcome-message {
+    color: #b3b3b3;  /*cor do texto (cinza claro)*/
+    font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif; /*fonte principal*/
+    font-size: 16px; /*tamanho da fonte*/
+    font-weight: 400; /*peso da fonte (normal)*/
+    text-align: center;    /*centraliza o texto*/
+    margin-bottom: 30px; /*espaçamento inferior*/
+}
+
+.profile-image {
+    width: 32px;   /*define a largura da imagem do perfil*/
+    height: 32px; /*define a altura*/
+    border-radius: 50%;   /*bordas arredondadas (imagem circular)*/
+    object-fit: cover; /*ajusta a imagem para preencher o espaço sem distorção*/
+    border: 2px solid #1DB954;  /*borda verde*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /*sombreamento*/
+}
+
+.button {
+    background-color: #1DB954; /*cor de fundo do botão (verde)*/
+    color: white; /*cor do texto do botão (branco)*/
+    border: none; /*remove a borda do botão*/
+    border-radius: 20px; /*bordas arredondadas*/
+    padding: 10px 20px; /*espaçamento vertical e horizontal*/
+    font-size: 18px; /*tamanho da fonte*/
+    margin: 10px 0; /*margens superior e inferior*/
+    cursor: pointer; /*muda o cursor para ponteiro ao passar o mouse sobre o botão*/
+    transition: background-color 0.3s; /*transição suave  na cor de fundo ao interagir*/
+}
+
+.button:hover {
+    background-color: #1ed760;  /*muda a cor de fundo do botão para um verde mais claro ao passar o mouse*/
+}
+

@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;  /*define a fonte como arial (sans-serif)*/
+    background-color: #121212;   /*cor de fundo da página (cinza escuro)*/
+    color: white;    /*cor do texto branca*/
+    margin: 0;  /*remove a margem padrão*/
+    padding: 20px;  /*adiciona um espaço de 20 pixels ao redor  do treco*/
+}
+.container {
+    background-color: #1f1f1f;  /*define a cor como cinza escuro*/
+    border-radius: 8px;  /*deixa a borda arredondada*/
+    padding: 20px;   /*adiciona espaçamento interno*/
+    max-width: 600px;  /*define a largura máxima como 600 pixels*/
+    margin: auto;   /*centraliza horizontalemnte na página*/
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);  /*sombreamento*/
+}
+h1 {
+    text-align: center;  /*centraliza o título na página*/
+    font-size: 24px;  /*tamanho da fonte*/
+}
+label {
+    display: block;  /*faz o label ocupar toda a linha*/
+    margin: 10px 0 5px;  /*adiciona a margem*/
+    font-size: 14px;  /*tamanho da fonte*/
+}
+input[type="text"],
+input[type="date"],
+input[type="button"] {
+    width: calc(100% - 22px);  /*define a largura do input*/
+    padding: 10px;  /*adiciona um espaçamento interno*/
+    border: 1px solid #333;  /*define a borda de cor cinza*/
+    border-radius: 4px;  /*bordas arredondadas*/
+    background-color: #282828;  /*cor do fundo (cinzinha)*/
+    color: white;  /*cor do texto*/
+    font-size: 14px;  /*tamanho da fonte*/
+    margin-bottom: 15px;  /*margem inferior*/
+}
+input[type="button"] {
+    background-color: #1db954;  /*cor do botão (verdinhoo :P)*/
+    border: none;   /*sem borda do botão*/
+    cursor: pointer;  /*"animação" ao passar o mouse sobre o botão*/
+    transition: background-color 0.3s;  /*transição leve de cor ao passar o mouse*/
+}
+input[type="button"]:hover {
+    background-color: #1aa34a;  /*muda a cor botão para um verde mais escuro (ao passar por cima)*/
+}
+#divAviso {
+    background-color: #ffcc00;  /*define a cor de fundo para amarelo*/
+    color: black;  /*cor do texto (preto)*/
+    padding: 10px; /*espaçamento interno*/
+    border-radius: 4px;  /*bordas redondinhas*/
+    margin-bottom: 15px; /*margem inferior*/
+    display: none;  /*oculta o elemnto por padrão*/
+}
+#outputSaida {
+    background-color: #282828;  /*cor de fundo*/
+    padding: 10px;  /*espaçamento interno*/
+    border-radius: 4px;   /*bordas arredondadas*/
+    color: #b3b3b3;  /*cor do texto (cinza claro)*/
+    font-size: 12px;   /*tamanho da fonte*/
+}
+h2 {
+    text-align: center; /*centraliza o texto (titulo)*/
+    width: 100%;
+}
+

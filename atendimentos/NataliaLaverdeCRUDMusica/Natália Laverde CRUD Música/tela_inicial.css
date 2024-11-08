@@ -1,0 +1,74 @@
+body {
+    display: flex; /*define o layout do body como um flex container*/
+    justify-content: center; /*centraliza os elementos horizontalmente*/
+    align-items: center;   /*centraliza os elementos verticalmente*/
+    flex-direction: column; /*organiza os elementos na coluna*/
+    height: 100vh; /*define a altura do body como 100% da altura da viewport*/
+    margin: 0; /*remove a margem padrão do body*/
+    font-family: 'Arial', sans-serif; /*fonte padrão (arial)*/
+    background-color: #121212; /*cor de fundo*/
+    color: white; /*cor do texto*/
+}
+
+h1 {
+    font-size: 36px; /*tamanho da fonte do título*/
+    margin: 20px 0; /*margem superior e inferior do título como 20 pixels*/
+    color: white; /*cor do texto do título*/
+    font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif; /*fonte do título*/
+    font-weight: 700; /*espessura da fonte (negrito)*/
+    text-align: center; /*centraliza o texto do título*/
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /*sombra ao texto (para dar destaque)*/
+}
+
+.container {
+    text-align: center; /*centraliza o texto dentro do container*/
+    font-size: 24px; /*tamanho da fonte*/
+    color: #1DB954; /*cor do texto*/
+    font-family: 'Circular Std', 'Helvetica Neue', 'Arial', sans-serif; /* fonte do texto*/
+    font-weight: 600; /*espessura da fonte*/
+    background-color: rgba(40, 40, 40, 0.8); /*fundo semi-transparente*/
+    border-radius: 20px; /*bordas arredondadas*/
+    padding: 20px; /*preenchimento interno de 20 pixels*/
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /*sombreamento*/
+    backdrop-filter: blur(10px); /*desfoque ao fundo do container*/
+}
+
+input {
+    border: 2px solid #1DB954; /*borda do input (verde claro)*/
+    border-radius: 20px; /*bordas arredondadas*/
+    outline: none; /*remove o contorno padrão quando o input está em foco*/
+    font-size: 24px; /*tamanho da fonte*/
+    width: 250px; /*largura*/
+    padding: 10px; /*preenchimento interno*/
+    margin-left: 10px; /*margem a esquerda do input*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*sombreamento ao redor*/
+    background-color: #282828; /*cor de fundo*/
+    color: white; /*cor do texto*/
+}
+
+input:focus {
+    border-color: #1ed760; /*muda a cor da borda para um verde mais claro quando o input está em foco*/
+}
+
+
+
+
+
+
+
+input {
+    border: 2px solid #1DB954; /* Define a borda do input como verde claro. */
+    border-radius: 20px; /* Aplica bordas arredondadas ao input. */
+    outline: none; /* Remove o contorno padrão quando o input está em foco. */
+    font-size: 24px; /* Define o tamanho da fonte do input como 24 pixels. */
+    width: 250px; /* Define a largura do input como 250 pixels. */
+    padding: 10px; /* Adiciona preenchimento interno de 10 pixels ao input. */
+    margin-left: 10px; /* Adiciona margem à esquerda do input. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao redor do input. */
+    background-color: #282828; /* Define a cor de fundo do input como um tom escuro. */
+    color: white; /* Define a cor do texto do input como branca. */
+}
+
+input:focus {
+    border-color: #1ed760; /* Muda a cor da borda para um verde mais claro quando o input está em foco. */
+}
