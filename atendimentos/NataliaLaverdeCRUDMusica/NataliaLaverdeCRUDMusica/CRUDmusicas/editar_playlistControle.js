@@ -17,8 +17,8 @@ function dadosIniciais() { //dados iniciais da lista
 }
 
 
-function fazerDownload() { //gera um arquivo csv com as informações de listaMusica
-    nomeParaSalvar = "./Musica.csv";  //define o nome do arquivo csv
+function prepararESalvarCSV() { //gera um arquivo csv com as informações de listaMusica vai enviar da memória RAM para dispositivo de armazenamento permanente.
+   let nomeDoArquivoDestino = "./Musica.csv";  //define o nome do arquivo csv
     let textoCSV = "";
     for (let i = 0; i < listaMusica.length; i++) {
         const linha = listaMusica[i]; //variavel linha contem as informações de cada musica
@@ -29,13 +29,11 @@ function fazerDownload() { //gera um arquivo csv com as informações de listaMu
             linha.lancamento + ";" +
             linha.genero + "\n";
     }
-
-
-    salvarEmArquivo(nomeParaSalvar, textoCSV);
+    persistirEmLocalPermanente(nomeDoArquivoDestino, textoCSV);
 }
 
 
-function salvarEmArquivo(nomeArq, conteudo) {
+function persistirEmLocalPermanente(nomeArq, conteudo) {
     /*cria um blob (objeto que representa dados de arquivo) que armazena "[conteudo]" como arquivo de texto,
     criando um arquivo temporário*/
     const blob = new Blob([conteudo], { type: 'text/plain' });
@@ -51,7 +49,7 @@ function salvarEmArquivo(nomeArq, conteudo) {
 
 
 // Função para abrir o seletor de arquivos para upload (para processar o arquivo selecionado)
-function fazerUpload() {
+function abrirArquivoSalvoEmLocalPermanente() {
     
     const input = document.createElement('input');
     //cria o elemento input do tipo file (serve para abrir o seletor de arquivos)
@@ -63,19 +61,18 @@ function fazerUpload() {
         const arquivo = event.target.files[0]; //acessa o arquivo selecionado e armazena na variavel arquivo
         console.log(arquivo.name);
         if (arquivo) {
-            processarArquivo(arquivo);
+            converterDeCSVparaListaObjeto(arquivo);
         }
         /*verifica se um arquivo foi selecionado: 
         se sim, chama a função processarArquivo e passa o arquivo selecionado como argumento
         permitindo que o arquivo seja lido e processado na função processarArquivo*/
     };
-    input.click(); //seletor de arquivos exibido automaticamente
-    
+    input.click(); //seletor de arquivos exibido automaticamente    
 }
 
 
 // Função para processar o arquivo CSV e transferir os dados para a listaMusica
-function processarArquivo(arquivo) {
+function converterDeCSVparaListaObjeto(arquivo) {
     const leitor = new FileReader();  //objeto que permite ler arquivos locais no navegador 
     leitor.onload = function (e) {
         const conteudo = e.target.result; // Conteúdo do arquivo CSV
