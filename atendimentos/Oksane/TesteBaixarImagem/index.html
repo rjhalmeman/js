@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Imagem</title>
+</head>
+<body>
+    <h1>Baixar Imagem de uma URL</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7LwOx9VJucT1cbLXxI9oqUPM5Oqo6t68NRLr-qyr-fWs1xSLJZbuQumU&s" alt="ddd">
+    <label for="url">URL da Imagem:</label>
+    <input type="text" id="url" placeholder="Insira a URL da imagem">
+    <button onclick="baixarImagem()">Baixar Imagem</button>
+
+    <script>
+        async function baixarImagem() {
+            const url = document.getElementById('url').value;
+
+            try {
+                // Faz o fetch da imagem
+                const response = await fetch(url);
+                const blob = await response.blob();
+
+                // Cria um link temporário para o download
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'imagem-baixada.jpg'; // Nome da imagem ao salvar
+
+                // Inicia o download
+                document.body.appendChild(link);
+                link.click();
+
+                // Limpa o link após o download
+                document.body.removeChild(link);
+                URL.revokeObjectURL(link.href);
+            } catch (error) {
+                console.error("Erro ao baixar a imagem:", error);
+            }
+        }
+    </script>
+</body>
+</html>

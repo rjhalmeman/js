@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Frete</title>
+    <style>
+         .layout {
+            display: flex;
+            width: 100%;  /* O layout ocupa toda a largura da tela */
+        }
+
+        /* A classe container ocupa 50% da tela */
+        .container {
+            width: 40%;  /* 50% da largura da tela */
+            height: 100vh;  /* 100% da altura da tela */
+            display: flex;
+            flex-direction: column; /* Empilhar os elementos verticalmente */
+            align-items: center; /* Centraliza os itens horizontalmente */
+            justify-content: center; /* Centraliza os itens verticalmente */
+            padding: 20px;
+            box-sizing: border-box;  /* Garante que o padding não afete a largura total */
+        }
+
+        /* A classe csv ocupa os outros 50% da tela */
+        .csv {
+            width: 60%;  /* 50% da largura da tela */
+            padding: 20px;
+            box-sizing: border-box;  /* Garante que o padding não afete a largura total */
+            background-color: #f4f4f4;  /* Um fundo diferente para distinguir */
+            border-left: 1px solid #ddd; /* Separação entre os dois lados */
+        }
+
+        /* Estilo para cada campo (input e label) */
+        .container label {
+            width: 150px;
+            margin-bottom: 10px; /* Um espaçamento entre o label e o input */
+        }
+
+        .container input, .container button {
+            width: 80%;  /* Ajusta a largura para 80% da container */
+            padding: 10px;
+            margin-bottom: 15px;  /* Um espaçamento entre os inputs e botões */
+            font-size: 16px;  /* Tamanho da fonte */
+        }
+
+        /* Estilo específico para os botões */
+        .container button {
+            padding: 12px 18px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 60%;  /* Ajuste a largura dos botões */
+        }
+
+        /* Estilo para a área de resultado */
+        .container h3 {
+            margin-top: 20px;
+        }
+
+        /* Estilo para o título do CSV */
+        .csv h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Lado esquerdo: Container de inputs e botões -->
+        <div class="container">
+            <h1>Calculadora de Frete</h1>
+
+            <label for="id"> Insira o ID:</label>
+            <input type="number" id="id" placeholder="Digite o id do produto Desejado.">
+
+            <button onclick="Procure()">Procure produto</button>
+            <button onclick="fazerUpload()">UpLoad</button>
+
+            
+            <label for="TaxaFixaLocal">Taxa fixa do local:</label>
+            <input type="number" id="TaxaFixaLocal" placeholder="Insira a Taxa Fixa do seu local">
+
+            <label for="origem">Local de origem:</label>
+            <input type="text" id="origem" placeholder="Digite o local, Estado ou Município de origem.">
+
+            <label for="destino">Local de destino:</label>
+            <input type="text" id="destino" placeholder="Digite o local, Estado ou Município de destino.">
+
+            <br>
+           
+            <input type="number" id="peso" placeholder="peso em kg" step="0.01">
+
+    
+            <input type="text" id="nomeProd" placeholder="Nome do produto Desejado.">
+
+    
+            <input type="number" id="preco" placeholder="preço do produto Desejado.">
+
+            <br>
+            
+            <button onclick="calcularDistancia()">Calcular Frete</button>
+
+            <input type="text" id="resultado" placeholder="resultado aqui" readonly>
+        </div>
+
+        <!-- Lado direito: Resultados ou CSV -->
+        <div class="csv">
+            <h3 id="csv">...</h3>
+        </div>
+    <script src="./class.js"></script>
+    <script src="ProcureDadosListaCrud.js"></script>
+    <script>
+        function calcularDistancia() {
+            const endereco1 = document.getElementById("origem").value;
+            const endereco2 = document.getElementById("destino").value;
+            const peso = document.getElementById("peso").value;
+
+            // Verificar se os campos estão preenchidos
+            if (!endereco1 || !endereco2 || !peso) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            fetch('http://localhost:3000/calcular-distancia', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ endereco1, endereco2, peso })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.distancia && data.frete) {
+                        document.getElementById("resultado").innerText = `A distância é: ${data.distancia} km. O valor do frete é: R$ ${data.frete}`;
+                    } else {
+                        document.getElementById("resultado").innerText = `Erro: ${data.error}`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao calcular a distância:', error);
+                    document.getElementById("resultado").innerText = "Erro ao calcular a distância.";
+                });
+        }
+    </script>
+</body>
+
+</html>
