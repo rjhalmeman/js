@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRUD Bicicleta</title>
+</head>
+
+<body>
+
+   <h1>Cadastro de Bicicleta</h1>
+
+   <label for="inputId">Id</label>
+   <input type="text" name="inputId" id="inputId">
+   <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+   <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+   <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+   <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+   <br><br>
+
+   <label for="input nome"> nome</label>
+   <input type="text" name="input nome" id="input nome">
+   <br>
+   <label for="input fabricante"> fabricante</label>
+   <input type="text" name="input fabricante" id="input fabricante">
+   <br>
+   <label for="input dataDeLancamento"> dataDeLancamento</label>
+   <input type="date" name="input dataDeLancamento" id="input dataDeLancamento">
+   <br>
+   <label for="input preco"> preco</label>
+   <input type="number" name="input preco" id="input preco">
+   <br>
+   <label for="inputPeso">Peso</label>
+   <input type="number" name="inputPeso" id="inputPeso">
+   <br>
+
+   <br><br>
+   <div id="divAviso" style="background-color: antiquewhite;"></div>
+   <br>
+   <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+   <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+   <br><br>
+   <input type="button" value="Listar" onclick="listar()">
+   <br><br>
+   <label for="inputPesoInformado">Digite o peso para pesquisa</label>
+   <input type="number" name="inputPesoInformado" id="inputPesoInformado">
+   <input type="button" value="Selecione por peso" onclick="selecionarPorPeso()">
+   <br>
+   <input type="button" value="Bicicletas mais baratas" onclick="bicicletasMaisBaratas()">
+   <br>
+   <br>
+
+
+   <div id="outputSaida" style="background-color: aqua;">...</div>
+
+   <input type="button" value="Persistir" id="btPersisitir" onclick="prepararESalvarCSV()">
+   <input type="button" value="Recuperar" id="btRecuperar" onclick="abrirArquivoSalvoEmLocalPermanente()">
+   <script src="./Bicicleta.js"></script>
+   <script src="./BicicletaControle.js"></script>
+</body>
+
+</html>

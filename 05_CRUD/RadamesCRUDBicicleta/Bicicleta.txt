@@ -1,0 +1,6 @@
+int;id
+String; nome
+String; fabricante
+Date; dataDeLancamento
+float; preco
+float;peso
