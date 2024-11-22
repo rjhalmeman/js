@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Medidas</title>
+</head>
+
+<body>
+    <h1>Conversor de Medidas</h1>
+    <label for="metros">Informe a medida em metros:</label>
+    <br>
+    <input type="number" id="metros" placeholder="Digite o valor em metros">
+    <br><br>
+    <button onclick="converter()">Converter</button>
+    <div id="result"></div>
+
+    <script>
+        function converter() {
+            const metros = parseFloat(document.getElementById('metros').value);
+
+            const polegadas = metros / 0.0254;
+            const pes = metros / 0.3048;
+            const jardas = metros / 0.9144;
+            const milhas = metros / 1609.344;
+            const milhasNauticas = metros / 1852;
+
+            const resultado =
+                "Polegadas = " + polegadas.toFixed(2) + " in\n" +
+                "Pés = " + pes.toFixed(2) + " ft\n" +
+                "Jardas = " + jardas.toFixed(2) + " yd\n" +
+                "Milhas = " + milhas.toFixed(6) + " mi\n" +
+                "Milhas Náuticas = " + milhasNauticas.toFixed(6) + " nmi";
+
+            document.getElementById('result').innerHTML = resultado;
+
+        }
+    </script>
+</body>
+
+</html>

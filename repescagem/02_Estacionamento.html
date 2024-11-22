@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Estacionamento</title>
+</head>
+
+<body>
+    <h1>Calculadora de Tarifas do Estacionamento</h1>
+
+    <label for="horas">Horas estacionadas:</label>
+    <input type="number" id="horas" name="horas" min="0" required>
+    <br>
+    <label for="comprimento">Carro grande (s/n):</label>
+    <input type="text" id="comprimento" name="comprimento" min="0" required>
+    <br>
+    <label for="frequente">Cliente frequente (s/n):</label>
+    <input type="text" id="frequente" name="frequente" required>
+    <br>
+    <button type="button" onclick="calcularTarifa()">Calcular Tarifa</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularTarifa() {
+            const tarifaPrimeiraHora = 5.0;
+            const tarifaHoraAdicional = 2.5;
+            const tarifaDiaria = 60.0;
+            const adicionalCarroGrande = 1.25; //25% de acréscimo
+            const descontoClienteFrequente = 0.95; //desconto de 5%
+
+            // Obter valores 
+            const horas = parseFloat(document.getElementById("horas").value);
+            const comprimentoCarro = document.getElementById("comprimento").value.trim();
+            const clienteFrequente = document.getElementById("frequente").value.trim();
+
+            // Cálculo do valor base
+            let diasCompletos = Math.floor(horas / 24);
+            console.log("dias completos " + diasCompletos);
+            let horasAdicionais = horas-1;
+            console.log("horas adicionais " + horasAdicionais);
+            let valor=0;
+
+            if (diasCompletos > 0) {
+                horasAdicionais = horas%24;
+                valor = diasCompletos * tarifaDiaria + horasAdicionais * tarifaHoraAdicional;
+            } else if (horas == 1) {
+                valor += tarifaPrimeiraHora;
+            } else {
+                valor += tarifaPrimeiraHora + horasAdicionais * tarifaHoraAdicional;
+            }
+
+
+            // Adicional para carros grandes
+            if (comprimentoCarro.toLowerCase() == 's') {
+                valor *= adicionalCarroGrande;
+            }
+
+            // Desconto para clientes frequentes
+            if (clienteFrequente.toLowerCase() == 's') {
+                valor *= descontoClienteFrequente;
+            }
+
+            // Exibe o resultado
+            document.getElementById("resultado").innerText = "O valor total é R$" + valor.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

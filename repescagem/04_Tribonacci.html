@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequência de Tribonacci</title>
+</head>
+
+<body>
+  <h1>Sequência</h1>
+  <label for="n">Quantos termos você deseja gerar?</label>
+  <input type="number" id="n" min="1" value="10">
+  <button onclick="gerarSequencia()">Gerar Sequência</button>
+
+  <h2>Resultado:</h2>
+  <p id="resultado"></p>
+
+  <!-- isto é apenas para exibir o resultado detalhado do teste de mesa -->
+   <label for="testeDeMesa"></label>
+  <div id="testeDeMesa"></div>
+
+  <script>
+    function gerarSequencia() {
+
+      let resp = "";
+
+      const n = parseInt(document.getElementById('n').value);
+      let t1 = 0; let t2 = 0; let t3 = 1;
+      let resultado = '';
+      for (let i = 1; i <= n; i++) {
+        if (i === 1) {
+          resultado += t1 + ', ';
+        } else if (i === 2) {
+          resultado += t2 + ', ';
+        } else if (i === 3) {
+          resultado += t3 + ', ';
+        } else {
+          const proximo = t1 + t2 + t3;
+          resultado += proximo + ",";
+          t1 = t2;
+          t2 = t3;
+          t3 = proximo;
+        }
+         resp += "n = " + n + " | " + "t1= " + t1 + " | " + "t2= " + t2 + " | " + "t3= " + " | " + "i= " + i + " | " + "resultado= " + resultado + " | "+"\n";
+         document.getElementById("testeDeMesa").innerText = resp;
+      }
+      document.getElementById('resultado').innerText = resultado;
+    }
+
+  </script>
+</body>
+
+</html>
