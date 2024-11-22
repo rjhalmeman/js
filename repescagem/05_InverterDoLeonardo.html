@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="input">Digite sua Frase:</label>
+    <input type="text" id="input">
+    <br>
+    <input type="button" value="Inverter" onclick="Inverter()">
+    <br>
+    <div id="resp">...</div>
+    <script>
+        function Inverter(){
+            let frase = document.getElementById("input").value;
+            let a = frase.split(" ");
+            let b = a.reverse();
+            let c = b.join(" ");
+            document.getElementById("resp").innerHTML = c;
+        }
+    </script>
+</body>
+</html>
