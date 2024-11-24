@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Flores</title>
+    <link rel="stylesheet" href="./flores.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Cadastro de Flores</h2>
+
+        <label for="id">ID:</label>
+        <input type="number" name="id" id="id">
+        <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+        <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+        <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+        <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+        <br>
+
+        <label for="nome">Nome da flor:</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="cien">Nome científico:</label>
+        <input type="text" name="cien" id="cien">
+
+        <label for="cheiro">Insira o cheiro:</label>
+        <input type="text" name="cheiro" id="cheiro">
+
+        <label for="datap">Data de Lançamento:</label>
+        <input type="date" name="datap" id="datap">
+
+        <label for="quant">Quantidade possuída:</label>
+        <input type="number" name="quant" id="quant">
+
+        <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display: none;">
+        <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display: none;">
+
+        <div id="divAviso"></div>
+        <div id="outputSaida">...</div>
+
+
+        <input type="button" value="Salvar os dados no computador" onclick="salvarNoComputador()">
+        <input type="button" value="Buscar os dados salvos" onclick="buscarDadosSalvosNoComputador()">
+    </div>
+
+    <script src="./flores.js"></script>
+    <script src="./florescontrole.js"></script>
+   <!-- 
+    esses vc não coloca no import
+    <script src="./flores.css"></script>
+    <script src="./flores.csv"></script> -->
+</body>
+
+</html>
