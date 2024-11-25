@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRUD JOIAS</title>
+</head>
+
+<body>
+
+   <h1>Cadastro de Joias</h1>
+
+   <label for="inputId">Id</label>
+   <input type="text" name="inputId" id="inputId">
+   <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+   <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+   <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+   <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+   <br><br>
+
+   <label for="inputNome">Nome</label>
+   <input type="text" name="inputNome" id="inputNome">
+   <br>
+   <label for="inputMetal">Metal</label>
+   <input type="text" name="inputMetal" id="inputMetal">
+   <br>
+   <label for="inputDataFabricacao">Data de Fabricação</label>
+   <input type="date" name="inputDataFabricacao" id="inputDataFabricacao">
+   <br>
+   <label for="inputTipo">Tipo</label>
+   <input type="text" name="inputTipo" id="inputTipo">
+   <br>
+   
+   <br>
+   
+
+   <br><br>
+   <div id="divAviso" style="background-color: antiquewhite;"></div>
+   <br>
+   <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+   <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+   <br><br>
+   <!-- <input type="button" value="Listar" onclick="listar()">
+    <br><br> -->
+
+   <div id="outputSaida" style="background-color: aqua;">...</div>
+
+   <script src="./CRUDjoias.js"></script>
+   <script src="./CRUDjoiasControle.js"></script>
+</body>
+
+</html>
