@@ -1,7 +1,9 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #cce7d0, #ffffff); /* Tons suaves de verde */
-    background-image: url('https://cdn.pixabay.com/photo/2020/04/16/15/23/flowers-5052131_960_720.jpg'); /* Fundo florido */
+    background: linear-gradient(to bottom, #cce7d0, #ffffff);
+    /* Tons suaves de verde */
+    background-image: url('https://cdn.pixabay.com/photo/2020/04/16/15/23/flowers-5052131_960_720.jpg');
+    /* Fundo florido */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,7 +12,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh; /* Garante que ocupa toda a altura da janela */
+    min-height: 100vh;
+    /* Garante que ocupa toda a altura da janela */
 }
 
 .container {
@@ -20,7 +23,8 @@ body {
     padding: 30px;
     width: 500px;
     max-width: 90%;
-    margin: 50px auto; /* Adiciona espaçamento superior */
+    margin: 50px auto;
+    /* Adiciona espaçamento superior */
     position: relative;
     overflow: hidden;
     border: 5px solid #9acd8b;
@@ -58,10 +62,12 @@ h2 {
     font-weight: bold;
     font-size: 2.5em;
     margin-bottom: 20px;
-    font-family: 'Playfair Display', serif; /* Fonte elegante */
+    font-family: 'Playfair Display', serif;
+    /* Fonte elegante */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
-    padding-bottom: 50px; /* Espaço extra para o texto decorativo */
+    padding-bottom: 50px;
+    /* Espaço extra para o texto decorativo */
 }
 
 h2::before {
@@ -126,17 +132,21 @@ input[type="button"]:hover {
 
 #divAviso,
 #outputSaida {
+   
     margin-top: 20px;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #3e664a;
     background-color: #e4f7e9;
     padding: 12px;
     border-radius: 8px;
-    display: none;
+    /* display: none; */
     border: 2px dashed #68b384;
-    text-align: center;
+    text-align: left;
     font-style: italic;
+
 }
+
+
 
 /* Adicionando enfeites decorativos */
 .container .floral-details {
@@ -158,4 +168,3 @@ input[type="button"]:hover {
     display: inline;
     margin-left: 5px;
 }
-

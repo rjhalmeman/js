@@ -4,16 +4,16 @@ let flor = null;
 bloquearAtributos(true);
 
 
-//dadosIniciais();
+//window.onload = dadosIniciais();
 
 function dadosIniciais() {
-    listaFlor.push(new Flor('0', 'Orquídea', 'Orchideaceae', 'Suave e doce, toques de baunilha e floral', '2022-03-07', '4'));
-    listaFlor.push(new Flor('1', 'Lírio do Vale', 'Convallaria Majaliss', 'Doce e fresco, notas florais suaves e um toque de musgo', '2023-08-05', '3'));
-    listaFlor.push(new Flor('2', 'Margarida', 'Bellis Perennis', 'Fresco e leve, com um toque de doçura', '2023-02-09', '12'));
-    listaFlor.push(new Flor('3', 'Rosa', 'Rosa', 'Doce, rica e complexa, com notas florais intensas e um leve toque de especiarias', '2024-01-06', '30'));
-    listaFlor.push(new Flor('4', 'Tulipa', 'Tulipa Sylvestris', 'Doce, com leves notas florais e, em alguns casos, um toque de mel ou frutado', '2022-07-08', '25'));
-    listaFlor.push(new Flor('5', 'Carméllia Japonica', 'Thaceae', 'Suave e levemente doce, com uma nota floral e um toque sutil de chá verde ou ervas frescas', '2024-04-06', '3'));
-    listaFlor.push(new Flor('6', 'Girassol', 'Heliantusannuus', 'Discreto, mas agradável. Tem um leve toque de mel e sementes', '2024-08-01', '10'));
+    listaFlor.push(new Flor(0, 'Orquídea', 'Orchideaceae', 'Suave e doce, toques de baunilha e floral', '2022-03-07', 4));
+    listaFlor.push(new Flor(1, 'Lírio do Vale', 'Convallaria Majaliss', 'Doce e fresco, notas florais suaves e um toque de musgo', '2023-08-05', 3));
+    // listaFlor.push(new Flor('2', 'Margarida', 'Bellis Perennis', 'Fresco e leve, com um toque de doçura', '2023-02-09', '12'));
+    // listaFlor.push(new Flor('3', 'Rosa', 'Rosa', 'Doce, rica e complexa, com notas florais intensas e um leve toque de especiarias', '2024-01-06', '30'));
+    // listaFlor.push(new Flor('4', 'Tulipa', 'Tulipa Sylvestris', 'Doce, com leves notas florais e, em alguns casos, um toque de mel ou frutado', '2022-07-08', '25'));
+    // listaFlor.push(new Flor('5', 'Carméllia Japonica', 'Thaceae', 'Suave e levemente doce, com uma nota floral e um toque sutil de chá verde ou ervas frescas', '2024-04-06', '3'));
+    // listaFlor.push(new Flor('6', 'Girassol', 'Heliantusannuus', 'Discreto, mas agradável. Tem um leve toque de mel e sementes', '2024-08-01', '10'));
 
     listar();
 }
@@ -85,7 +85,7 @@ function processarArquivo(arquivo) {
                         nome: dados[1],
                         cien: dados[2],
                         cheiro: dados[3],
-                        datap: dados[4],
+                        datap: dados[4], 
                         quant: dados[5]
                     });
                 }
@@ -110,7 +110,7 @@ function procurePorChavePrimaria(chave) {
 }
 
 function procure() {
-    const id = document.getElementById("id").value;
+    const id = document.getElementById("id").value.trim(); //ajuste
     if (isNaN(id) || !Number.isInteger(Number(id))) {
         mostrarAviso("Precisa ser um número inteiro");
         document.getElementById("id").focus();
@@ -244,6 +244,7 @@ function mostrarDadosFlor(flor) {
     document.getElementById("nome").value = flor.nome;
     document.getElementById("cien").value = flor.cien;
     document.getElementById("cheiro").value = flor.cheiro;
+    console.log(flor.datap);
     document.getElementById("datap").value = flor.datap;
     document.getElementById("quant").value = flor.quant;
 

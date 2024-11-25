@@ -7,5 +7,7 @@ class Flor {
         this.datap = datap; 
         this.quant = quant; 
 
+        this.posicaoNaLista = null; //ajuste
+
     }
 }
