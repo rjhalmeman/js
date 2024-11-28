@@ -1,0 +1,79 @@
+/* Fundo da página */
+body {
+    background-color: #f3e779; /* Amarelo claro */
+    font-family: Arial, sans-serif;
+    margin: auto;
+    padding: 0;
+    display: auto; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Altura total da tela */
+}
+
+/* Contêiner principal */
+.container {
+    background-color: #fffde7; /* Amarelo suave */
+    border: 2px solid #ffd54f; /* Borda amarela mais escura */
+    border-radius: 12px; /* Bordas arredondadas */
+    padding: 30px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra para profundidade */
+    width: 90%;
+    max-width: 500px; /* Limita a largura */
+}
+
+/* Título */
+h1 {
+    color: #6d4c41; /* Marrom */
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    color: #6d4c41;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Botões */
+button, input[type="button"] {
+    background-color: #f19e3f; /* Rosa */
+    color: white;
+    border: none;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Botões ocupam toda a largura */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra moderna */
+    transition: background-color 0.3s;
+}
+
+/* Botões ao passar o mouse */
+button:hover, input[type="button"]:hover {
+    background-color: #f19e3f; /* Tom mais escuro de rosa */
+}
+
+/* Botões agrupados */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre os botões */
+}
