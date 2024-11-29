@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRUD Padaria</title>
+   <link rel="stylesheet" href="padaria.css">
+
+</head>
+
+<body>
+   <div class="container">
+      <h1>Cadastro da padaria</h1>
+
+      <label for="cn">CNPJ</label>
+      <input type="number" name="cn" id="cn">
+      <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+      <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+      <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+      <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+      <br><br>
+
+      <label for="n">NOME</label>
+      <input type="text" name="n" id="n">
+      <br>
+      <label for="r">RUA</label>
+      <input type="text" name="r" id="r">
+      <br>
+      <label for="c">CEP</label>
+      <input type="number" name="c" id="c">
+      <br>
+      <label for="l">LUCRO</label>
+      <input type="number" name="l" id="l">
+      <br>
+      <label for="d">DATA DE FUNDAÇÃO</label>
+      <input type="date" name="d" id="d">
+      <br>
+
+      <br><br>
+
+      <br>
+      <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+      <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+      <br>
+
+      <div id="divAviso"></div>
+      <div id="outputSaida">...</div>
+
+
+      <input type="button" value="Salvar os dados no computador" onclick="salvarNoComputador()">
+      <input type="button" value="Buscar os dados salvos" onclick="buscarDadosSalvosNoComputador()">
+      <input type="button" value="avaliar" onclick="avaliar()">
+
+   </div>
+  
+   <script src="./avaliacao.html"></script>
+   <script src="./class.js"></script>
+   <script src="./funcao.js"></script>
+</body>
+
+</html>

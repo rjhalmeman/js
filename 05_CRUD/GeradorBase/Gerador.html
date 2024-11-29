@@ -21,7 +21,7 @@
     <textarea name="taCodigoFonte" id="taCodigoFonte" cols="200" rows="40"></textarea>
 
     <script>
-        let codigoFonte="";
+        let codigoFonte = "";
         function gerarModel() {
             let nomeClasse = document.getElementById("inputNomeClasse").value;
             let atributos = document.getElementById("inputAtributos").value;
@@ -36,19 +36,30 @@
                 const at = vetAtributos[i];
                 codigoFonte += "          this." + at + " = " + at + ";\n";
             }
-            codigoFonte+="          this.posicaoNaLista = null;\n"
-            codigoFonte+="   }\n}\n";
-            
+            codigoFonte += "          this.posicaoNaLista = null;\n"
+            codigoFonte += "   }\n}\n";
+
             //console.log(codigoFonte);
             document.getElementById("taCodigoFonte").textContent = codigoFonte;
         }
 
-        function gerarView(){
-            codigoFonte = "você não achou que seria tão fácil...\n\nBasta programar para gerar o HTML como aprendeu em algoritmos no segundo e terceiro bimestres... "
+        function gerarView() {
+            codigoFonte = "";
+            nomeClasse = "AClasseDaNatalia";
+            codigoFonte = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>CRUD " + nomeClasse + "</title>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n\n";
             document.getElementById("taCodigoFonte").textContent = codigoFonte;
         }
 
-        function gerarController(){
+        function gerarController() {
             codigoFonte = ".... basta programar para gerar o Controller como aprendeu em algoritmos no segundo e terceiro bimestres...\n ";
             codigoFonte += "dá trabalho (uma vez) mas depois fica muito mais fácil\n ";
             document.getElementById("taCodigoFonte").textContent = codigoFonte;

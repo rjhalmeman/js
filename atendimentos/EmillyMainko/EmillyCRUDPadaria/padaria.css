@@ -1,0 +1,102 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    /* Caminho relativo para a imagem de fundo */
+    background-image: url('sweet-pastry-assortment-top-view.jpg'); /* Substitua pelo caminho da sua imagem de pães e café */
+    background-repeat: no-repeat;
+    background-size: cover; /* Faz a imagem cobrir toda a tela */
+    background-position: center center; /* Centraliza a imagem */
+    margin: 0;
+    padding: 0;
+    color: #4e3629; /* Cor marrom escuro, inspirada em café */
+}
+
+/* Container principal */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85); /* Fundo claro e levemente transparente */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d4a57d; /* Cor que remete ao tom dourado do pão assado */
+}
+
+/* Título principal */
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    text-align: center;
+    color: #6f4f29; /* Tom de café */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo dos rótulos de entrada */
+label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #4e3629;
+}
+
+/* Campos de entrada */
+input[type="text"], input[type="number"], input[type="date"] {
+    width: calc(100% - 160px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #c28b57; /* Cor quente de café */
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Botões de ação */
+input[type="button"] {
+    background-color: #7e5c4d; /* Cor de café tostado */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover nos botões */
+input[type="button"]:hover {
+    background-color: #6b4f3c; /* Cor um pouco mais escura no hover */
+}
+
+/* Avisos de feedback */
+#divAviso {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #fce1c8; /* Fundo creme */
+    border-left: 5px solid #f1a72b; /* Cor de pão */
+    border-radius: 8px;
+    font-size: 1em;
+    display: none;
+}
+
+/* Saída de dados */
+#outputSaida {
+    margin-top: 20px;
+    background-color: #e9d7b6; /* Cor de creme de café */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d4a57d; /* Cor dourada suave */
+    color: #4e3629;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+}
+
+/* Estilo adicional para botões de ação */
+input[type="button"]:nth-child(n + 10) {
+    background-color: #f3cdb2; /* Cor mais clara para botões como "Salvar" */
+}
+
+input[type="button"]:nth-child(n + 10):hover {
+    background-color: #f1b193;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Definindo a codificação de caracteres para UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Definindo a escala de visualização para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página -->
+    <title>Avaliar Padaria</title>
+
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte padrão */
+            margin: 20px; /* Define uma margem para a página */
+        }
+
+        /* Estilo para a classificação de estrelas (rating) */
+        .rating {
+            display: flex; /* Define que os itens de classificação serão exibidos em linha */
+            flex-direction: row-reverse; /* Inverte a ordem dos itens, exibindo a maior nota à esquerda */
+            justify-content: center; /* Centraliza as estrelas */
+        }
+
+        /* Estilo para os inputs de radio (as estrelas) que serão escondidos */
+        .rating input {
+            display: none; /* Esconde os inputs de radio */
+        }
+
+        /* Estilo para as labels (as estrelas visíveis) */
+        .rating label {
+            font-size: 2rem; /* Tamanho das estrelas */
+            color: #ccc; /* Cor das estrelas inicialmente */
+            cursor: pointer; /* Mostra o cursor como mão ao passar por cima */
+        }
+
+        /* Estilo para as estrelas quando selecionadas */
+        .rating input:checked ~ label {
+            color: #f5b301; /* Torna a estrela dourada quando marcada */
+        }
+
+        /* Estilo para as estrelas ao passar o mouse */
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #f5b301; /* Torna as estrelas douradas ao passar o mouse */
+        }
+
+        /* Estilo para os grupos de formulário */
+        .form-group {
+            margin-bottom: 15px; /* Adiciona espaçamento entre os elementos do formulário */
+        }
+
+        /* Estilo para os botões */
+        button {
+            padding: 10px 20px; /* Adiciona padding ao botão */
+            background-color: #6f4f29; /* Cor de fundo marrom */
+            color: #fff; /* Cor do texto branco */
+            border: none; /* Remove a borda */
+            border-radius: 5px; /* Borda arredondada */
+            cursor: pointer; /* Mostra o cursor como mão ao passar por cima */
+        }
+
+        /* Estilo para o botão ao passar o mouse */
+        button:hover {
+            background-color: #352411; /* Torna o botão mais escuro ao passar o mouse */
+        }
+
+        /* Estilo para as listas de padarias e avaliações salvas */
+        .padarias-lista,
+        .avaliacoes-salvas {
+            margin-top: 20px; /* Espaço acima das listas */
+            padding: 15px; /* Padding interno das listas */
+            border: 2px solid #291b0b; /* Borda marrom em torno das listas */
+            border-radius: 8px; /* Bordas arredondadas */
+            background-color: #f8f9fa; /* Cor de fundo clara */
+        }
+
+        /* Estilo para as listas dentro das seções */
+        .padarias-lista ul,
+        .avaliacoes-salvas ul {
+            list-style-type: none; /* Remove os pontos das listas */
+            padding: 0; /* Remove o padding da lista */
+        }
+
+        /* Estilo para os itens da lista */
+        .padarias-lista li,
+        .avaliacoes-salvas li {
+            padding: 10px; /* Adiciona padding interno aos itens */
+            background-color: #ffffff; /* Cor de fundo branca */
+            border: 1px solid #ddd; /* Borda cinza clara */
+            border-radius: 5px; /* Bordas arredondadas */
+            margin-bottom: 5px; /* Espaço entre os itens */
+        }
+
+        /* Estilo para os itens da lista ao passar o mouse */
+        .padarias-lista li:hover,
+        .avaliacoes-salvas li:hover {
+            background-color: #e2e6ea; /* Torna o fundo dos itens cinza claro ao passar o mouse */
+        }
+
+        /* Estilo para os títulos das seções */
+        .section-title {
+            font-weight: bold; /* Deixa o título em negrito */
+            font-size: 1.2rem; /* Define o tamanho da fonte do título */
+            color: #6d4b1f; /* Cor marrom para o título */
+            margin-bottom: 10px; /* Espaço abaixo do título */
+            text-align: center; /* Centraliza o título */
+        }
+    </style>
+</head>
+<body>
+    <!-- Título principal da página -->
+    <h1>Avalie a Padaria</h1>
+    <!-- Formulário de avaliação -->
+    <form id="avaliacaoForm">
+        <!-- Grupo de formulário para escolher a padaria -->
+        <div class="form-group">
+            <label for="padaria">Escolha a padaria:</label>
+            <br>
+            <!-- Botão para buscar dados salvos no computador -->
+            <input type="button" value="Buscar os dados salvos" onclick="buscarDadosSalvosNoComputador()">
+        </div>
+
+        <!-- Grupo de formulário para selecionar a nota -->
+        <div class="form-group">
+            <label>Nota:</label>
+            <div class="rating">
+                <!-- Inputs de radio para as notas (de 1 a 5) -->
+                <input type="radio" id="estrela5" name="nota" value="5">
+                <label for="estrela5">★</label>
+                <input type="radio" id="estrela4" name="nota" value="4">
+                <label for="estrela4">★</label>
+                <input type="radio" id="estrela3" name="nota" value="3">
+                <label for="estrela3">★</label>
+                <input type="radio" id="estrela2" name="nota" value="2">
+                <label for="estrela2">★</label>
+                <input type="radio" id="estrela1" name="nota" value="1">
+                <label for="estrela1">★</label>
+            </div>
+        </div>
+
+        <!-- Grupo de formulário para inserir comentários -->
+        <div class="form-group">
+            <label for="comentarios">Comentários:</label>
+            <textarea id="comentarios" name="comentarios" rows="4" cols="50" placeholder="Escreva seus comentários aqui..." required></textarea>
+        </div>
+
+        <!-- Botões para salvar e ver as avaliações -->
+        <button type="button" onclick="salvarAvaliacoes()">Salvar Avaliação</button>
+        <button type="button" onclick="verAvaliacoesSalvas()">Ver Avaliações Salvas</button>
+    </form>
+
+    <!-- Seção para mostrar a lista de padarias -->
+    <div class="padarias-lista" id="padariasLista">
+        <div class="section-title">Lista de Padarias</div>
+    </div>
+
+    <!-- Seção para mostrar as avaliações salvas -->
+    <div class="avaliacoes-salvas" id="avaliacoesSalvas">
+        <div class="section-title">Avaliações Salvas</div>
+    </div>
+
+    <script>
+        let padariaSelecionada = null; // Variável para armazenar a padaria selecionada
+
+        // Função para buscar os dados salvos de um arquivo CSV
+        function buscarDadosSalvosNoComputador() {
+            const input = document.createElement('input'); // Cria um input de tipo file
+            input.type = 'file'; // Define o tipo de input como 'file' (arquivo)
+            input.accept = '.csv'; // Define que o arquivo deve ser do tipo .csv
+            input.onchange = function(event) { // Função para executar quando o arquivo for selecionado
+                const arquivo = event.target.files[0]; // Obtém o primeiro arquivo selecionado
+                if (arquivo) {
+                    const leitor = new FileReader(); // Cria um leitor de arquivos
+                    leitor.onload = function(e) { // Função que será chamada quando o arquivo for lido
+                        const conteudo = e.target.result; // Conteúdo do arquivo
+                        const linhas = conteudo.split('\n'); // Separa as linhas do arquivo
+                        const padarias = linhas.map(linha => {
+                            const dados = linha.split(';'); // Separa os dados de cada linha pelo ';'
+                            return { cnpj: dados[0], nome: dados[1], rua: dados[2], cep: dados[3] }; // Retorna um objeto para cada padaria
+                        }).filter(p => p.nome); // Filtra padarias sem nome
+
+                        exibirPadarias(padarias); // Exibe as padarias
+                    };
+                    leitor.readAsText(arquivo); // Lê o arquivo como texto
+                }
+            };
+            input.click(); // Simula um clique para abrir o seletor de arquivos
+        }
+
+        // Função para exibir as padarias na tela
+        function exibirPadarias(padarias) {
+            const listaPadarias = document.getElementById('padariasLista'); // Obtém a referência para a lista de padarias
+            listaPadarias.innerHTML = '<div class="section-title">Lista de Padarias</div>'; // Limpa a lista e adiciona um título
+
+            const ul = document.createElement('ul'); // Cria uma nova lista
+            padarias.forEach(padaria => { // Para cada padaria no array de padarias
+                const li = document.createElement('li'); // Cria um item de lista
+                li.textContent = `${padaria.cnpj} - ${padaria.nome} - ${padaria.rua} - ${padaria.cep}`; // Define o texto do item
+                li.onclick = function() { // Quando o item for clicado
+                    preencherFormulario(padaria); // Preenche o formulário com os dados da padaria
+                };
+                ul.appendChild(li); // Adiciona o item à lista
+            });
+
+            listaPadarias.appendChild(ul); // Adiciona a lista à seção de padarias
+        }
+
+        // Função para preencher o formulário com os dados da padaria
+        function preencherFormulario(padaria) {
+            document.getElementById('comentarios').value = `Padaria ${padaria.nome}:`; // Preenche o campo de comentários
+            padariaSelecionada = padaria; // Define a padaria selecionada
+            alert(`Dados da padaria ${padaria.nome} carregados para avaliação.`); // Exibe um alerta
+        }
+
+        // Função para salvar as avaliações
+        function salvarAvaliacoes() {
+            let nnc = "";
+            if (!padariaSelecionada) { // Se nenhuma padaria foi selecionada
+                alert("Por favor, selecione uma padaria antes de salvar a avaliação.");
+                return;
+            }
+
+            const nota = document.querySelector('input[name="nota"]:checked')?.value; // Obtém a nota selecionada
+            const comentarios = document.getElementById('comentarios').value; // Obtém os comentários
+
+            if (!nota || !comentarios) { // Se a nota ou os comentários não foram preenchidos
+                alert("Por favor, preencha todos os campos antes de salvar.");
+                return;
+            }
+        
+            const avaliacao = { // Cria um objeto com os dados da avaliação
+                nome: padariaSelecionada.nome,
+                nota: nota,
+                comentarios: comentarios
+            };
+        
+            // Formata os dados da avaliação para CSV
+            let dados = `Nome;Nota;Comentários\n`;
+            nnc = `${avaliacao.nome};${avaliacao.nota};${avaliacao.comentarios}\n`;
+            listadados = dados;
+            listadados += nnc;
+        
+            const blob = new Blob([nnc], { type: 'text/csv' }); // Cria um arquivo Blob com os dados no formato CSV
+            const link = document.createElement('a'); // Cria um link para download
+            link.href = URL.createObjectURL(blob); // Define o URL do Blob como o href do link
+            link.download = 'avaliacao.csv'; // Define o nome do arquivo a ser baixado
+            link.click(); // Simula o clique para download
+            URL.revokeObjectURL(link.href); // Revoga o URL criado após o download
+
+            alert("Avaliação salva com sucesso!"); // Exibe um alerta de sucesso
+        }
+
+        // Função para ver as avaliações salvas
+        function verAvaliacoesSalvas() {
+            const input = document.createElement('input'); // Cria um input para selecionar arquivo
+            input.type = 'file'; // Define o tipo de input como 'file'
+            input.accept = '.csv'; // Define que o arquivo deve ser do tipo .csv
+            input.onchange = function(event) { // Função que será chamada quando o arquivo for selecionado
+                const arquivo = event.target.files[0]; // Obtém o primeiro arquivo selecionado
+                if (arquivo) {
+                    const leitor = new FileReader(); // Cria um leitor de arquivos
+                    leitor.onload = function(e) { // Função chamada quando o arquivo for lido
+                        const conteudo = e.target.result; // Conteúdo do arquivo
+                        const linhas = conteudo.split('\n').slice(1); // Separa as linhas e remove o cabeçalho
+                        const avaliacoes = linhas.map(linha => {
+                            const dados = linha.split(';'); // Separa os dados da linha
+                            return { // Cria um objeto para cada avaliação
+                                nome: dados[0],
+                                nota: dados[1],
+                                comentarios: dados[2]
+                            };
+                        }).filter(a => a.nome); // Filtra avaliações sem nome
+
+                        exibirAvaliacoes(avaliacoes); // Exibe as avaliações
+                    };
+                    leitor.readAsText(arquivo); // Lê o arquivo como texto
+                }
+            };
+            input.click(); // Simula um clique para abrir o seletor de arquivos
+        }
+
+        // Função para exibir as avaliações salvas
+        function exibirAvaliacoes(avaliacoes) {
+            const listaAvaliacoes = document.getElementById('avaliacoesSalvas'); // Obtém a referência para a lista de avaliações
+            listaAvaliacoes.innerHTML = '<div class="section-title">Avaliações Salvas</div>'; // Limpa a lista e adiciona um título
+
+            const ul = document.createElement('ul'); // Cria uma nova lista
+            avaliacoes.forEach(avaliacao => { // Para cada avaliação no array de avaliações
+                const li = document.createElement('li'); // Cria um item de lista
+                li.textContent = `${avaliacao.nome} - Nota: ${avaliacao.nota} - Comentários: ${avaliacao.comentarios}`; // Define o texto do item
+                ul.appendChild(li); // Adiciona o item à lista
+            });
+
+            listaAvaliacoes.appendChild(ul); // Adiciona a lista à seção de avaliações salvas
+        }
+    </script>
+</body>
+</html>
