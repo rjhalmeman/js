@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRUD Joias</title>
+   <link rel="stylesheet" href=./crud.css>
+      
+</head>
+<body>
+   
+   <h1>Cadastro de Joias</h1>
+   <form id="formCadastroJoias">
+      <label for="inputId">Id</label>
+      <input type="text" name="inputId" id="inputId">
+      <input type="button" value="Procure" id="btProcure" onclick="procure()">
+      <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+      <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+      <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+      <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+      <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+      
+      <input type="button" value="Salvar os dados no computador" onclick="salvarNoComputador()">
+        <input type="button" value="Buscar os dados salvos" onclick="fazerUpload()">
+
+      <br><br>
+
+      <label for="inputNome">Nome</label>
+      <input type="text" name="inputNome" id="inputNome">
+      <br>
+      <label for="inputMetal">Metal</label>
+      <input type="text" name="inputMetal" id="inputMetal">
+      <br>
+      <label for="inputDataFabricacao">Data de Fabricação</label>
+      <input type="date" name="inputDataFabricacao" id="inputDataFabricacao">
+      <br>
+      <label for="inputTipo">Tipo</label>
+      <input type="text" name="inputTipo" id="inputTipo">
+      <br>
+      <label for="inputPeso">Peso</label>
+      <input type="number" name="inputPeso" id="inputPeso"> 
+   </form>
+   <br>
+   <div id="divAviso"></div>
+   <br>
+   <div id="outputSaida">...</div>
+
+   <script src="./ClassJoias.js"></script>
+   <script src="./CrudControleJoias.js"></script>
+ 
+</body>
+
+</html>

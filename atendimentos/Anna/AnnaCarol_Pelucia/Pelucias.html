@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pelúcias</title>
+    <link rel="stylesheet" href="./Pelucias.css">
+</head>
+
+<body>
+    <div class="container">
+    
+        <h2>Cadastro de pelúcias</h2>
+
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id">
+        <input type="button" value="Procure" id="btProcure" onclick="procure()" style="display:inline;">
+        <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+        <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+        <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+        <br>
+
+        <label for="nome">Nome da pelúcia:</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="formato">Formato da pelúcia:</label>
+        <input type="text" name="formato" id="formato">
+
+        <label for="preco">Preço:</label>
+        <input type="number" name="preco" id="preco">
+
+        <label for="lancamento">Data de Lançamento:</label>
+        <input type="date" name="lancamento" id="lancamento">
+
+        <label for="comprador">Comprador(a):</label>
+        <input type="text" name="comprador" id="comprador">
+
+        <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display: none;">
+        <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display: none;">
+
+        <div id="divAviso"></div>
+        <div id="outputSaida">...</div>
+
+        <input type="button" value="Salvar os dados no computador" onclick="salvarNoComputador()">
+        <input type="button" value="Buscar os dados salvos" onclick="buscarDadosSalvosNoComputador()">
+       
+        <input type="button" value="Gerar Certificado" id="btCertificado" onclick="gerarCertificado()">
+       
+        <div id="certificado" style="display: none; text-align: center; margin-top: 20px; border: 1px solid #d63384; padding: 20px;">
+            <h2>Certificado de Adoção</h2>
+            <p><strong>Nome da Pelúcia:</strong> <span id="certNome"></span></p>
+            <p><strong>Formato:</strong> <span id="certFormato"></span></p>
+            <p><strong>Dono:</strong> <span id="certComprador"></span></p>
+            <p><strong>Data de Nascimento da Pelúcia:</strong> <span id="certLancamento"></span></p>
+        </div>
+    </div>
+
+    <script src="./ClassPelucias.js"></script>
+    <script src="./PeluciasControle.js"></script>
+</body>
+
+</html>

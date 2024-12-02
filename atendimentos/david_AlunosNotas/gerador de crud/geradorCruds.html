@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador CRUD Simples</title>
+</head>
+
+<body>
+    <h1>Gerador CRUD Simples</h1>
+
+    <label>Nome da Classe:</label>
+    <input type="text" id="nomeClasse" placeholder="Exemplo: Produto"><br><br>
+
+    <label>Atributos (separados por vírgula):</label>
+    <input type="text" id="atributos" placeholder="Exemplo: id, nome, preco"><br><br>
+
+    <button onclick="gerarModel()">Gerar Model</button>
+    <button onclick="gerarView()">Gerar View</button>
+    <button onclick="gerarController()">Gerar Controller</button>
+
+    <h2>Código Gerado:</h2>
+    <pre id="codigoGerado" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd;"></pre>
+
+    <script>
+        function gerarModel() {
+            const nomeClasse = document.getElementById("nomeClasse").value;
+            const atributos = document.getElementById("atributos").value;
+            const atributosArray = atributos.split(",").map(attr => attr.trim());
+
+            let codigo = `class ${nomeClasse} {\n    constructor(${atributosArray.join(", ")}) {\n`;
+            atributosArray.forEach(attr => {
+                codigo += `        this.${attr} = ${attr};\n`;
+            });
+            codigo += `    }\n}`;
+            exibirCodigo(codigo);
+        }
+
+        function gerarView() {
+            const nomeClasse = document.getElementById("nomeClasse").value;
+            const atributos = document.getElementById("atributos").value;
+            const atributosArray = atributos.split(",").map(attr => attr.trim());
+
+            let codigo = `<!DOCTYPE html>\n<html lang="pt-br">\n<head>\n`;
+            codigo += `    <meta charset="UTF-8">\n    <title>Formulário ${nomeClasse}</title>\n</head>\n<body>\n`;
+            codigo += `    <h1>Formulário de ${nomeClasse}</h1>\n    <form>\n`;
+
+            atributosArray.forEach(attr => {
+                codigo += `        <label for="${attr}">${attr}:</label>\n`;
+                codigo += `        <input type="text" id="${attr}" name="${attr}"><br>\n`;
+            });
+
+            codigo += `        <button type="submit">Salvar</button>\n    </form>\n</body>\n</html>`;
+            exibirCodigo(codigo);
+        }
+
+        function gerarController() {
+            const nomeClasse = document.getElementById("nomeClasse").value;
+            const atributos = document.getElementById("atributos").value;
+            const atributosArray = atributos.split(",").map(attr => attr.trim());
+
+            let codigo = `const ${nomeClasse}Controller = {\n`;
+            codigo += `    criar: function(${atributosArray.join(", ")}) {\n`;
+            codigo += `        console.log("Criando ${nomeClasse} com:", { ${atributosArray.join(", ")} });\n`;
+            codigo += `    },\n\n`;
+
+            codigo += `    listar: function() {\n`;
+            codigo += `        console.log("Listando todos os registros de ${nomeClasse}");\n`;
+            codigo += `    },\n\n`;
+
+            codigo += `    editar: function(id, ${atributosArray.join(", ")}) {\n`;
+            codigo += `        console.log("Editando registro", id, "com:", { ${atributosArray.join(", ")} });\n`;
+            codigo += `    },\n\n`;
+
+            codigo += `    excluir: function(id) {\n`;
+            codigo += `        console.log("Excluindo registro com ID:", id);\n`;
+            codigo += `    }\n};`;
+            exibirCodigo(codigo);
+        }
+
+        function exibirCodigo(codigo) {
+            document.getElementById("codigoGerado").textContent = codigo;
+        }
+    </script>
+</body>
+
+</html>

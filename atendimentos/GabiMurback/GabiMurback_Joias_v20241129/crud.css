@@ -1,0 +1,126 @@
+/* Estilo geral da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('planodefundojoias.jpg') no-repeat center center fixed; /* Substitua pela URL da sua imagem */
+    background-size: cover; /* Faz a imagem preencher o fundo */
+    color: #333; /* Cinza escuro para contraste */
+    margin: 0;
+    padding: 0;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #d4af37; /* Dourado */
+    font-size: 2.5em;
+    margin-top: 20px;
+    text-shadow: 1px 1px 2px #b8860b;
+}
+
+/* Formulário */
+form {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Inputs */
+form input[type="text"], form input[type="date"], form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Botões */
+form input[type="button"], form button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 2px solid #d4af37;
+    background-color: #fff;
+    color: #d4af37;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+form input[type="button"]:hover, form button:hover {
+    background-color: #d4af37;
+    color: #fff;
+}
+
+/* Mensagem de aviso */
+#divAviso {
+    margin: 20px auto;
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 248, 225, 0.9); /* Amarelo claro semi-transparente */
+    border: 1px solid #d4af37;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Lista */
+#outputSaida {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 1em;
+}
+
+/* Tabela */
+#outputSaida table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#outputSaida th, #outputSaida td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #d4af37;
+}
+
+#outputSaida th {
+    background-color: #d4af37;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#outputSaida td {
+    background-color: rgba(255, 255, 255, 0.8); /* Branco semi-transparente */
+    color: #333;
+}
+
+#outputSaida tr:nth-child(even) {
+    background-color: rgba(249, 249, 249, 0.8);
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #d4af37;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
